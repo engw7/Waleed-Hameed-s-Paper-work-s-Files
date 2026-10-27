@@ -806,7 +806,7 @@ Future work should test the controller in hardware-in-the-loop and on a prototyp
 
 **Data availability.** The irradiance and temperature data are from the public PVGIS-SARAH3 database of the European Commission Joint Research Centre [20], for the location 33.42° N, 43.30° E, 2005–2020. The hourly series used in this study and all result tables are available in the project repository.
 
-**Code availability.** The simulation code (controllers, plant and converter models, data generation, training and evaluation scripts), the trained models, the data files behind every figure and all result tables, with a changelog of the numbers, are available at https://github.com/engw7/ann-mppt (commit 7e6553a). \[Replace with a permanent DOI archive, for example Zenodo, before final submission.\]
+**Code availability.** The simulation code (controllers, plant and converter models, data generation, training and evaluation scripts), the trained models, the data files behind every figure and all result tables, with a changelog of the numbers, are available at https://github.com/engw7/Waleed-Hameed-s-Paper-work-s-Files (release v1.0.0) and are archived on Zenodo (https://doi.org/10.5281/zenodo.23706406).
 
 **Author contributions.** W.H.: conceptualization, methodology, software, validation, formal analysis, investigation, data curation, writing—original draft, visualization. K.D.: supervision, writing—review and editing. \[Authors to confirm.\]
 
