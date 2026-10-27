@@ -808,9 +808,9 @@ Future work should test the controller in hardware-in-the-loop and on a prototyp
 
 **Code availability.** The simulation code (controllers, plant and converter models, data generation, training and evaluation scripts), the trained models, the data files behind every figure and all result tables, with a changelog of the numbers, are available at https://github.com/engw7/Waleed-Hameed-s-Paper-work-s-Files (release v1.0.0) and are archived on Zenodo (https://doi.org/10.5281/zenodo.23706406).
 
-**Author contributions.** W.H.: conceptualization, methodology, software, validation, formal analysis, investigation, data curation, writing—original draft, visualization. K.D.: supervision, writing—review and editing. \[Authors to confirm.\]
+**Author contributions.** W.H.: conceptualization, methodology, software, validation, formal analysis, investigation, data curation, writing—original draft, visualization. K.D.: supervision, writing—review and editing.
 
-**Use of AI tools.** The authors used an AI assistant (Claude, Anthropic) to support code development, debugging and drafting. The authors reviewed and verified all code, results and text and take full responsibility for the content. \[Authors to confirm this statement against the journal’s current AI policy.\]
+**Use of AI tools.** The authors used an AI assistant (Claude, Anthropic) to support code development, debugging and drafting. The authors reviewed and verified all code, results and text and take full responsibility for the content.
 
 ## References
 
