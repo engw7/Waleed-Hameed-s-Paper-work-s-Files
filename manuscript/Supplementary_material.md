@@ -1,14 +1,49 @@
 # Supplementary material
 
-This document accompanies the manuscript “Isolating the Contribution of Deep Neural Networks in Hybrid Scan-Based MPPT Controllers Under Partial Shading”. It contains the statistical-robustness, design-ablation, boost-converter and sensor-noise/quantization studies summarized in the section “Robustness studies” of the main text. Table and figure numbers without the prefix S refer to the main text.
+**Article:** Isolating the Contribution of Deep Neural Networks in Hybrid Scan-Based MPPT Controllers Under Partial Shading
+
+**Journal:** The Journal of Supercomputing
+
+**Authors:** Waleed Hameed and Kamil Dimililer
+
+**Corresponding author:** Waleed Hameed, Department of Electrical Engineering Technologies, Al-Huda University College, Ramadi, Al Anbar, Iraq; waleed.hameed@uoalhuda.edu.iq
+
+This document accompanies the article. It contains dataset excerpts and the statistical-robustness, design-ablation, boost-converter and sensor-noise/quantization studies summarized in Section 4.7 of the main text. Table and figure numbers without the prefix S refer to the main text.
+
+### Dataset excerpts
+
+Table S1 shows twelve rows of the PVGIS-SARAH3 hourly series used in the study and the module quantities computed from them, and Table S2 shows one partially shaded sample as the stage-1 DNN receives it.
+
+**Table S1** Excerpt of the PVGIS-SARAH3 hourly series (Ramadi, 24 June 2019, first 12 non-zero hours) and the module quantities computed from it. T\_cell is the cell temperature from the NOCT relation, and V\_mpp and P\_mpp are the maximum-power voltage and power of the single-diode model at that G and T\_cell.
+
+| Time (UTC) | G (W/m²) | T\_2m (°C) | T\_cell (°C) | V\_mpp (V) | P\_mpp (W) |
+| --- | --- | --- | --- | --- | --- |
+| 2019-06-24 03:09 | 162 | 29.06 | 34.12 | 23.89 | 35.62 |
+| 2019-06-24 04:09 | 378 | 31.02 | 42.83 | 23.92 | 83.40 |
+| 2019-06-24 05:09 | 589 | 33.71 | 52.12 | 23.29 | 126.57 |
+| 2019-06-24 06:09 | 777 | 36.11 | 60.39 | 22.56 | 161.65 |
+| 2019-06-24 07:09 | 923 | 38.94 | 67.78 | 21.84 | 185.63 |
+| 2019-06-24 08:09 | 1018 | 40.67 | 72.48 | 21.36 | 200.07 |
+| 2019-06-24 09:09 | 1051 | 41.74 | 74.58 | 21.15 | 204.34 |
+| 2019-06-24 10:09 | 1022 | 42.57 | 74.51 | 21.14 | 198.73 |
+| 2019-06-24 11:09 | 915 | 43.19 | 71.78 | 21.39 | 180.21 |
+| 2019-06-24 12:09 | 757 | 43.53 | 67.19 | 21.79 | 152.04 |
+| 2019-06-24 13:09 | 584 | 43.56 | 61.81 | 22.18 | 119.52 |
+| 2019-06-24 14:09 | 365 | 43.24 | 54.65 | 22.51 | 75.80 |
+
+**Table S2** One partially shaded sample (nominal plant, test-year conditions: G\_in = 93 W/m², T = 19.2 °C, true global-maximum voltage V\_gmpp = 15.88 V). The 14 currents I\_k measured at the probe voltages V\_k form the input of the DNN together with G\_in and T.
+
+| Probe V\_k (V) | 8.00 | 10.08 | 12.15 | 14.23 | 16.31 | 18.38 | 20.46 | 22.54 | 24.62 | 26.69 | 28.77 | 30.85 | 32.92 | 35.00 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| I\_k (A) | 1.140 | 1.139 | 1.136 | 1.121 | 1.028 | 0.463 | 0.456 | 0.455 | 0.454 | 0.439 | 0.147 | 0 | 0 | 0 |
 
 ### Statistical robustness
 
-To separate real differences from seed noise, the scenario suites were repeated with 10 scenario seeds (which vary the cloud-noise stream, the step instant and the cloud phase), and the stage-1 DNN was retrained with five seeds (paired with the scenario seed modulo 5). Table S1 gives the mean ± standard deviation and Table S2 the paired Wilcoxon signed-rank tests; with only ten pairs, a difference can reach p < 0.05 only if its sign is consistent across the seeds, so small but consistent differences are flagged even when they are practically irrelevant. The seed means differ slightly from the single deterministic runs of Table 11 (for example 99.36% against 99.32% for the hybrid on shading).
+To separate real differences from seed noise, the scenario suites were repeated with 10 scenario seeds (which vary the cloud-noise stream, the step instant and the cloud phase), and the stage-1 DNN was retrained with five seeds (paired with the scenario seed modulo 5). Table S3 gives the mean ± standard deviation and Table S4 the paired Wilcoxon signed-rank tests; with only ten pairs, a difference can reach p < 0.05 only if its sign is consistent across the seeds, so small but consistent differences are flagged even when they are practically irrelevant. The seed means differ slightly from the single deterministic runs of Table 11 (for example 99.36% against 99.32% for the hybrid on shading).
 
-The tests agree with the headline results. The hybrid beats P&O under partial shading by 18.9 points (p = 0.002, ten of ten seeds) and loses to it on the standard scenarios and real days by 0.14–0.15 points (p = 0.002). The hybrid and Scan+P&O do not differ significantly under partial shading on the nominal plant (median difference +0.016 points, p = 0.23, **Table S2**); on the real days the hybrid is ahead in all ten seeds (p = 0.002), but by only 0.005 points, and on the mismatched plant its shading advantage is 0.055 points (p = 0.002). These differences are consistent but far too small to matter in practice. The DNN scan-only variant is less reliable than the hybrid under shading (98.32 ± 1.00% against 99.36 ± 0.05%; p = 0.027) because an occasional wrong-peak estimate is not corrected without the P&O stage. PSO has a much larger seed-to-seed spread than all other controllers (96.09 ± 2.37% under shading and a success rate of 97.8 ± 7.0%).
+The tests agree with the headline results. The hybrid beats P&O under partial shading by 18.9 points (p = 0.002, ten of ten seeds) and loses to it on the standard scenarios and real days by 0.14–0.15 points (p = 0.002). The hybrid and Scan+P&O do not differ significantly under partial shading on the nominal plant (median difference +0.016 points, p = 0.23, **Table S4**); on the real days the hybrid is ahead in all ten seeds (p = 0.002), but by only 0.005 points, and on the mismatched plant its shading advantage is 0.055 points (p = 0.002). These differences are consistent but far too small to matter in practice. The DNN scan-only variant is less reliable than the hybrid under shading (98.32 ± 1.00% against 99.36 ± 0.05%; p = 0.027) because an occasional wrong-peak estimate is not corrected without the P&O stage. PSO has a much larger seed-to-seed spread than all other controllers (96.09 ± 2.37% under shading and a success rate of 97.8 ± 7.0%).
 
-**Table S1** Mean ± standard deviation of the tracking efficiency (%) over 10 scenario seeds on the nominal plant, with the stage-1 DNN retrained for five seeds. Standard scenarios, real days and shading as in Table 11; GMPP success is the percentage of shading patterns solved; event convergence in control cycles.
+**Table S3** Mean ± standard deviation of the tracking efficiency (%) over 10 scenario seeds on the nominal plant, with the stage-1 DNN retrained for five seeds. Standard scenarios, real days and shading as in Table 11; GMPP success is the percentage of shading patterns solved; event convergence in control cycles.
 
 | Controller | Standard scenarios | Real days | Shading | Shading, mismatched plant | GMPP success (%) | Event convergence (cycles) |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -22,7 +57,7 @@ The tests agree with the headline results. The hybrid beats P&O under partial sh
 | Tree scan+P&O | 99.59 ± 0.00 | 99.66 ± 0.01 | 99.33 ± 0.06 | 99.36 ± 0.05 | 100.0 ± 0.0 | 1.14 ± 0.34 |
 | PSO | 98.04 ± 0.09 | 97.65 ± 0.26 | 96.09 ± 2.37 | 96.30 ± 2.14 | 97.8 ± 7.0 | 34.25 ± 16.00 |
 
-**Table S2** Paired two-sided Wilcoxon signed-rank tests over 10 scenario seeds (a versus b). A positive median difference means that a is more efficient than b; the last column gives the number of seeds in which a is better.
+**Table S4** Paired two-sided Wilcoxon signed-rank tests over 10 scenario seeds (a versus b). A positive median difference means that a is more efficient than b; the last column gives the number of seeds in which a is better.
 
 | Plant | Comparison (a vs b) | Metric | Median difference (points) | p | a better in |
 | --- | --- | --- | --- | --- | --- |
@@ -40,9 +75,9 @@ The tests agree with the headline results. The hybrid beats P&O under partial sh
 
 ### Design ablation of the stage-1 estimator
 
-To test whether the network design matters, the stage-1 estimator was replaced by smaller and larger networks, by regularized variants, by a linear regressor on the same 16 inputs, and by a network that sees only G and T (Table S3). The architecture used in the other experiments was chosen a priori and was not tuned on the test years (there was no hyper-parameter search); the training years, the early-stopping years (2015–2016) and the test years (2019–2020) are disjoint. All neural variants with the 16 inputs end up within 0.02 points of each other in closed-loop shading efficiency (99.33–99.35%), although their offline RMSE ranges from 0.75 to 0.94 V and their size from 1,633 to 103,169 parameters; the differences are of the order of the seed-to-seed spread. A network with only 1,633 parameters and 1,568 multiply–accumulate operations therefore performs as well in the closed loop as the 27,009-parameter network. The information content of the scan, not the network capacity, is what matters. A linear regressor on the scan currents already reaches 97.79% (success 88.9%), and a network that sees only G and T, without the scan currents, falls to 80.18% with the success rate of P&O (33.3%). This result shows that the benefit comes from the scan and that the DNN is one of several adequate estimators; a smaller network or a tree-based estimator would do equally well in this setting.
+To test whether the network design matters, the stage-1 estimator was replaced by smaller and larger networks, by regularized variants, by a linear regressor on the same 16 inputs, and by a network that sees only G and T (Table S5). The architecture used in the other experiments was chosen a priori and was not tuned on the test years (there was no hyper-parameter search); the training years, the early-stopping years (2015–2016) and the test years (2019–2020) are disjoint. All neural variants with the 16 inputs end up within 0.02 points of each other in closed-loop shading efficiency (99.33–99.35%), although their offline RMSE ranges from 0.75 to 0.94 V and their size from 1,633 to 103,169 parameters; the differences are of the order of the seed-to-seed spread. A network with only 1,633 parameters and 1,568 multiply–accumulate operations therefore performs as well in the closed loop as the 27,009-parameter network. The information content of the scan, not the network capacity, is what matters. A linear regressor on the scan currents already reaches 97.79% (success 88.9%), and a network that sees only G and T, without the scan currents, falls to 80.18% with the success rate of P&O (33.3%). This result shows that the benefit comes from the scan and that the DNN is one of several adequate estimators; a smaller network or a tree-based estimator would do equally well in this setting.
 
-**Table S3** Design ablation of the stage-1 estimator: offline error on the 2019–2020 in-distribution test set and closed-loop results on the nine shading patterns, mean ± standard deviation over the stated number of seeds.
+**Table S5** Design ablation of the stage-1 estimator: offline error on the 2019–2020 in-distribution test set and closed-loop results on the nine shading patterns, mean ± standard deviation over the stated number of seeds.
 
 | Variant | Seeds | Parameters | MACs | RMSE in distribution (V) | Wrong peak (%) | Shading eff., nominal (%) | Shading eff., mismatched (%) | GMPP success, nominal (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -58,9 +93,9 @@ To test whether the network design matters, the stage-1 estimator was replaced b
 
 ### Boost-converter plant
 
-To check that the conclusions do not depend on the quasi-static plant, the controllers were also run on a plant that includes the converter (Fig. 9, Table 7): the PV source feeds an input capacitor and a boost converter to a constant 48 V bus, an inner PI loop regulates the PV voltage to the command of the MPPT algorithm, and the measurement is the mean over the last quarter of a 20 ms settling window (60 ms for command jumps larger than 2 V). **Fig. S1** shows the irradiance step on this plant, with power, PV voltage, duty cycle and inductor current. The averaged continuous-conduction model was compared with a switching-level model (PWM with 100 steps per period, diode with discontinuous-conduction clamp) driven by the same command sequence (Table S4). For the irradiance step and for the shading pattern outside the large scan jumps, the largest deviation is 0.049 V and 0.10% of the rated power. During the 14 large jumps of a scan (probe voltages up to 18 V away from the present voltage), the deviation reaches 1.45 V and 4.7% of the rated power because neither model has settled within the window, so the averaged model should not be trusted for the detailed shape of the scan transients. Both models were implemented in this study and were not compared with a hardware converter.
+To check that the conclusions do not depend on the quasi-static plant, the controllers were also run on a plant that includes the converter (Fig. 9, Table 7): the PV source feeds an input capacitor and a boost converter to a constant 48 V bus, an inner PI loop regulates the PV voltage to the command of the MPPT algorithm, and the measurement is the mean over the last quarter of a 20 ms settling window (60 ms for command jumps larger than 2 V). **Fig. S1** shows the irradiance step on this plant, with power, PV voltage, duty cycle and inductor current. The averaged continuous-conduction model was compared with a switching-level model (PWM with 100 steps per period, diode with discontinuous-conduction clamp) driven by the same command sequence (Table S6). For the irradiance step and for the shading pattern outside the large scan jumps, the largest deviation is 0.049 V and 0.10% of the rated power. During the 14 large jumps of a scan (probe voltages up to 18 V away from the present voltage), the deviation reaches 1.45 V and 4.7% of the rated power because neither model has settled within the window, so the averaged model should not be trusted for the detailed shape of the scan transients. Both models were implemented in this study and were not compared with a hardware converter.
 
-**Table S4** Averaged versus switching-level boost-converter model driven by the same command sequence: largest deviation of the window-averaged PV voltage and power (percent of the rated power). Large jump: the command differs by more than 2 V from the PV voltage at the start of the window.
+**Table S6** Averaged versus switching-level boost-converter model driven by the same command sequence: largest deviation of the window-averaged PV voltage and power (percent of the rated power). Large jump: the command differs by more than 2 V from the PV voltage at the start of the window.
 
 | Case | Large jump | Calls | Max. deviation of V (V) | Max. deviation of P (W) | Max. deviation of P (% of rated) | Mean deviation of P (% of rated) |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -68,9 +103,9 @@ To check that the conclusions do not depend on the quasi-static plant, the contr
 | Shading pattern 1 including scan (Hybrid) | no | 29 | 0.024 | 0.06 | 0.025 | 0.007 |
 | Shading pattern 1 including scan (Hybrid) | yes | 14 | 1.447 | 11.54 | 4.718 | 1.179 |
 
-The converter dynamics change the efficiency of the controllers by little (Table S5). The largest change is −0.58 points, for the plain ANN under partial shading; P&O and IncCond change by −0.13 and −0.14 points under shading and by −0.09 and −0.10 points on the comprehensive scenario, and the hybrid by −0.10 points on the comprehensive scenario and −0.004 points under shading. On the step, cloud and ramp scenarios no controller changes by more than 0.06 points. The ranking of the controllers is unchanged.
+The converter dynamics change the efficiency of the controllers by little (Table S7). The largest change is −0.58 points, for the plain ANN under partial shading; P&O and IncCond change by −0.13 and −0.14 points under shading and by −0.09 and −0.10 points on the comprehensive scenario, and the hybrid by −0.10 points on the comprehensive scenario and −0.004 points under shading. On the step, cloud and ramp scenarios no controller changes by more than 0.06 points. The ranking of the controllers is unchanged.
 
-**Table S5** Tracking efficiency (%) on the quasi-static plant and on the averaged boost-converter plant (nominal PV model) for the comprehensive scenario and for partial shading.
+**Table S7** Tracking efficiency (%) on the quasi-static plant and on the averaged boost-converter plant (nominal PV model) for the comprehensive scenario and for partial shading.
 
 | Scenario | Controller | Quasi-static | With converter | Change (points) |
 | --- | --- | --- | --- | --- |
@@ -93,9 +128,9 @@ The converter dynamics change the efficiency of the controllers by little (Table
 
 ### Sensor noise and numerical precision
 
-To test sensitivity to measurement errors, Gaussian noise was added to the measured currents (0.5%), voltages (0.5%) and irradiance input (2%) on the nine shading patterns, and the efficiency was scored on the true values (Table S6). The scan-based controllers still solve every pattern, but their efficiency drops by about 0.6 points (hybrid 99.32% to 98.70%, Scan+P&O 99.36% to 98.75%, tree-based variant 99.37% to 98.67%). The DNN scan-only variant, which has no P&O stage, is unaffected (99.30% to 99.31%), and the sensor-less trackers change little (P&O 80.41% to 80.25%), so the loss comes from P&O dithering on noisy power readings and not from the network. PSO loses its perfect success rate (97.8%).
+To test sensitivity to measurement errors, Gaussian noise was added to the measured currents (0.5%), voltages (0.5%) and irradiance input (2%) on the nine shading patterns, and the efficiency was scored on the true values (Table S8). The scan-based controllers still solve every pattern, but their efficiency drops by about 0.6 points (hybrid 99.32% to 98.70%, Scan+P&O 99.36% to 98.75%, tree-based variant 99.37% to 98.67%). The DNN scan-only variant, which has no P&O stage, is unaffected (99.30% to 99.31%), and the sensor-less trackers change little (P&O 80.41% to 80.25%), so the loss comes from P&O dithering on noisy power readings and not from the network. PSO loses its perfect success rate (97.8%).
 
-**Table S6** Nine shading patterns, nominal plant, with sensor noise σ\_I = 0.5%, σ\_V = 0.5% and σ\_G = 2%; noisy values are mean ± standard deviation over noise seeds.
+**Table S8** Nine shading patterns, nominal plant, with sensor noise σ\_I = 0.5%, σ\_V = 0.5% and σ\_G = 2%; noisy values are mean ± standard deviation over noise seeds.
 
 | Controller | Efficiency, clean (%) | Efficiency, noisy (%) | GMPP success, clean (%) | GMPP success, noisy (%) |
 | --- | --- | --- | --- | --- |
@@ -109,9 +144,9 @@ To test sensitivity to measurement errors, Gaussian noise was added to the measu
 | Tree scan+P&O | 99.37 | 98.67 ± 0.13 | 100 | 100 |
 | PSO | 95.68 | 95.79 ± 0.16 | 100 | 97.8 |
 
-Storing the weights in half precision halves the model size (108,036 to 54,660 bytes) and leaves the estimate essentially unchanged (largest deviation from float32 0.049 V, no change in closed-loop efficiency; Table S7). Post-training int8 quantization (emulated in numpy, not run on a microcontroller) gives 27,972 bytes but raises the RMSE from 0.78 to 1.98 V and the wrong-peak rate from 2.1% to 7.7%, with single outliers of up to 22 V; the closed-loop shading efficiency nevertheless stays at 99.32%, because the P&O stage corrects the hand-off. A naive int8 conversion is therefore not recommended without calibration or quantization-aware training, which was not studied here.
+Storing the weights in half precision halves the model size (108,036 to 54,660 bytes) and leaves the estimate essentially unchanged (largest deviation from float32 0.049 V, no change in closed-loop efficiency; Table S9). Post-training int8 quantization (emulated in numpy, not run on a microcontroller) gives 27,972 bytes but raises the RMSE from 0.78 to 1.98 V and the wrong-peak rate from 2.1% to 7.7%, with single outliers of up to 22 V; the closed-loop shading efficiency nevertheless stays at 99.32%, because the P&O stage corrects the hand-off. A naive int8 conversion is therefore not recommended without calibration or quantization-aware training, which was not studied here.
 
-**Table S7** Post-training quantization of the stage-1 DNN (emulated in numpy). The latency is that of the emulation on the benchmark machine and is not a microcontroller measurement.
+**Table S9** Post-training quantization of the stage-1 DNN (emulated in numpy). The latency is that of the emulation on the benchmark machine and is not a microcontroller measurement.
 
 | Precision | Size (bytes) | RMSE (V) | Wrong peak (%) | Max. deviation from float32 (V) | Shading eff., nominal (%) | Shading eff., mismatched (%) | GMPP success (%) | Latency, emulation (µs) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
