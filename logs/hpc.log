@@ -1,0 +1,52 @@
+
+== generation
+   workers  samples  chunks  wallclock_s  wallclock_min_s  repetitions       output_hash  identical_to_serial  speedup  efficiency  plants_per_s  oversubscribed
+0        1    24000      16      10.6794          10.4791            3  2c5ad0c755fd4a59                 True   1.0000      1.0000     2247.3084           False
+1        2    24000      16       6.6054           6.2935            3  2c5ad0c755fd4a59                 True   1.6168      0.8084     3633.3910           False
+2        4    24000      16       4.0836           4.0104            3  2c5ad0c755fd4a59                 True   2.6152      0.6538     5877.1642           False
+3        8    24000      16       5.6066           4.9834            3  2c5ad0c755fd4a59                 True   1.9048      0.2381     4280.6634            True
+
+== sweep
+   workers  jobs  runs  cycles  wallclock_s  speedup  efficiency  scenarios_per_s  cycles_per_s  oversubscribed
+0        1     8    96  345600     899.9444   1.0000      1.0000           0.0089      384.0237           False
+1        2     8    96  345600     463.1068   1.9433      0.9716           0.0173      746.2641           False
+2        4     8    96  345600     235.7192   3.8179      0.9545           0.0339     1466.1511           False
+3        8     8    96  345600     239.3101   3.7606      0.4701           0.0334     1444.1512            True
+
+== throughput
+               controller                                             workload  cycles  seconds_serial  suites_per_s  cycles_per_s  us_per_cycle_incl_plant
+0                     P&O  9-pattern shading suite, nominal + mismatched plant    7200         18.8481        0.0531      382.0004                2617.7982
+1                 IncCond  9-pattern shading suite, nominal + mismatched plant    7200         18.8736        0.0530      381.4850                2621.3353
+2        Scan+P&O (no ML)  9-pattern shading suite, nominal + mismatched plant    7200         19.5839        0.0511      367.6493                2719.9833
+3  DNN scan-only (no P&O)  9-pattern shading suite, nominal + mismatched plant    7200         19.1392        0.0522      376.1916                2658.2201
+4        Hybrid (DNN+P&O)  9-pattern shading suite, nominal + mismatched plant    7200         19.1036        0.0523      376.8922                2653.2788
+5                     PSO  9-pattern shading suite, nominal + mismatched plant    7200         18.3820        0.0544      391.6877                2553.0545
+
+== latency
+                                                               variant  params   macs  model_bytes   median_us       p99_us      max_us  n_calls  cycle_budget_s  fraction_of_cycle_budget_median  fraction_of_cycle_budget_p99
+0                          float32 (numpy, as used in the closed loop)   27009  26688       108036     19.3125      87.1755    1651.963     3000             1.0                           0.0000                        0.0001
+1                                    float16 weights (numpy emulation)   27009  26688        54660     18.5870      58.7611     267.587     3000             1.0                           0.0000                        0.0001
+2                           int8 weights/activations (numpy emulation)   27009  26688        27972     68.8920     190.8058     390.742     3000             1.0                           0.0001                        0.0002
+3  Keras model(x) call (float32, framework overhead, separate process)   27009  26688       108036   2928.6440    5334.1020    9711.340     3000             1.0                           0.0029                        0.0053
+4  Keras model.predict (float32, framework overhead, separate process)   27009  26688       108036  64795.8595  101016.5300  145455.863      300             1.0                           0.0648                        0.1010
+
+== scan
+        plant        controller  cycles  scan_cycles  scan_cycle_fraction_pct  scan_energy_overhead_pct  probes_per_scan  scan_assumed_instantaneous_one_cycle
+0     nominal  Scan+P&O (no ML)    3600           15                   0.4167                    0.1922               14                                  True
+1     nominal  Hybrid (DNN+P&O)    3600           15                   0.4167                    0.1872               14                                  True
+2  mismatched  Scan+P&O (no ML)    3600           15                   0.4167                    0.1777               14                                  True
+3  mismatched  Hybrid (DNN+P&O)    3600           15                   0.4167                    0.1729               14                                  True
+
+== summary
+                                                     quantity       value                   unit                                                    note
+0                                logical CPUs of this machine           4                      -       worker counts above this value are oversubscribed
+1                       data generation speed-up at 4 workers    2.615201                      x  serial 10.7 s for 24000 plants; includes pool start-up
+2                     data generation efficiency at 4 workers      0.6538                      -                                                        
+3   parallel output bit-identical to serial (1/2/4/8 workers)        True                   bool                                   SHA-256 of all arrays
+4                   scenario-seed sweep speed-up at 4 workers    3.817866                      x                       process-parallel 9-pattern suites
+5    Hybrid controller throughput (serial, incl. plant model)  376.892163               cycles/s                  simulation speed, not controller speed
+6                DNN inference latency float32 numpy (median)     19.3125                     us                               1.93e-05 of the 1 s cycle
+7         DNN inference latency int8 numpy emulation (median)      68.892                     us                       emulation; not an MCU measurement
+8                DNN latency via Keras model.predict (median)  64795.8595                     us               6.48e-02 of the cycle; framework overhead
+9    Hybrid scan-cycle fraction of all cycles (nominal plant)    0.416667                      %                                         9-pattern suite
+10                Hybrid scan energy overhead (nominal plant)    0.187208  % of available energy                    scan cycle assumed one control cycle

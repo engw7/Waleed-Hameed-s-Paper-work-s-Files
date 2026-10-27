@@ -1,0 +1,10 @@
+block,note
+PV module,3 substrings x 18 cells
+C_in,470 uF
+L,0.5 mH
+Q+D,50 kHz
+DC bus,48 V
+Sensors,"V,I,G,T"
+MPPT controller,V_cmd
+Voltage loop,PI -> D
+PWM,switching

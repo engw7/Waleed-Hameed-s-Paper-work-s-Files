@@ -1,0 +1,28 @@
+extracted parameters: {'Iph_ref': 9.874491744162258, 'I0_ref': 2.5627395147106255e-08, 'Rs': 0.18203422039485764, 'Rsh_ref': 400.0, 'n': 1.2}
+STC: Voc=32.900 V  Isc=9.870 A  Vmpp=26.604 V  Pmax=244.60 W (datasheet 244.6 W)
+emergent dVoc/dT = -0.330 %/K   dPmax/dT = -0.410 %/K   (typical Si: -0.30..-0.35 / -0.35..-0.45)
+
+Vmpp vs irradiance at FIXED CELL temperature 25 C (intrinsic, logarithmic dependence):
+  G=  100 W/m2  Vmpp=24.328 V  ( -8.6 % vs STC)
+  G=  200 W/m2  Vmpp=25.265 V  ( -5.0 % vs STC)
+  G=  400 W/m2  Vmpp=26.054 V  ( -2.1 % vs STC)
+  G=  600 W/m2  Vmpp=26.394 V  ( -0.8 % vs STC)
+  G=  800 W/m2  Vmpp=26.549 V  ( -0.2 % vs STC)
+  G= 1000 W/m2  Vmpp=26.604 V  ( +0.0 % vs STC)
+  G= 1200 W/m2  Vmpp=26.597 V  ( -0.0 % vs STC)
+
+Vmpp vs irradiance at FIXED AMBIENT temperature 25 C (cell heating via NOCT adds a larger, opposite-sign effect):
+  G=  100 W/m2  Vmpp=23.943 V
+  G=  200 W/m2  Vmpp=24.515 V
+  G=  400 W/m2  Vmpp=24.599 V
+  G=  600 W/m2  Vmpp=24.253 V
+  G=  800 W/m2  Vmpp=23.737 V
+  G= 1000 W/m2  Vmpp=23.135 V
+  G= 1200 W/m2  Vmpp=22.482 V
+
+Vmpp vs cell temperature at G=1000:
+  Tc=  0 C  Vmpp=29.412 V
+  Tc= 15 C  Vmpp=27.725 V
+  Tc= 25 C  Vmpp=26.604 V
+  Tc= 40 C  Vmpp=24.932 V
+  Tc= 60 C  Vmpp=22.722 V

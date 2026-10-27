@@ -1,0 +1,30 @@
+kind,id,text,x,y,shape
+node,in,"Input vector x (16 values)
+[G_in, T, I1 ... I14]
+G_in: mean irradiance (W/m2)
+T: ambient temperature (degC)
+I_k: current at probe V_k (A)",1.9,3.2,box
+node,sc,"Standardise
+(training-set
+mean/std)",4.6,3.2,box
+node,h1,"Dense 128
+ReLU",6.1,3.2,box
+node,h2,"Dense 128
+ReLU",7.6,3.2,box
+node,h3,"Dense 64
+ReLU",9.1,3.2,box
+node,o,"Dense 1
+linear",10.9,3.2,box
+node,y,"V_est
+(V)",12.4,3.2,box
+node,loss,Training: MSE between standardised V_est and V_gmpp (global-MPP voltage of the simulated string); Adam 1e-3; early stopping on 2015-16,10.9,1.0,box
+node,use,Use: V_est = initial command of P&O after a scan; the converter voltage loop applies V_cmd (D = PI(V_cmd - V_pv) + 1 - V_cmd/V_bus),11.2,5.4,box
+node,cnt,"Hidden layers: 3 (128-128-64); parameters: 27,009",3.6,5.4,box
+edge,in->sc,,,,
+edge,sc->h1,,,,
+edge,h1->h2,,,,
+edge,h2->h3,,,,
+edge,h3->o,,,,
+edge,o->y,,,,
+edge,loss->o,,,,
+edge,y->use,,,,

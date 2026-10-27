@@ -1,0 +1,14 @@
+series,workers,speedup,efficiency,variant,median_us,p99_us
+generation,1.0,1.0,1.0,,,
+generation,2.0,1.6167745551294284,0.8083872775647142,,,
+generation,4.0,2.6152014726429544,0.6538003681607386,,,
+generation,8.0,1.9047957096110113,0.2380994637013764,,,
+seed_sweep,1.0,1.0,1.0,,,
+seed_sweep,2.0,1.9432761339468934,0.9716380669734467,,,
+seed_sweep,4.0,3.817866237324376,0.954466559331094,,,
+seed_sweep,8.0,3.760578225020068,0.4700722781275085,,,
+latency,,,,"float32 (numpy, as used in the closed loop)",19.3125,87.17554999999984
+latency,,,,float16 weights (numpy emulation),18.587,58.76110999999962
+latency,,,,int8 weights/activations (numpy emulation),68.892,190.80581999999993
+latency,,,,"Keras model(x) call (float32, framework overhead, separate process)",2928.6440000000002,5334.102029999997
+latency,,,,"Keras model.predict (float32, framework overhead, separate process)",64795.859500000006,101016.53001999998

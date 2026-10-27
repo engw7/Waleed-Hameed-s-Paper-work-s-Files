@@ -1,0 +1,12 @@
+kind,id,text,x,y,shape
+node,A,"SCAN
+(one control cycle,
+energy = mean probe power)",2.2,3.0,box
+node,B,"TRACK
+P&O from V_est,
+step 0.5 V",9.4,3.0,box
+node,i,start,0.5,4.9,round
+edge,A->B,"V_est = DNN(G, T, I₁…I₁₄)
+handoff: P&O restarts at V_est",,,
+edge,B->A,"trigger: P/G < 0.9·max(P/G) since scan (≥ 30 cycles)
+ or 300 cycles since the last scan",,,

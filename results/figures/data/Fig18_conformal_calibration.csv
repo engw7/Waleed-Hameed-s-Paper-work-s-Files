@@ -1,0 +1,201 @@
+set,nominal,coverage
+T1 in-distribution,0.5,0.4990625
+T1 in-distribution,0.51,0.5075625
+T1 in-distribution,0.52,0.516
+T1 in-distribution,0.53,0.52725
+T1 in-distribution,0.54,0.54025
+T1 in-distribution,0.55,0.55025
+T1 in-distribution,0.56,0.5605625
+T1 in-distribution,0.5700000000000001,0.572375
+T1 in-distribution,0.58,0.580375
+T1 in-distribution,0.59,0.5913125
+T1 in-distribution,0.6,0.6023125
+T1 in-distribution,0.61,0.614375
+T1 in-distribution,0.62,0.6275
+T1 in-distribution,0.63,0.638
+T1 in-distribution,0.64,0.64675
+T1 in-distribution,0.65,0.657625
+T1 in-distribution,0.66,0.665625
+T1 in-distribution,0.67,0.6775625
+T1 in-distribution,0.6799999999999999,0.6880625
+T1 in-distribution,0.69,0.6978125
+T1 in-distribution,0.7,0.7075625
+T1 in-distribution,0.71,0.7155
+T1 in-distribution,0.72,0.72575
+T1 in-distribution,0.73,0.7369375
+T1 in-distribution,0.74,0.746625
+T1 in-distribution,0.75,0.7558125
+T1 in-distribution,0.76,0.7658125
+T1 in-distribution,0.77,0.7749375
+T1 in-distribution,0.78,0.78425
+T1 in-distribution,0.79,0.792
+T1 in-distribution,0.8,0.803125
+T1 in-distribution,0.81,0.8133125
+T1 in-distribution,0.8200000000000001,0.8231875
+T1 in-distribution,0.8300000000000001,0.8326875
+T1 in-distribution,0.8400000000000001,0.841375
+T1 in-distribution,0.8500000000000001,0.852375
+T1 in-distribution,0.86,0.86225
+T1 in-distribution,0.87,0.8716875
+T1 in-distribution,0.88,0.8805
+T1 in-distribution,0.89,0.891125
+T1 in-distribution,0.9,0.8991875
+T1 in-distribution,0.91,0.910125
+T1 in-distribution,0.9199999999999999,0.9205
+T1 in-distribution,0.9299999999999999,0.9309375
+T1 in-distribution,0.94,0.9410625
+T1 in-distribution,0.95,0.9491875
+T1 in-distribution,0.96,0.9599375
+T1 in-distribution,0.97,0.9711875
+T1 in-distribution,0.98,0.979875
+T1 in-distribution,0.99,0.9895625
+"T2 nominal, unshaded",0.5,0.733875
+"T2 nominal, unshaded",0.51,0.7425
+"T2 nominal, unshaded",0.52,0.75225
+"T2 nominal, unshaded",0.53,0.763875
+"T2 nominal, unshaded",0.54,0.776875
+"T2 nominal, unshaded",0.55,0.78725
+"T2 nominal, unshaded",0.56,0.798875
+"T2 nominal, unshaded",0.5700000000000001,0.8125
+"T2 nominal, unshaded",0.58,0.8225
+"T2 nominal, unshaded",0.59,0.83525
+"T2 nominal, unshaded",0.6,0.844
+"T2 nominal, unshaded",0.61,0.85675
+"T2 nominal, unshaded",0.62,0.871125
+"T2 nominal, unshaded",0.63,0.880625
+"T2 nominal, unshaded",0.64,0.89125
+"T2 nominal, unshaded",0.65,0.899375
+"T2 nominal, unshaded",0.66,0.905
+"T2 nominal, unshaded",0.67,0.909375
+"T2 nominal, unshaded",0.6799999999999999,0.9175
+"T2 nominal, unshaded",0.69,0.924125
+"T2 nominal, unshaded",0.7,0.931875
+"T2 nominal, unshaded",0.71,0.936
+"T2 nominal, unshaded",0.72,0.944375
+"T2 nominal, unshaded",0.73,0.95
+"T2 nominal, unshaded",0.74,0.955
+"T2 nominal, unshaded",0.75,0.9605
+"T2 nominal, unshaded",0.76,0.964125
+"T2 nominal, unshaded",0.77,0.968125
+"T2 nominal, unshaded",0.78,0.9715
+"T2 nominal, unshaded",0.79,0.97525
+"T2 nominal, unshaded",0.8,0.977625
+"T2 nominal, unshaded",0.81,0.980875
+"T2 nominal, unshaded",0.8200000000000001,0.984
+"T2 nominal, unshaded",0.8300000000000001,0.9875
+"T2 nominal, unshaded",0.8400000000000001,0.991375
+"T2 nominal, unshaded",0.8500000000000001,0.995875
+"T2 nominal, unshaded",0.86,0.998125
+"T2 nominal, unshaded",0.87,0.999125
+"T2 nominal, unshaded",0.88,0.99925
+"T2 nominal, unshaded",0.89,0.99925
+"T2 nominal, unshaded",0.9,0.99925
+"T2 nominal, unshaded",0.91,0.99925
+"T2 nominal, unshaded",0.9199999999999999,0.99925
+"T2 nominal, unshaded",0.9299999999999999,0.99925
+"T2 nominal, unshaded",0.94,0.99975
+"T2 nominal, unshaded",0.95,1.0
+"T2 nominal, unshaded",0.96,1.0
+"T2 nominal, unshaded",0.97,1.0
+"T2 nominal, unshaded",0.98,1.0
+"T2 nominal, unshaded",0.99,1.0
+"T3 nominal, shaded",0.5,0.410625
+"T3 nominal, shaded",0.51,0.417625
+"T3 nominal, shaded",0.52,0.42725
+"T3 nominal, shaded",0.53,0.43525
+"T3 nominal, shaded",0.54,0.443625
+"T3 nominal, shaded",0.55,0.451625
+"T3 nominal, shaded",0.56,0.458125
+"T3 nominal, shaded",0.5700000000000001,0.466375
+"T3 nominal, shaded",0.58,0.4735
+"T3 nominal, shaded",0.59,0.479125
+"T3 nominal, shaded",0.6,0.48725
+"T3 nominal, shaded",0.61,0.497125
+"T3 nominal, shaded",0.62,0.504125
+"T3 nominal, shaded",0.63,0.512875
+"T3 nominal, shaded",0.64,0.5185
+"T3 nominal, shaded",0.65,0.52675
+"T3 nominal, shaded",0.66,0.5335
+"T3 nominal, shaded",0.67,0.54175
+"T3 nominal, shaded",0.6799999999999999,0.55225
+"T3 nominal, shaded",0.69,0.5605
+"T3 nominal, shaded",0.7,0.572125
+"T3 nominal, shaded",0.71,0.58
+"T3 nominal, shaded",0.72,0.588375
+"T3 nominal, shaded",0.73,0.598625
+"T3 nominal, shaded",0.74,0.61025
+"T3 nominal, shaded",0.75,0.619625
+"T3 nominal, shaded",0.76,0.631625
+"T3 nominal, shaded",0.77,0.644125
+"T3 nominal, shaded",0.78,0.65825
+"T3 nominal, shaded",0.79,0.669625
+"T3 nominal, shaded",0.8,0.686125
+"T3 nominal, shaded",0.81,0.702375
+"T3 nominal, shaded",0.8200000000000001,0.7185
+"T3 nominal, shaded",0.8300000000000001,0.731375
+"T3 nominal, shaded",0.8400000000000001,0.748875
+"T3 nominal, shaded",0.8500000000000001,0.765625
+"T3 nominal, shaded",0.86,0.78225
+"T3 nominal, shaded",0.87,0.7945
+"T3 nominal, shaded",0.88,0.808375
+"T3 nominal, shaded",0.89,0.82775
+"T3 nominal, shaded",0.9,0.84525
+"T3 nominal, shaded",0.91,0.865625
+"T3 nominal, shaded",0.9199999999999999,0.880625
+"T3 nominal, shaded",0.9299999999999999,0.89925
+"T3 nominal, shaded",0.94,0.914875
+"T3 nominal, shaded",0.95,0.92875
+"T3 nominal, shaded",0.96,0.944125
+"T3 nominal, shaded",0.97,0.96025
+"T3 nominal, shaded",0.98,0.97075
+"T3 nominal, shaded",0.99,0.984875
+T4 out-of-range,0.5,0.1425
+T4 out-of-range,0.51,0.145125
+T4 out-of-range,0.52,0.14725
+T4 out-of-range,0.53,0.150625
+T4 out-of-range,0.54,0.15375
+T4 out-of-range,0.55,0.15625
+T4 out-of-range,0.56,0.160125
+T4 out-of-range,0.5700000000000001,0.162125
+T4 out-of-range,0.58,0.165
+T4 out-of-range,0.59,0.16725
+T4 out-of-range,0.6,0.171625
+T4 out-of-range,0.61,0.175625
+T4 out-of-range,0.62,0.1805
+T4 out-of-range,0.63,0.184625
+T4 out-of-range,0.64,0.18775
+T4 out-of-range,0.65,0.19225
+T4 out-of-range,0.66,0.19525
+T4 out-of-range,0.67,0.200125
+T4 out-of-range,0.6799999999999999,0.20475
+T4 out-of-range,0.69,0.20825
+T4 out-of-range,0.7,0.212375
+T4 out-of-range,0.71,0.2165
+T4 out-of-range,0.72,0.221875
+T4 out-of-range,0.73,0.226375
+T4 out-of-range,0.74,0.231125
+T4 out-of-range,0.75,0.235625
+T4 out-of-range,0.76,0.242125
+T4 out-of-range,0.77,0.247875
+T4 out-of-range,0.78,0.253625
+T4 out-of-range,0.79,0.26075
+T4 out-of-range,0.8,0.268
+T4 out-of-range,0.81,0.276625
+T4 out-of-range,0.8200000000000001,0.286
+T4 out-of-range,0.8300000000000001,0.295625
+T4 out-of-range,0.8400000000000001,0.30775
+T4 out-of-range,0.8500000000000001,0.319625
+T4 out-of-range,0.86,0.334875
+T4 out-of-range,0.87,0.35025
+T4 out-of-range,0.88,0.365875
+T4 out-of-range,0.89,0.3865
+T4 out-of-range,0.9,0.40725
+T4 out-of-range,0.91,0.436625
+T4 out-of-range,0.9199999999999999,0.481125
+T4 out-of-range,0.9299999999999999,0.546375
+T4 out-of-range,0.94,0.63825
+T4 out-of-range,0.95,0.75825
+T4 out-of-range,0.96,0.86775
+T4 out-of-range,0.97,0.924375
+T4 out-of-range,0.98,0.949125
+T4 out-of-range,0.99,0.97025

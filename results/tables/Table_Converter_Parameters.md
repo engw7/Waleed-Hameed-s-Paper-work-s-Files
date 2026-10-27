@@ -1,0 +1,18 @@
+**Table_Converter_Parameters.** Boost-converter parameters (averaged and switching-level models).
+
+| parameter | value | note |
+|---|---|---|
+| L | 0.001 | chosen so that the ripple at the nominal operating point (V_pv = 26 V, d = 0.46, f_sw = 20 kHz) is dI = V_pv d / (f_sw L) = 0.6 A (about 7 % of 9 A); CCM holds above 0.3 A |
+| R_L | 0.02 | inductor series resistance |
+| C_in | 0.0005 | input ripple dV = dI / (8 f_sw C_in) = 0.08 V; also fixes the input-capacitor time constant of the voltage loop |
+| f_sw | 20000 | typical for a 250 W module-level converter |
+| V_bus | 48 | constant 48 V bus (battery or regulated DC link), the same value used for the display-only duty of the quasi-static results |
+| V_f | 0.5 | diode forward drop |
+| R_on | 0.015 | switch on-resistance |
+| Kp | 0.05 | PI proportional gain [1/V], fixed once on the step response at G = 800 W/m2, T = 25 C (tools in this module), before any scenario was simulated |
+| Ki | 10 | PI integral gain [1/(V s)] |
+| D_MIN | 0.05 |  |
+| D_MAX | 0.95 |  |
+| W_MS | 20 | settling window per measurement [ms] (3x for command jumps larger than 2 V); one MPPT control cycle (1 s) holds at least one window; a 14-point scan needs at most 14 x 60 ms = 0.84 s |
+| DT_AVG | 2e-05 | integration step of the averaged model [s] |
+| STEPS_PER_PERIOD | 100 | switching-level steps per PWM period |

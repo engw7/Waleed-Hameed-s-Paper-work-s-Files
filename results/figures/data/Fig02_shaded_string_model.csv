@@ -1,0 +1,5 @@
+item,value
+substrings,3
+cells per substring,18
+bypass threshold V,-0.7
+group voltage,Lambert-W inverse single-diode

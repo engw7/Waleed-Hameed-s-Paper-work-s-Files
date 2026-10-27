@@ -1,0 +1,5 @@
+tables         ok                    9 s
+main           ok                  730 s
+hpc            ok                 2348 s
+stats          ok                 5018 s
+converter      ok                  568 s

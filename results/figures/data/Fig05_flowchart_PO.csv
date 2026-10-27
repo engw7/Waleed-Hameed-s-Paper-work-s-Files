@@ -1,0 +1,43 @@
+kind,id,text,x,y,shape
+node,s,Start of control cycle k,5.0,13.7,round
+node,m,"Measure V(k), I(k) at the applied command;
+P(k) = V(k)·I(k)",5.0,12.6,box
+node,k0,k = 0 ?,5.0,11.2,diamond
+node,dp,"ΔP = P(k) − P(k−1)
+ΔV = V(k) − V(k−1)",5.0,9.6,box
+node,th,|ΔP| > 0.01 W ?,5.0,8.1,diamond
+node,s1,ΔP > 0 ?,2.2,6.7,diamond
+node,a1,ΔV > 0 ?,0.9,5.2,diamond
+node,a2,ΔV > 0 ?,3.6,5.2,diamond
+node,up,d = +1,0.8,3.8,box
+node,dn,d = −1,2.2,3.8,box
+node,dn2,d = −1,3.6,3.8,box
+node,up2,d = +1,4.9,3.8,box
+node,keep,"d unchanged
+(previous direction)",8.6,5.2,box
+node,upd,"V_cmd(k+1) = clip( V_cmd(k) + d·0.5 V , 8 V , 35 V )",5.0,2.4,box
+node,st,"Store V(k), P(k) as V(k−1), P(k−1);  apply V_cmd(k+1)",5.0,1.2,box
+node,e,End of cycle,5.0,0.35,round
+node,k0b,"No perturbation
+(command unchanged)",9.3,11.2,box
+edge,s->m,,,,
+edge,m->k0,,,,
+edge,k0->dp,No,,,
+edge,k0->k0b,Yes,,,
+edge,k0b->st,,,,
+edge,dp->th,,,,
+edge,th->s1,Yes,,,
+edge,th->keep,No,,,
+edge,s1->a1,Yes,,,
+edge,s1->a2,No,,,
+edge,a1->up,Yes,,,
+edge,a1->dn,No,,,
+edge,a2->dn2,Yes,,,
+edge,a2->up2,No,,,
+edge,up->upd,,,,
+edge,dn->upd,,,,
+edge,dn2->upd,,,,
+edge,up2->upd,,,,
+edge,keep->upd,,,,
+edge,upd->st,,,,
+edge,st->e,,,,

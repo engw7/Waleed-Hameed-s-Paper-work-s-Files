@@ -1,0 +1,51 @@
+kind,id,text,x,y,shape
+node,s,Start of control cycle k,5.0,13.7,round
+node,m,"Measure V(k), I(k) at the applied command",5.0,12.6,box
+node,k0,k = 0 ?,5.0,11.3,diamond
+node,init,"ΔV_cmd = +0.5 V
+(first perturbation)",9.9,11.3,box
+node,d,"ΔV = V(k) − V(k−1)
+ΔI = I(k) − I(k−1)",5.0,9.9,box
+node,v0,|ΔV| > 0.1 V ?,5.0,8.4,diamond
+node,inc,"G = ΔI/ΔV + I(k)/V(k)
+(second term = 0 if V ≤ 0.1 V)",2.0,6.8,box
+node,c1,|G| ≤ 0.001 ?,2.0,5.3,diamond
+node,c2,G > 0.001 ?,2.0,3.9,diamond
+node,z,"ΔV_cmd = 0
+(at MPP)",0.7,2.5,box
+node,p,"ΔV_cmd =
++0.5 V",2.0,2.5,box
+node,n,"ΔV_cmd =
+−0.5 V",3.3,2.5,box
+node,dv0,"|ΔI| > 0.001 A ?
+(ΔV ≈ 0 branch)",7.6,6.8,diamond
+node,i1,ΔI > 0 ?,6.7,5.0,diamond
+node,ip,ΔV_cmd = +0.5 V,5.9,3.7,box
+node,in,ΔV_cmd = −0.5 V,7.6,3.7,box
+node,iz,ΔV_cmd = 0,9.0,5.0,box
+node,upd,"V_cmd(k+1) = clip( V_cmd(k) + ΔV_cmd , 8 V , 35 V );  store V(k), I(k)",5.0,1.5,box
+node,e,End of cycle,5.0,0.4,round
+edge,s->m,,,,
+edge,m->k0,,,,
+edge,k0->init,Yes,,,
+edge,k0->d,No,,,
+edge,init->upd,,,,
+edge,d->v0,,,,
+edge,v0->inc,Yes,,,
+edge,v0->dv0,No,,,
+edge,inc->c1,,,,
+edge,c1->z,Yes,,,
+edge,c1->c2,No,,,
+edge,c2->p,Yes,,,
+edge,c2->n,No,,,
+edge,dv0->i1,Yes,,,
+edge,dv0->iz,No,,,
+edge,i1->ip,Yes,,,
+edge,i1->in,No,,,
+edge,z->upd,,,,
+edge,p->upd,,,,
+edge,n->upd,,,,
+edge,ip->upd,,,,
+edge,in->upd,,,,
+edge,iz->upd,,,,
+edge,upd->e,,,,

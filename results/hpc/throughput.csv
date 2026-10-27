@@ -1,0 +1,7 @@
+controller,workload,cycles,seconds_serial,suites_per_s,cycles_per_s,us_per_cycle_incl_plant
+P&O,"9-pattern shading suite, nominal + mismatched plant",7200,18.848146854000333,0.05305561378241065,382.0004192333567,2617.798174166713
+IncCond,"9-pattern shading suite, nominal + mismatched plant",7200,18.87361417200009,0.052984022608851884,381.4849627837336,2621.335301666679
+Scan+P&O (no ML),"9-pattern shading suite, nominal + mismatched plant",7200,19.58388009399914,0.05106240414055733,367.64930981201275,2719.9833463887694
+DNN scan-only (no P&O),"9-pattern shading suite, nominal + mismatched plant",7200,19.139184958999977,0.05224882888911953,376.19156800166064,2658.220133194441
+Hybrid (DNN+P&O),"9-pattern shading suite, nominal + mismatched plant",7200,19.10360761500033,0.052346133785473634,376.89216325541014,2653.2788354167124
+PSO,"9-pattern shading suite, nominal + mismatched plant",7200,18.38199216599969,0.054401067684581715,391.6876873289883,2553.0544674999574

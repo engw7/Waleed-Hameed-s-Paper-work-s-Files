@@ -1,0 +1,91 @@
+protocol,V0,controller,convergence_cycles
+A,15.0,P&O,16.0
+A,15.0,IncCond,15.0
+A,15.0,"Poly2(G,T)-MPPT",15.0
+A,15.0,ANN-MPPT,15.0
+A,15.0,Scan+P&O (no ML),4.0
+A,15.0,DNN scan-only (no P&O),1.0
+A,15.0,Hybrid (DNN+P&O),1.0
+A,15.0,PSO,22.0
+A,15.0,Tree scan+P&O,1.0
+A,20.0,P&O,6.0
+A,20.0,IncCond,5.0
+A,20.0,"Poly2(G,T)-MPPT",5.0
+A,20.0,ANN-MPPT,5.0
+A,20.0,Scan+P&O (no ML),4.0
+A,20.0,DNN scan-only (no P&O),1.0
+A,20.0,Hybrid (DNN+P&O),1.0
+A,20.0,PSO,22.0
+A,20.0,Tree scan+P&O,1.0
+A,26.0,P&O,6.0
+A,26.0,IncCond,5.0
+A,26.0,"Poly2(G,T)-MPPT",3.0
+A,26.0,ANN-MPPT,3.0
+A,26.0,Scan+P&O (no ML),4.0
+A,26.0,DNN scan-only (no P&O),1.0
+A,26.0,Hybrid (DNN+P&O),1.0
+A,26.0,PSO,22.0
+A,26.0,Tree scan+P&O,1.0
+A,30.0,P&O,
+A,30.0,IncCond,
+A,30.0,"Poly2(G,T)-MPPT",11.0
+A,30.0,ANN-MPPT,11.0
+A,30.0,Scan+P&O (no ML),4.0
+A,30.0,DNN scan-only (no P&O),1.0
+A,30.0,Hybrid (DNN+P&O),1.0
+A,30.0,PSO,22.0
+A,30.0,Tree scan+P&O,1.0
+A,35.0,P&O,
+A,35.0,IncCond,
+A,35.0,"Poly2(G,T)-MPPT",21.0
+A,35.0,ANN-MPPT,21.0
+A,35.0,Scan+P&O (no ML),4.0
+A,35.0,DNN scan-only (no P&O),1.0
+A,35.0,Hybrid (DNN+P&O),1.0
+A,35.0,PSO,22.0
+A,35.0,Tree scan+P&O,1.0
+B,13.398,P&O,19.0
+B,13.398,IncCond,18.0
+B,13.398,"Poly2(G,T)-MPPT",18.0
+B,13.398,ANN-MPPT,18.0
+B,13.398,Scan+P&O (no ML),4.0
+B,13.398,DNN scan-only (no P&O),1.0
+B,13.398,Hybrid (DNN+P&O),1.0
+B,13.398,PSO,22.0
+B,13.398,Tree scan+P&O,1.0
+B,17.864,P&O,10.0
+B,17.864,IncCond,9.0
+B,17.864,"Poly2(G,T)-MPPT",9.0
+B,17.864,ANN-MPPT,9.0
+B,17.864,Scan+P&O (no ML),4.0
+B,17.864,DNN scan-only (no P&O),1.0
+B,17.864,Hybrid (DNN+P&O),1.0
+B,17.864,PSO,22.0
+B,17.864,Tree scan+P&O,1.0
+B,22.33,P&O,0.0
+B,22.33,IncCond,0.0
+B,22.33,"Poly2(G,T)-MPPT",0.0
+B,22.33,ANN-MPPT,0.0
+B,22.33,Scan+P&O (no ML),4.0
+B,22.33,DNN scan-only (no P&O),1.0
+B,22.33,Hybrid (DNN+P&O),1.0
+B,22.33,PSO,26.0
+B,22.33,Tree scan+P&O,1.0
+B,26.796,P&O,7.0
+B,26.796,IncCond,6.0
+B,26.796,"Poly2(G,T)-MPPT",4.0
+B,26.796,ANN-MPPT,4.0
+B,26.796,Scan+P&O (no ML),4.0
+B,26.796,DNN scan-only (no P&O),1.0
+B,26.796,Hybrid (DNN+P&O),1.0
+B,26.796,PSO,22.0
+B,26.796,Tree scan+P&O,1.0
+B,28.88,P&O,11.0
+B,28.88,IncCond,10.0
+B,28.88,"Poly2(G,T)-MPPT",8.0
+B,28.88,ANN-MPPT,8.0
+B,28.88,Scan+P&O (no ML),4.0
+B,28.88,DNN scan-only (no P&O),1.0
+B,28.88,Hybrid (DNN+P&O),1.0
+B,28.88,PSO,22.0
+B,28.88,Tree scan+P&O,1.0

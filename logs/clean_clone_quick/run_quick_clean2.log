@@ -1,0 +1,10 @@
+hpc            ok                  288 s
+ablation       ok                  215 s
+stats          ok                  402 s
+converter      ok                  137 s
+figures        ok                   61 s
+docs           ok                    2 s
+traceability   ok                    0 s
+report         ok                    0 s
+tests          FAILED (rc=1)         7 s
+report_final   ok                    0 s

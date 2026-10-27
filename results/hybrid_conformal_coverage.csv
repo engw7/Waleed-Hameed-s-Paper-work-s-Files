@@ -1,0 +1,13 @@
+test_set,nominal,empirical_coverage,interval_half_width_V,n
+"T1 in-distribution (DR plants, mixed shading)",0.9,0.8991875,0.4098029335744009,16000
+T1 | shaded,0.9,0.8328045685279187,0.4098029335744009,9456
+T1 | unshaded,0.9,0.9951100244498777,0.4098029335744009,6544
+"T2 nominal plant, uniform irradiance",0.9,0.99925,0.4098029335744009,8000
+"T3 nominal plant, partial shading",0.9,0.84525,0.4098029335744009,8000
+"T4 OUT-OF-RANGE plants, mixed shading",0.9,0.40725,0.4098029335744009,8000
+"T1 in-distribution (DR plants, mixed shading)",0.95,0.9491875,0.7280409554998073,16000
+T1 | shaded,0.95,0.9148688663282571,0.7280409554998073,9456
+T1 | unshaded,0.95,0.9987775061124694,0.7280409554998073,6544
+"T2 nominal plant, uniform irradiance",0.95,1.0,0.7280409554998073,8000
+"T3 nominal plant, partial shading",0.95,0.92875,0.7280409554998073,8000
+"T4 OUT-OF-RANGE plants, mixed shading",0.95,0.75825,0.7280409554998073,8000

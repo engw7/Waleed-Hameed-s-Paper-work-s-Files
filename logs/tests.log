@@ -1,0 +1,19 @@
+...............                                                          [100%]
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_consistency.py::test_parameter_count_matches_keras_and_results
+PASSED tests/test_consistency.py::test_numpy_forward_equals_keras
+PASSED tests/test_consistency.py::test_int8_and_fp16_emulation_are_close_to_float32
+PASSED tests/test_consistency.py::test_converter_averaged_matches_switching_in_steady_state
+PASSED tests/test_consistency.py::test_paper_numbers_equal_csv_values
+PASSED tests/test_consistency.py::test_no_forbidden_patterns_in_code
+PASSED tests/test_consistency.py::test_every_figure_has_pdf_png_and_data
+PASSED tests/test_consistency.py::test_figure_map_lists_every_figure
+PASSED tests/test_consistency.py::test_traceability_evidence_paths_exist
+PASSED tests/test_metrics.py::test_tracking_efficiency_energy_weighted
+PASSED tests/test_metrics.py::test_convergence_integer_and_nan
+PASSED tests/test_metrics.py::test_oscillation_square_wave_and_scan_exclusion
+PASSED tests/test_metrics.py::test_gmpp_success_tail_and_scan
+PASSED tests/test_metrics.py::test_scan_overhead_and_wrong_peak
+PASSED tests/test_metrics.py::test_instantaneous_efficiency
+15 passed in 4.77s

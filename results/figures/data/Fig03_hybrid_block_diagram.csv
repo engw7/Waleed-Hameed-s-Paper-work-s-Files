@@ -1,0 +1,27 @@
+kind,id,text,x,y,shape
+node,pv,"PV module
+(3 substrings,
+bypass diodes)",1.4,5.6,box
+node,cv,"Boost converter
++ voltage loop",6.0,5.6,box
+node,vc,V_cmd,13.6,5.6,box
+node,sen,"Sensors:
+V, I, G, T",1.4,3.3,box
+node,scan,"Stage 1: fast I-V scan
+I at 14 probe voltages
+8 ... 35 V",5.2,3.3,box
+node,dnn,"DNN: G_in, T, I1..I14
+-> V_est (global MPP)",9.2,3.3,box
+node,po,"Stage 2: P&O
+(0.5 V steps)
+starts at V_est",13.0,3.3,box
+node,sw,"Switch-back to stage 1: P/G < 0.9 x max(P/G) since the last scan (>= 30 cycles), or every 300 cycles",9.2,1.1,box
+edge,pv->cv,"V_pv, I_pv",,,
+edge,pv->sen,,,,
+edge,sen->scan,,,,
+edge,scan->dnn,I1..I14,,,
+edge,dnn->po,V_est,,,
+edge,po->vc,,,,
+edge,vc->cv,,,,
+edge,po->sw,,,,
+edge,sw->scan,,,,
