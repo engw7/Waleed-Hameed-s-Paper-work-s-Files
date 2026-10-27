@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the associated manuscript and this archive."
+title: "Code and data for: Isolating the Contribution of Deep Neural Networks in Hybrid Scan-Based MPPT Controllers Under Partial Shading"
+type: software
+authors:
+  - family-names: Hameed
+    given-names: Waleed
+    affiliation: "Al-Huda University College, Ramadi, Al Anbar, Iraq"
+  - family-names: Dimililer
+    given-names: Kamil
+    affiliation: "Near East University, Nicosia, North Cyprus"
+repository-code: "https://github.com/engw7/Waleed-Hameed-s-Paper-work-s-Files"
+license: MIT
+keywords:
+  - maximum power point tracking
+  - partial shading
+  - deep neural network
+  - photovoltaic
