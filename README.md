@@ -4,6 +4,8 @@ Code, data and results accompanying the manuscript *Isolating the Contribution o
 
 All numbers, tables and figures of the manuscript are generated from this repository. The study is simulation-only (no hardware-in-the-loop).
 
+Archived release: [10.5281/zenodo.23706406](https://doi.org/10.5281/zenodo.23706406) (v1.0.0).
+
 ## Contents
 
 | Path | Content |
