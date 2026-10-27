@@ -1,0 +1,73 @@
+plant,scenario,controller,noisy,tracking_efficiency_%_mean,tracking_efficiency_%_std,gmpp_success_%_mean,gmpp_success_%_std,wrong_peak_%_mean,wrong_peak_%_std
+mismatched,comprehensive,ANN-MPPT,False,99.75588959496422,,,,,
+mismatched,comprehensive,ANN-MPPT,True,99.75275406625538,0.0010235748958301535,,,,
+mismatched,comprehensive,DNN scan-only (no P&O),False,99.60177725686394,,,,0.0,
+mismatched,comprehensive,DNN scan-only (no P&O),True,99.56586147011399,0.013616376192607967,,,0.0,0.0
+mismatched,comprehensive,Hybrid (DNN+P&O),False,99.41825232070033,,,,0.0,
+mismatched,comprehensive,Hybrid (DNN+P&O),True,99.05206083561792,0.034436217788281244,,,0.0,0.0
+mismatched,comprehensive,IncCond,False,99.59569901844681,,,,,
+mismatched,comprehensive,IncCond,True,99.45085044803247,0.020866829640701277,,,,
+mismatched,comprehensive,P&O,False,99.55880840654616,,,,,
+mismatched,comprehensive,P&O,True,99.41076376312603,0.026449998822954235,,,,
+mismatched,comprehensive,PSO,False,97.91602717636823,,,,,
+mismatched,comprehensive,PSO,True,98.04049645117671,0.16351457242495435,,,,
+mismatched,comprehensive,"Poly2(G,T)-MPPT",False,98.9586705363337,,,,,
+mismatched,comprehensive,"Poly2(G,T)-MPPT",True,98.94674773661436,0.007109021479023265,,,,
+mismatched,comprehensive,Scan+P&O (no ML),False,99.42797538852444,,,,0.0,
+mismatched,comprehensive,Scan+P&O (no ML),True,99.06240877975213,0.06843143645654842,,,0.0,0.0
+mismatched,comprehensive,Tree scan+P&O,False,99.39488012956313,,,,0.0,
+mismatched,comprehensive,Tree scan+P&O,True,99.05100046973816,0.0624403805781661,,,0.0,0.0
+mismatched,partial_shading,ANN-MPPT,False,76.98202226435822,,22.22222222222222,,,
+mismatched,partial_shading,ANN-MPPT,True,76.98229988701078,0.0023114730395183305,22.22222222222222,0.0,,
+mismatched,partial_shading,DNN scan-only (no P&O),False,99.32786266702996,,100.0,,0.0,
+mismatched,partial_shading,DNN scan-only (no P&O),True,99.20570326647454,0.2409440927525278,100.0,0.0,0.0,0.0
+mismatched,partial_shading,Hybrid (DNN+P&O),False,99.37152199576032,,100.0,,0.0,
+mismatched,partial_shading,Hybrid (DNN+P&O),True,98.92516091304267,0.0698791864250669,100.0,0.0,0.0,0.0
+mismatched,partial_shading,IncCond,False,81.15264122282134,,33.33333333333333,,,
+mismatched,partial_shading,IncCond,True,80.92894624362563,0.008173304591598877,33.33333333333333,0.0,,
+mismatched,partial_shading,P&O,False,81.0990218209054,,33.33333333333333,,,
+mismatched,partial_shading,P&O,True,80.91853489057729,0.017414583229752374,33.33333333333333,0.0,,
+mismatched,partial_shading,PSO,False,95.88132321207821,,100.0,,,
+mismatched,partial_shading,PSO,True,95.60973849917639,0.41447085145370827,100.0,0.0,,
+mismatched,partial_shading,"Poly2(G,T)-MPPT",False,77.2019207949319,,22.22222222222222,,,
+mismatched,partial_shading,"Poly2(G,T)-MPPT",True,77.20041008177917,0.0020249054987606413,22.22222222222222,0.0,,
+mismatched,partial_shading,Scan+P&O (no ML),False,99.36315723858486,,100.0,,0.0,
+mismatched,partial_shading,Scan+P&O (no ML),True,98.95206426565713,0.03281960066214596,100.0,0.0,0.0,0.0
+mismatched,partial_shading,Tree scan+P&O,False,99.39086075225386,,100.0,,0.0,
+mismatched,partial_shading,Tree scan+P&O,True,98.85017939084729,0.11969272685017729,95.55555555555556,9.938079899999062,0.0,0.0
+nominal,comprehensive,ANN-MPPT,False,99.99397920553706,,,,,
+nominal,comprehensive,ANN-MPPT,True,99.99069736343384,0.00022211892076128188,,,,
+nominal,comprehensive,DNN scan-only (no P&O),False,99.56321818827453,,,,0.0,
+nominal,comprehensive,DNN scan-only (no P&O),True,99.52719648618232,0.0172938511515551,,,0.0,0.0
+nominal,comprehensive,Hybrid (DNN+P&O),False,99.40219522271474,,,,0.0,
+nominal,comprehensive,Hybrid (DNN+P&O),True,99.02345484046864,0.07871010411260129,,,0.0,0.0
+nominal,comprehensive,IncCond,False,99.5660147600805,,,,,
+nominal,comprehensive,IncCond,True,99.40369548255498,0.019418865817972197,,,,
+nominal,comprehensive,P&O,False,99.53894662766112,,,,,
+nominal,comprehensive,P&O,True,99.40324139419516,0.02191754512391184,,,,
+nominal,comprehensive,PSO,False,97.65929608415965,,,,,
+nominal,comprehensive,PSO,True,97.69978607883218,0.2375740506060535,,,,
+nominal,comprehensive,"Poly2(G,T)-MPPT",False,99.51339141837379,,,,,
+nominal,comprehensive,"Poly2(G,T)-MPPT",True,99.49829916579105,0.005878320003996371,,,,
+nominal,comprehensive,Scan+P&O (no ML),False,99.35289068867023,,,,0.0,
+nominal,comprehensive,Scan+P&O (no ML),True,98.9597689639068,0.08425492723305718,,,0.0,0.0
+nominal,comprehensive,Tree scan+P&O,False,99.37927105800455,,,,0.0,
+nominal,comprehensive,Tree scan+P&O,True,98.98649120209782,0.029174025278161476,,,0.0,0.0
+nominal,partial_shading,ANN-MPPT,False,77.98891107315431,,33.33333333333333,,,
+nominal,partial_shading,ANN-MPPT,True,77.98856993072857,0.0018207396396922946,33.33333333333333,0.0,,
+nominal,partial_shading,DNN scan-only (no P&O),False,99.30496253776356,,100.0,,0.0,
+nominal,partial_shading,DNN scan-only (no P&O),True,99.30665151986,0.18468648388693032,100.0,0.0,0.0,0.0
+nominal,partial_shading,Hybrid (DNN+P&O),False,99.32491508400439,,100.0,,0.0,
+nominal,partial_shading,Hybrid (DNN+P&O),True,98.70312007516281,0.19245485652551353,100.0,0.0,0.0,0.0
+nominal,partial_shading,IncCond,False,80.43751700143446,,33.33333333333333,,,
+nominal,partial_shading,IncCond,True,80.25074665515326,0.011115669485834869,33.33333333333333,0.0,,
+nominal,partial_shading,P&O,False,80.40783492459138,,33.33333333333333,,,
+nominal,partial_shading,P&O,True,80.24713368621866,0.007763467481297856,33.33333333333333,0.0,,
+nominal,partial_shading,PSO,False,95.67779143790632,,100.0,,,
+nominal,partial_shading,PSO,True,95.78771565373154,0.1560705054033981,97.77777777777779,4.969039949999536,,
+nominal,partial_shading,"Poly2(G,T)-MPPT",False,78.1650851767014,,33.33333333333333,,,
+nominal,partial_shading,"Poly2(G,T)-MPPT",True,78.16320850349571,0.0015255473762397608,33.33333333333333,0.0,,
+nominal,partial_shading,Scan+P&O (no ML),False,99.36276198250752,,100.0,,0.0,
+nominal,partial_shading,Scan+P&O (no ML),True,98.74961218332638,0.12105137220110498,100.0,0.0,0.0,0.0
+nominal,partial_shading,Tree scan+P&O,False,99.36583579796904,,100.0,,0.0,
+nominal,partial_shading,Tree scan+P&O,True,98.67156131532656,0.12758164759459042,100.0,0.0,0.0,0.0

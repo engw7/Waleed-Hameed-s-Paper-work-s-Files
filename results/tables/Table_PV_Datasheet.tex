@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\caption{PV module data and extracted single-diode parameters.}
+\label{tab:Table_PV_Datasheet}
+\small
+\begin{tabular}{lll}
+\hline
+Quantity & Value & Origin \\
+\hline
+Module & Generic 60-cell-class module, 54 series cells (single-diode model; not a specific commercial product) & model setting \\
+Cells in series N\_s & 54 & datasheet-type input \\
+Short-circuit current I\_sc,ref (A) & 9.87 & datasheet-type input (STC) \\
+Open-circuit voltage V\_oc,ref (V) & 32.9 & datasheet-type input (STC) \\
+Maximum power P\_max,ref (W) & 244.6 & datasheet-type input (STC) \\
+I\_sc temperature coefficient (A/K) & 0.00592 & datasheet-type input \\
+NOCT (°C) & 45 & datasheet-type input \\
+Ideality factor n & 1.2 & fixed \\
+Shunt resistance R\_sh,ref (ohm) & 400 & fixed \\
+Photo-current I\_ph,ref (A) & 9.87449 & extracted \\
+Saturation current I\_0,ref (A) & 2.5627e-08 & extracted \\
+Series resistance R\_s (ohm) & 0.18203 & extracted: solved so that the model P\_max equals the datasheet P\_max \\
+Model V\_mpp at STC (V) & 26.60436 & model output \\
+Model I\_mpp at STC (A) & 9.19398 & model output \\
+Model P\_max at STC (W) & 244.6 & model output \\
+\hline
+\end{tabular}
+\end{table}

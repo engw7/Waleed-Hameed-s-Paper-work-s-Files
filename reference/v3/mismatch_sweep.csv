@@ -1,0 +1,57 @@
+scenario,severity,algorithm,tracking_efficiency_%
+comprehensive,0.0,P&O,99.53894662766113
+comprehensive,0.0,IncCond,99.56601476008052
+comprehensive,0.0,"Poly2(G,T)-MPPT",99.5133914183738
+comprehensive,0.0,ANN-MPPT,99.99245990079048
+comprehensive,0.0,Scan+P&O (no ML),99.35289068867023
+comprehensive,0.0,DNN scan-only (no P&O),99.56321754295872
+comprehensive,0.0,Hybrid (DNN+P&O),99.40219525575674
+comprehensive,0.5,P&O,99.55341493303341
+comprehensive,0.5,IncCond,99.60118040676458
+comprehensive,0.5,"Poly2(G,T)-MPPT",99.31551870471911
+comprehensive,0.5,ANN-MPPT,99.94260094678978
+comprehensive,0.5,Scan+P&O (no ML),99.40472896779319
+comprehensive,0.5,DNN scan-only (no P&O),99.64855024914206
+comprehensive,0.5,Hybrid (DNN+P&O),99.43933511791904
+comprehensive,1.0,P&O,99.55880840654619
+comprehensive,1.0,IncCond,99.59569901844681
+comprehensive,1.0,"Poly2(G,T)-MPPT",98.9586705363337
+comprehensive,1.0,ANN-MPPT,99.76005886718605
+comprehensive,1.0,Scan+P&O (no ML),99.42797538852447
+comprehensive,1.0,DNN scan-only (no P&O),99.60177697399112
+comprehensive,1.0,Hybrid (DNN+P&O),99.41825234827465
+comprehensive,1.5,P&O,99.56993041163928
+comprehensive,1.5,IncCond,99.60344766303554
+comprehensive,1.5,"Poly2(G,T)-MPPT",98.45633463335673
+comprehensive,1.5,ANN-MPPT,99.43940778821892
+comprehensive,1.5,Scan+P&O (no ML),99.46321026061594
+comprehensive,1.5,DNN scan-only (no P&O),99.60363226341104
+comprehensive,1.5,Hybrid (DNN+P&O),99.44542736772918
+comprehensive,2.0,P&O,99.55779410171021
+comprehensive,2.0,IncCond,99.60861377646849
+comprehensive,2.0,"Poly2(G,T)-MPPT",97.85061378245264
+comprehensive,2.0,ANN-MPPT,99.00227402135818
+comprehensive,2.0,Scan+P&O (no ML),99.51812190438527
+comprehensive,2.0,DNN scan-only (no P&O),99.5107201130619
+comprehensive,2.0,Hybrid (DNN+P&O),99.42503999294071
+partial_shading,0.0,P&O,80.40783492459136
+partial_shading,0.0,IncCond,80.43751700143446
+partial_shading,0.0,"Poly2(G,T)-MPPT",78.16508517670138
+partial_shading,0.0,ANN-MPPT,77.98293531321089
+partial_shading,0.0,Scan+P&O (no ML),99.36276198250751
+partial_shading,0.0,DNN scan-only (no P&O),99.30496283054767
+partial_shading,0.0,Hybrid (DNN+P&O),99.32491516255563
+partial_shading,1.0,P&O,81.09902182090536
+partial_shading,1.0,IncCond,81.15264122282134
+partial_shading,1.0,"Poly2(G,T)-MPPT",77.2019207949319
+partial_shading,1.0,ANN-MPPT,76.97633419335538
+partial_shading,1.0,Scan+P&O (no ML),99.36315723858486
+partial_shading,1.0,DNN scan-only (no P&O),99.32786235954457
+partial_shading,1.0,Hybrid (DNN+P&O),99.37152202380555
+partial_shading,2.0,P&O,81.57763885056282
+partial_shading,2.0,IncCond,81.60925837574605
+partial_shading,2.0,"Poly2(G,T)-MPPT",76.2640246119114
+partial_shading,2.0,ANN-MPPT,76.0220446703117
+partial_shading,2.0,Scan+P&O (no ML),99.45393247618568
+partial_shading,2.0,DNN scan-only (no P&O),99.21830284492019
+partial_shading,2.0,Hybrid (DNN+P&O),99.46609570940736

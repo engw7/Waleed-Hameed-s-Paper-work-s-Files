@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Averaged versus switching-level model driven by the same command sequence: largest deviation of the window-averaged PV voltage and power (percent of the rated power). large\_jump = command differs by more than 2 V from the PV voltage at the start of the window (scan probes, start-up): the averaged model and the switching model are both still settling there.}
+\label{tab:Table_Converter_Verification}
+\small
+\begin{tabular}{llllllllll}
+\hline
+case & large\_jump & calls & max\_dV\_V & max\_dP\_W & max\_dP\_rel\_pct & mean\_dP\_rel\_pct & max\_jump\_V & max\_ripple\_i\_A & max\_ripple\_v\_V \\
+\hline
+irradiance step (P\&O) & no & 30 & 0.049 & 0.25 & 0.102 & 0.015 & 0.596 & 2.997 & 1.822 \\
+shading pattern 1 incl. scan (Hybrid) & no & 29 & 0.024 & 0.061 & 0.025 & 0.007 & 0.633 & 2.837 & 6.969 \\
+shading pattern 1 incl. scan (Hybrid) & yes & 14 & 1.447 & 11.541 & 4.718 & 1.179 & 18 & 17.539 & 26 \\
+\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,12 @@
+quantity,value,unit,note
+logical CPUs of this machine,4,-,worker counts above this value are oversubscribed
+data generation speed-up at 4 workers,2.6152014726429544,x,serial 10.7 s for 24000 plants; includes pool start-up
+data generation efficiency at 4 workers,0.6538003681607386,-,
+parallel output bit-identical to serial (1/2/4/8 workers),True,bool,SHA-256 of all arrays
+scenario-seed sweep speed-up at 4 workers,3.817866237324376,x,process-parallel 9-pattern suites
+"Hybrid controller throughput (serial, incl. plant model)",376.89216325541014,cycles/s,"simulation speed, not controller speed"
+DNN inference latency float32 numpy (median),19.3125,us,1.93e-05 of the 1 s cycle
+DNN inference latency int8 numpy emulation (median),68.892,us,emulation; not an MCU measurement
+DNN latency via Keras model.predict (median),64795.859500000006,us,6.48e-02 of the cycle; framework overhead
+Hybrid scan-cycle fraction of all cycles (nominal plant),0.4166666666666667,%,9-pattern suite
+Hybrid scan energy overhead (nominal plant),0.18720763067385215,% of available energy,scan cycle assumed one control cycle

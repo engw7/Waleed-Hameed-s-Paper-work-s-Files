@@ -1,0 +1,2 @@
+cpu_cores_used,benchmark_samples,serial_seconds,parallel_seconds,measured_speedup,serial_ms_per_plant_sample,parallel_identical_to_serial,train_samples,train_generation_wallclock_s,train_generation_serial_equivalent_s,distinct_plants_in_training_set
+4,12000,6.7556075180000335,9.051553489999947,0.7463478534887467,0.5629672931666695,True,200000,37.328029345999994,112.5934586333339,200000

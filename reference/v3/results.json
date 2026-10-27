@@ -1,0 +1,3381 @@
+{
+ "sensor_asymmetry_note": "SENSOR ASYMMETRY: P&O and IncCond use only PV voltage/current (no irradiance or temperature sensor, as in low-cost MPPT hardware); Poly2(G,T)-MPPT and ANN-MPPT also use G and T sensors; the scan-based controllers (Scan+P&O, DNN scan-only, Hybrid) additionally need a fast I-V scan capability. The fair, equal-information comparison for the ANN is therefore Poly2(G,T)-MPPT, not P&O/IncCond. Sensor-equipped P&O variants (e.g. model-based start-up or step-size scheduling) were NOT implemented.",
+ "data_audit": {
+  "n_rows": 140256,
+  "n_duplicate_timestamps": 0,
+  "time_axis_regular": true,
+  "frac_night": 0.51922199406799,
+  "G_positive_at_night": 0,
+  "T_night_mean": 21.52871992749643,
+  "T_day_mean": 27.506052467671136,
+  "T_min": -2.93,
+  "T_max": 49.97,
+  "G_max": 1090.0,
+  "months_covered": 12,
+  "min_daytime_rows_per_month": 4212,
+  "mean_G_by_month": [
+   126.0,
+   165.0,
+   217.0,
+   256.0,
+   289.0,
+   334.0,
+   330.0,
+   304.0,
+   262.0,
+   189.0,
+   144.0,
+   119.0
+  ],
+  "mean_T_by_month": [
+   10.0,
+   12.8,
+   18.2,
+   23.9,
+   30.1,
+   34.7,
+   37.1,
+   37.0,
+   33.0,
+   26.5,
+   17.1,
+   11.9
+  ],
+  "n_distinct_GT_all": 71307,
+  "n_distinct_GT_daytime": 61231,
+  "n_daytime_rows": 61738,
+  "max_repeats_of_a_daytime_pair": 3,
+  "frac_daytime_rows_in_repeated_pairs": 0.016391849428228966,
+  "P_max_when_G_zero": 0.0,
+  "P_equals_VmIm": true,
+  "corr_G_P": 0.9973252185884729,
+  "annual_energy_kWh_per_module": 430.1360995222804,
+  "vm_linear_R2_T_only": 0.9210546664058821,
+  "vm_linear_R2_G_only": 0.2894635071676187,
+  "vm_linear_R2_G_and_T": 0.9434327412960627
+ },
+ "pvgis_meta": {
+  "Latitude (decimal degrees)": "33.420",
+  "Longitude (decimal degrees)": "43.300",
+  "Elevation (m)": "53",
+  "Radiation database": "PVGIS-SARAH3",
+  "Slope": "0 deg.",
+  "Azimuth": "0 deg."
+ },
+ "vmpp_vs_G": {
+  "100": {
+   "Vmpp @ cell T=25C": 24.328106,
+   "Vmpp @ ambient T=25C": 23.9429,
+   "shift vs STC @ cell 25C (%)": -8.555931
+  },
+  "200": {
+   "Vmpp @ cell T=25C": 25.26471,
+   "Vmpp @ ambient T=25C": 24.515058,
+   "shift vs STC @ cell 25C (%)": -5.035439
+  },
+  "400": {
+   "Vmpp @ cell T=25C": 26.054342,
+   "Vmpp @ ambient T=25C": 24.599117,
+   "shift vs STC @ cell 25C (%)": -2.067382
+  },
+  "600": {
+   "Vmpp @ cell T=25C": 26.393766,
+   "Vmpp @ ambient T=25C": 24.252757,
+   "shift vs STC @ cell 25C (%)": -0.791562
+  },
+  "800": {
+   "Vmpp @ cell T=25C": 26.549216,
+   "Vmpp @ ambient T=25C": 23.737403,
+   "shift vs STC @ cell 25C (%)": -0.207261
+  },
+  "1000": {
+   "Vmpp @ cell T=25C": 26.604356,
+   "Vmpp @ ambient T=25C": 23.134845,
+   "shift vs STC @ cell 25C (%)": 0.0
+  },
+  "1200": {
+   "Vmpp @ cell T=25C": 26.596549,
+   "Vmpp @ ambient T=25C": 22.481731,
+   "shift vs STC @ cell 25C (%)": -0.029344
+  }
+ },
+ "scenario_coverage_by_training_data": {
+  "comprehensive": 0.585,
+  "step_change": 1.0,
+  "cloud_passing": 0.7583333333333333,
+  "ramp_change": 1.0,
+  "partial_shading": 1.0,
+  "real_clear_day": 1.0,
+  "real_variable_day": 1.0
+ },
+ "dnn_spec": {
+  "input_vector": [
+   "G (W/m2)",
+   "T (ambient degC, T2m)",
+   "V (V, measured PV voltage)",
+   "I (A, measured PV current)"
+  ],
+  "output": "V_ref = predicted MPP voltage (V)",
+  "training_target": "V_mpp(G,T): voltage of the true MPP of the single-diode PV model (Cell 2) at the sample's (G,T)",
+  "loss": "mean squared error on standardised V_mpp",
+  "conversion_to_command": "V_next = V + clip(V_ref - V, -slew, +slew); duty = 1 - V_next / V_bus (ideal boost, plotted only)",
+  "oracle_use": "the true MPP is used ONLY to create labels and to score results; never inside a controller",
+  "honest_limit": "labels come from the same physics model that generates the closed-loop plant, so in-distribution scores are optimistic; range-split tests (hot / high-irradiance / later years) and a mismatched-plant test are therefore reported separately"
+ },
+ "dnn_offline": [
+  {
+   "protocol": "S1",
+   "model": "Poly2(G,T) S1",
+   "R2": 0.988352,
+   "RMSE_V": 0.159664,
+   "MAE_V": 0.12273,
+   "max_abs_err_V": 0.798202,
+   "static_P_ratio_%": 99.963801,
+   "n": 15640
+  },
+  {
+   "protocol": "S1",
+   "model": "ANN (G,T,V,I) S1",
+   "R2": 0.999948,
+   "RMSE_V": 0.010718,
+   "MAE_V": 0.007616,
+   "max_abs_err_V": 0.201121,
+   "static_P_ratio_%": 99.999845,
+   "n": 15640
+  },
+  {
+   "protocol": "S1",
+   "model": "ANN (G,T) S1",
+   "R2": 0.99999,
+   "RMSE_V": 0.004584,
+   "MAE_V": 0.002754,
+   "max_abs_err_V": 0.173676,
+   "static_P_ratio_%": 99.99997,
+   "n": 15640
+  },
+  {
+   "protocol": "S1",
+   "model": "fixed V (no sensors)",
+   "R2": 0.0,
+   "RMSE_V": 1.480182,
+   "MAE_V": 1.276845,
+   "max_abs_err_V": 3.7121,
+   "static_P_ratio_%": 97.098284,
+   "n": 15640
+  },
+  {
+   "protocol": "S2",
+   "model": "Poly2(G,T) S2",
+   "R2": 0.8613,
+   "RMSE_V": 0.192723,
+   "MAE_V": 0.162957,
+   "max_abs_err_V": 0.753278,
+   "static_P_ratio_%": 99.950095,
+   "n": 28326
+  },
+  {
+   "protocol": "S2",
+   "model": "ANN (G,T,V,I) S2",
+   "R2": 0.820399,
+   "RMSE_V": 0.219306,
+   "MAE_V": 0.153242,
+   "max_abs_err_V": 0.982365,
+   "static_P_ratio_%": 99.939043,
+   "n": 28326
+  },
+  {
+   "protocol": "S2",
+   "model": "fixed V (no sensors)",
+   "R2": 0.0,
+   "RMSE_V": 3.005754,
+   "MAE_V": 2.960873,
+   "max_abs_err_V": 4.779573,
+   "static_P_ratio_%": 81.109931,
+   "n": 28326
+  },
+  {
+   "protocol": "S3",
+   "model": "Poly2(G,T) S3",
+   "R2": -9.372095,
+   "RMSE_V": 2.287615,
+   "MAE_V": 2.232067,
+   "max_abs_err_V": 3.923067,
+   "static_P_ratio_%": 95.390421,
+   "n": 20230
+  },
+  {
+   "protocol": "S3",
+   "model": "ANN (G,T,V,I) S3",
+   "R2": 0.939506,
+   "RMSE_V": 0.174705,
+   "MAE_V": 0.137629,
+   "max_abs_err_V": 0.486186,
+   "static_P_ratio_%": 99.961072,
+   "n": 20230
+  },
+  {
+   "protocol": "S3",
+   "model": "fixed V (no sensors)",
+   "R2": 0.0,
+   "RMSE_V": 2.53669,
+   "MAE_V": 2.435416,
+   "max_abs_err_V": 3.816259,
+   "static_P_ratio_%": 88.315333,
+   "n": 20230
+  }
+ ],
+ "dnn_paired_test": {
+  "n_test_days": 731,
+  "mean_abs_err_simple_V": 0.002762927640609853,
+  "mean_abs_err_complex_V": 0.007605297945728832,
+  "p_value_paired_t": 0.0,
+  "p_value_wilcoxon": 2.7782379852881675e-121,
+  "lower_error_model": "simple",
+  "significant_at_0.05": true
+ },
+ "conformal": [
+  {
+   "setting": "S1 test (2019-20), calibrated on 2017-18",
+   "nominal": 0.9,
+   "empirical_coverage": 0.900448,
+   "interval_half_width_V": 0.016297,
+   "n": 15640
+  },
+  {
+   "setting": "  ... of which T>=38 C (hot hours)",
+   "nominal": 0.9,
+   "empirical_coverage": 0.913687,
+   "interval_half_width_V": 0.016297,
+   "n": 3916
+  },
+  {
+   "setting": "  ... of which G<200 (low light)",
+   "nominal": 0.9,
+   "empirical_coverage": 0.749313,
+   "interval_half_width_V": 0.016297,
+   "n": 2912
+  },
+  {
+   "setting": "S2 OUT-OF-RANGE test, calibrated in-range",
+   "nominal": 0.9,
+   "empirical_coverage": 0.054861,
+   "interval_half_width_V": 0.01166,
+   "n": 28326
+  },
+  {
+   "setting": "S3 OUT-OF-RANGE test, calibrated in-range",
+   "nominal": 0.9,
+   "empirical_coverage": 0.080079,
+   "interval_half_width_V": 0.013609,
+   "n": 20230
+  },
+  {
+   "setting": "S1 test (2019-20), calibrated on 2017-18",
+   "nominal": 0.95,
+   "empirical_coverage": 0.94821,
+   "interval_half_width_V": 0.020654,
+   "n": 15640
+  },
+  {
+   "setting": "  ... of which T>=38 C (hot hours)",
+   "nominal": 0.95,
+   "empirical_coverage": 0.953269,
+   "interval_half_width_V": 0.020654,
+   "n": 3916
+  },
+  {
+   "setting": "  ... of which G<200 (low light)",
+   "nominal": 0.95,
+   "empirical_coverage": 0.845467,
+   "interval_half_width_V": 0.020654,
+   "n": 2912
+  },
+  {
+   "setting": "S2 OUT-OF-RANGE test, calibrated in-range",
+   "nominal": 0.95,
+   "empirical_coverage": 0.07103,
+   "interval_half_width_V": 0.014689,
+   "n": 28326
+  },
+  {
+   "setting": "S3 OUT-OF-RANGE test, calibrated in-range",
+   "nominal": 0.95,
+   "empirical_coverage": 0.097034,
+   "interval_half_width_V": 0.016938,
+   "n": 20230
+  }
+ ],
+ "metric_definitions": {
+  "tracking_efficiency_%": "eta_track = 100 * sum_k P(k) / sum_k P_mpp(k)  (energy-weighted; P = delivered power at the applied voltage, P_mpp = true maximum power of THE ACTUAL PLANT at the same conditions)",
+  "mean_inst_efficiency_%": "mean_k 100 * P(k)/P_mpp(k)",
+  "convergence_steps": "after an event e (run start, irradiance step, new shading pattern): first control cycle s >= e such that P/P_mpp >= 0.98 for 10 consecutive cycles; convergence = s - e cycles (1 cycle = 1 s). Mean over events that converge before the next event; 'n_not_converged' counts the others",
+  "osc_amp_V": "mean peak-to-peak operating-voltage excursion in non-overlapping 10-cycle windows that are quasi-steady (true V_mpp moves <= 0.25 V), contain no scan cycle, and start >= 50 cycles after the last event",
+  "scan_overhead_%": "scan controllers only: 100 * sum(P_mpp - P) over scan cycles / sum(P_mpp) (energy given up during the I-V scans; included in tracking efficiency)",
+  "osc_amp_P_%": "same windows: peak-to-peak of P/P_mpp, in %",
+  "shading_success_%": "partial-shading only: % of the 9 episodes in which mean(P) over the last 25% of the episode >= 95% of the global-MPP power",
+  "compute_us_per_cycle": "mean wall-clock time of the controller decision only (P&O/IncCond rules; or polynomial / scaler + DNN forward call); plant model and logging excluded"
+ },
+ "headline": {
+  "P&O": {
+   "eff_std4_nominal_%": 99.732706,
+   "eff_real_days_nominal_%": 99.795357,
+   "eff_std4_mismatched_%": 99.753492,
+   "eff_real_days_mismatched_%": 99.822361,
+   "event_convergence_steps": 1.75,
+   "osc_amp_V": 1.161972,
+   "osc_amp_P_%": 0.821949,
+   "compute_us_per_cycle": 4.677054,
+   "scan_overhead_%_std4": 0.0,
+   "cold_start_B_conv_steps": 9.4,
+   "cold_start_B_not_converged": "0/5",
+   "cold_start_A_not_converged": "2/5",
+   "shading_eff_nominal_%": 80.407835,
+   "shading_success_nominal_%": 33.333333,
+   "shading_eff_mismatched_%": 81.099022,
+   "shading_success_mismatched_%": 33.333333
+  },
+  "IncCond": {
+   "eff_std4_nominal_%": 99.765047,
+   "eff_real_days_nominal_%": 99.808778,
+   "eff_std4_mismatched_%": 99.766749,
+   "eff_real_days_mismatched_%": 99.819785,
+   "event_convergence_steps": 2.5,
+   "osc_amp_V": 1.035035,
+   "osc_amp_P_%": 0.727013,
+   "compute_us_per_cycle": 4.344279,
+   "scan_overhead_%_std4": 0.0,
+   "cold_start_B_conv_steps": 8.6,
+   "cold_start_B_not_converged": "0/5",
+   "cold_start_A_not_converged": "2/5",
+   "shading_eff_nominal_%": 80.437517,
+   "shading_success_nominal_%": 33.333333,
+   "shading_eff_mismatched_%": 81.152641,
+   "shading_success_mismatched_%": 33.333333
+  },
+  "Poly2(G,T)-MPPT": {
+   "eff_std4_nominal_%": 99.808437,
+   "eff_real_days_nominal_%": 99.959369,
+   "eff_std4_mismatched_%": 99.338317,
+   "eff_real_days_mismatched_%": 99.253536,
+   "event_convergence_steps": 0.875,
+   "osc_amp_V": 0.039041,
+   "osc_amp_P_%": 0.02758,
+   "compute_us_per_cycle": 441.876299,
+   "scan_overhead_%_std4": 0.0,
+   "cold_start_B_conv_steps": 7.8,
+   "cold_start_B_not_converged": "0/5",
+   "cold_start_A_not_converged": "0/5",
+   "shading_eff_nominal_%": 78.165085,
+   "shading_success_nominal_%": 33.333333,
+   "shading_eff_mismatched_%": 77.201921,
+   "shading_success_mismatched_%": 33.333333
+  },
+  "ANN-MPPT": {
+   "eff_std4_nominal_%": 99.995958,
+   "eff_real_days_nominal_%": 99.999088,
+   "eff_std4_mismatched_%": 99.637026,
+   "eff_real_days_mismatched_%": 99.426879,
+   "event_convergence_steps": 0.875,
+   "osc_amp_V": 0.027684,
+   "osc_amp_P_%": 0.001506,
+   "compute_us_per_cycle": 3200.026238,
+   "scan_overhead_%_std4": 0.0,
+   "cold_start_B_conv_steps": 7.8,
+   "cold_start_B_not_converged": "0/5",
+   "cold_start_A_not_converged": "0/5",
+   "shading_eff_nominal_%": 77.982935,
+   "shading_success_nominal_%": 33.333333,
+   "shading_eff_mismatched_%": 76.976334,
+   "shading_success_mismatched_%": 33.333333
+  },
+  "Scan+P&O (no ML)": {
+   "eff_std4_nominal_%": 99.5785,
+   "eff_real_days_nominal_%": 99.643641,
+   "eff_std4_mismatched_%": 99.614965,
+   "eff_real_days_mismatched_%": 99.683078,
+   "event_convergence_steps": 2.875,
+   "osc_amp_V": 1.170802,
+   "osc_amp_P_%": 0.823958,
+   "compute_us_per_cycle": 4.356848,
+   "scan_overhead_%_std4": 0.151368,
+   "cold_start_B_conv_steps": 4.0,
+   "cold_start_B_not_converged": "0/5",
+   "cold_start_A_not_converged": "0/5",
+   "shading_eff_nominal_%": 99.362762,
+   "shading_success_nominal_%": 100.0,
+   "shading_eff_mismatched_%": 99.363157,
+   "shading_success_mismatched_%": 100.0
+  },
+  "DNN scan-only (no P&O)": {
+   "eff_std4_nominal_%": 99.576007,
+   "eff_real_days_nominal_%": 99.728766,
+   "eff_std4_mismatched_%": 99.567427,
+   "eff_real_days_mismatched_%": 99.709463,
+   "event_convergence_steps": 1.75,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.035817,
+   "compute_us_per_cycle": 14.846291,
+   "scan_overhead_%_std4": 0.152118,
+   "cold_start_B_conv_steps": 1.0,
+   "cold_start_B_not_converged": "0/5",
+   "cold_start_A_not_converged": "0/5",
+   "shading_eff_nominal_%": 99.304963,
+   "shading_success_nominal_%": 100.0,
+   "shading_eff_mismatched_%": 99.327862,
+   "shading_success_mismatched_%": 100.0
+  },
+  "Hybrid (DNN+P&O)": {
+   "eff_std4_nominal_%": 99.572185,
+   "eff_real_days_nominal_%": 99.645394,
+   "eff_std4_mismatched_%": 99.609113,
+   "eff_real_days_mismatched_%": 99.678011,
+   "event_convergence_steps": 1.75,
+   "osc_amp_V": 1.232168,
+   "osc_amp_P_%": 0.842326,
+   "compute_us_per_cycle": 17.645839,
+   "scan_overhead_%_std4": 0.151424,
+   "cold_start_B_conv_steps": 1.0,
+   "cold_start_B_not_converged": "0/5",
+   "cold_start_A_not_converged": "0/5",
+   "shading_eff_nominal_%": 99.324915,
+   "shading_success_nominal_%": 100.0,
+   "shading_eff_mismatched_%": 99.371522,
+   "shading_success_mismatched_%": 100.0
+  }
+ },
+ "by_scenario": [
+  {
+   "plant": "nominal",
+   "scenario": "comprehensive",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.538947,
+   "mean_inst_efficiency_%": 99.394869,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.483099,
+   "osc_amp_P_%": 1.715116,
+   "compute_us_per_cycle": 3.807709,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "comprehensive",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.566015,
+   "mean_inst_efficiency_%": 99.410742,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.359155,
+   "osc_amp_P_%": 1.656532,
+   "compute_us_per_cycle": 3.553231,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "comprehensive",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.513391,
+   "mean_inst_efficiency_%": 99.660318,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.059771,
+   "osc_amp_P_%": 0.081644,
+   "compute_us_per_cycle": 438.986838,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "comprehensive",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.99246,
+   "mean_inst_efficiency_%": 99.994656,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.041827,
+   "osc_amp_P_%": 0.005631,
+   "compute_us_per_cycle": 3047.044659,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "comprehensive",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.352891,
+   "mean_inst_efficiency_%": 99.177704,
+   "convergence_steps": 4.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.488338,
+   "osc_amp_P_%": 1.742831,
+   "compute_us_per_cycle": 4.973286,
+   "n_scans": 13,
+   "scan_overhead_%": 0.156248,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "comprehensive",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.563218,
+   "mean_inst_efficiency_%": 99.604566,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.046894,
+   "compute_us_per_cycle": 11.678531,
+   "n_scans": 12,
+   "scan_overhead_%": 0.147109,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "comprehensive",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.402195,
+   "mean_inst_efficiency_%": 99.252185,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.463557,
+   "osc_amp_P_%": 1.64821,
+   "compute_us_per_cycle": 18.105793,
+   "n_scans": 13,
+   "scan_overhead_%": 0.156471,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "step_change",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.807572,
+   "mean_inst_efficiency_%": 99.812408,
+   "convergence_steps": 3.0,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.0,
+   "osc_amp_P_%": 0.457902,
+   "compute_us_per_cycle": 4.983826,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "step_change",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.887764,
+   "mean_inst_efficiency_%": 99.873714,
+   "convergence_steps": 3.0,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.75,
+   "osc_amp_P_%": 0.208542,
+   "compute_us_per_cycle": 4.917734,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "step_change",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.993272,
+   "mean_inst_efficiency_%": 99.992271,
+   "convergence_steps": 0.5,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 457.346581,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "step_change",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.998542,
+   "mean_inst_efficiency_%": 99.998183,
+   "convergence_steps": 0.5,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 1e-06,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 3137.247255,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "step_change",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.673896,
+   "mean_inst_efficiency_%": 99.678037,
+   "convergence_steps": 5.5,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.008824,
+   "osc_amp_P_%": 0.410698,
+   "compute_us_per_cycle": 4.351736,
+   "n_scans": 12,
+   "scan_overhead_%": 0.149777,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "step_change",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.799766,
+   "mean_inst_efficiency_%": 99.811992,
+   "convergence_steps": 4.0,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 16.794488,
+   "n_scans": 12,
+   "scan_overhead_%": 0.149777,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "step_change",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.609378,
+   "mean_inst_efficiency_%": 99.629251,
+   "convergence_steps": 4.0,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.25,
+   "osc_amp_P_%": 0.51945,
+   "compute_us_per_cycle": 16.004711,
+   "n_scans": 12,
+   "scan_overhead_%": 0.149777,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "cloud_passing",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.770805,
+   "mean_inst_efficiency_%": 99.762508,
+   "convergence_steps": 4.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.115493,
+   "osc_amp_P_%": 0.635406,
+   "compute_us_per_cycle": 3.886554,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "cloud_passing",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.7781,
+   "mean_inst_efficiency_%": 99.767739,
+   "convergence_steps": 5.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.053521,
+   "osc_amp_P_%": 0.600895,
+   "compute_us_per_cycle": 4.609585,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "cloud_passing",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.737299,
+   "mean_inst_efficiency_%": 99.809396,
+   "convergence_steps": 3.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.089494,
+   "osc_amp_P_%": 0.028488,
+   "compute_us_per_cycle": 408.429553,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "cloud_passing",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.99308,
+   "mean_inst_efficiency_%": 99.993692,
+   "convergence_steps": 3.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.061649,
+   "osc_amp_P_%": 0.000381,
+   "compute_us_per_cycle": 3251.853492,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "cloud_passing",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.622812,
+   "mean_inst_efficiency_%": 99.615156,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.130814,
+   "osc_amp_P_%": 0.653322,
+   "compute_us_per_cycle": 3.536777,
+   "n_scans": 12,
+   "scan_overhead_%": 0.152399,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "cloud_passing",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.172297,
+   "mean_inst_efficiency_%": 99.25355,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.091977,
+   "compute_us_per_cycle": 14.080415,
+   "n_scans": 13,
+   "scan_overhead_%": 0.16454,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "cloud_passing",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.62616,
+   "mean_inst_efficiency_%": 99.619625,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.133721,
+   "osc_amp_P_%": 0.65338,
+   "compute_us_per_cycle": 20.723276,
+   "n_scans": 12,
+   "scan_overhead_%": 0.152399,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "ramp_change",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.813501,
+   "mean_inst_efficiency_%": 99.812181,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.049296,
+   "osc_amp_P_%": 0.479372,
+   "compute_us_per_cycle": 6.030126,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "ramp_change",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.82831,
+   "mean_inst_efficiency_%": 99.826437,
+   "convergence_steps": 2.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.977465,
+   "osc_amp_P_%": 0.442084,
+   "compute_us_per_cycle": 4.296567,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "ramp_change",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.989787,
+   "mean_inst_efficiency_%": 99.988992,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.006899,
+   "osc_amp_P_%": 0.000188,
+   "compute_us_per_cycle": 462.742226,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "ramp_change",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.999749,
+   "mean_inst_efficiency_%": 99.999626,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.007259,
+   "osc_amp_P_%": 1e-05,
+   "compute_us_per_cycle": 3363.959546,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "ramp_change",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.664401,
+   "mean_inst_efficiency_%": 99.659641,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.055233,
+   "osc_amp_P_%": 0.488982,
+   "compute_us_per_cycle": 4.565594,
+   "n_scans": 12,
+   "scan_overhead_%": 0.147047,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "ramp_change",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.768746,
+   "mean_inst_efficiency_%": 99.773739,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.004397,
+   "compute_us_per_cycle": 16.831732,
+   "n_scans": 12,
+   "scan_overhead_%": 0.147047,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "ramp_change",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.651006,
+   "mean_inst_efficiency_%": 99.646662,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.081395,
+   "osc_amp_P_%": 0.548264,
+   "compute_us_per_cycle": 15.749578,
+   "n_scans": 12,
+   "scan_overhead_%": 0.147047,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "partial_shading",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 80.407835,
+   "mean_inst_efficiency_%": 78.355781,
+   "convergence_steps": 5.666667,
+   "n_events": 9,
+   "n_not_converged": 6,
+   "osc_amp_V": 1.0,
+   "osc_amp_P_%": 0.678746,
+   "compute_us_per_cycle": 14.211841,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": 33.333333
+  },
+  {
+   "plant": "nominal",
+   "scenario": "partial_shading",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 80.437517,
+   "mean_inst_efficiency_%": 78.382027,
+   "convergence_steps": 4.666667,
+   "n_events": 9,
+   "n_not_converged": 6,
+   "osc_amp_V": 0.944444,
+   "osc_amp_P_%": 0.623333,
+   "compute_us_per_cycle": 12.738119,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": 33.333333
+  },
+  {
+   "plant": "nominal",
+   "scenario": "partial_shading",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 78.165085,
+   "mean_inst_efficiency_%": 75.78622,
+   "convergence_steps": 1.0,
+   "n_events": 9,
+   "n_not_converged": 6,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 544.395299,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": 33.333333
+  },
+  {
+   "plant": "nominal",
+   "scenario": "partial_shading",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 77.982935,
+   "mean_inst_efficiency_%": 75.584016,
+   "convergence_steps": 1.0,
+   "n_events": 9,
+   "n_not_converged": 6,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 3543.004591,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": 33.333333
+  },
+  {
+   "plant": "nominal",
+   "scenario": "partial_shading",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.362762,
+   "mean_inst_efficiency_%": 99.333982,
+   "convergence_steps": 3.0,
+   "n_events": 9,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.0,
+   "osc_amp_P_%": 1.016849,
+   "compute_us_per_cycle": 13.813984,
+   "n_scans": 15,
+   "scan_overhead_%": 0.192186,
+   "shading_success_%": 100.0
+  },
+  {
+   "plant": "nominal",
+   "scenario": "partial_shading",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.304963,
+   "mean_inst_efficiency_%": 99.333511,
+   "convergence_steps": 36.0,
+   "n_events": 9,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 21.436285,
+   "n_scans": 15,
+   "scan_overhead_%": 0.192186,
+   "shading_success_%": 100.0
+  },
+  {
+   "plant": "nominal",
+   "scenario": "partial_shading",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.324915,
+   "mean_inst_efficiency_%": 99.309616,
+   "convergence_steps": 3.222222,
+   "n_events": 9,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.055556,
+   "osc_amp_P_%": 0.993304,
+   "compute_us_per_cycle": 34.868608,
+   "n_scans": 15,
+   "scan_overhead_%": 0.187208,
+   "shading_success_%": 100.0
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_clear_day",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.818629,
+   "mean_inst_efficiency_%": 99.802974,
+   "convergence_steps": 12.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.042254,
+   "osc_amp_P_%": 0.472437,
+   "compute_us_per_cycle": 4.141419,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_clear_day",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.833921,
+   "mean_inst_efficiency_%": 99.815739,
+   "convergence_steps": 5.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.877465,
+   "osc_amp_P_%": 0.387078,
+   "compute_us_per_cycle": 3.358674,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_clear_day",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.949318,
+   "mean_inst_efficiency_%": 99.95212,
+   "convergence_steps": 3.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.013034,
+   "osc_amp_P_%": 0.001648,
+   "compute_us_per_cycle": 390.848803,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_clear_day",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.998838,
+   "mean_inst_efficiency_%": 99.994862,
+   "convergence_steps": 3.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.011753,
+   "osc_amp_P_%": 3e-05,
+   "compute_us_per_cycle": 3102.012759,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_clear_day",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.659962,
+   "mean_inst_efficiency_%": 99.65218,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.020349,
+   "osc_amp_P_%": 0.480606,
+   "compute_us_per_cycle": 4.424529,
+   "n_scans": 12,
+   "scan_overhead_%": 0.158529,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_clear_day",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.693852,
+   "mean_inst_efficiency_%": 99.708702,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.010004,
+   "compute_us_per_cycle": 11.430365,
+   "n_scans": 12,
+   "scan_overhead_%": 0.158529,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_clear_day",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.660058,
+   "mean_inst_efficiency_%": 99.65144,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.052326,
+   "osc_amp_P_%": 0.463576,
+   "compute_us_per_cycle": 15.652197,
+   "n_scans": 12,
+   "scan_overhead_%": 0.158529,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_variable_day",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.772085,
+   "mean_inst_efficiency_%": 99.751028,
+   "convergence_steps": 8.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.160563,
+   "osc_amp_P_%": 0.659006,
+   "compute_us_per_cycle": 7.119478,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_variable_day",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.783635,
+   "mean_inst_efficiency_%": 99.760242,
+   "convergence_steps": 4.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.959155,
+   "osc_amp_P_%": 0.551776,
+   "compute_us_per_cycle": 4.708484,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_variable_day",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.969419,
+   "mean_inst_efficiency_%": 99.961907,
+   "convergence_steps": 2.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.009618,
+   "osc_amp_P_%": 0.001876,
+   "compute_us_per_cycle": 403.243963,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_variable_day",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.999339,
+   "mean_inst_efficiency_%": 99.997594,
+   "convergence_steps": 2.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.013871,
+   "osc_amp_P_%": 7.2e-05,
+   "compute_us_per_cycle": 3108.410849,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_variable_day",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.62732,
+   "mean_inst_efficiency_%": 99.605379,
+   "convergence_steps": 21.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.101744,
+   "osc_amp_P_%": 0.624408,
+   "compute_us_per_cycle": 5.020392,
+   "n_scans": 12,
+   "scan_overhead_%": 0.151287,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_variable_day",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.763681,
+   "mean_inst_efficiency_%": 99.746774,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.012012,
+   "compute_us_per_cycle": 14.484281,
+   "n_scans": 12,
+   "scan_overhead_%": 0.151287,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_variable_day",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.630729,
+   "mean_inst_efficiency_%": 99.61153,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.097384,
+   "osc_amp_P_%": 0.615121,
+   "compute_us_per_cycle": 17.541988,
+   "n_scans": 12,
+   "scan_overhead_%": 0.151287,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "comprehensive",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.558808,
+   "mean_inst_efficiency_%": 99.411771,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.460563,
+   "osc_amp_P_%": 1.593031,
+   "compute_us_per_cycle": 4.328562,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "comprehensive",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.595699,
+   "mean_inst_efficiency_%": 99.436596,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.297183,
+   "osc_amp_P_%": 1.57,
+   "compute_us_per_cycle": 4.278162,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "comprehensive",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 98.958671,
+   "mean_inst_efficiency_%": 99.034654,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.059771,
+   "osc_amp_P_%": 0.147547,
+   "compute_us_per_cycle": 436.621395,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "comprehensive",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.760059,
+   "mean_inst_efficiency_%": 99.632492,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.042566,
+   "osc_amp_P_%": 0.070314,
+   "compute_us_per_cycle": 2968.914526,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "comprehensive",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.427975,
+   "mean_inst_efficiency_%": 99.270982,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.466374,
+   "osc_amp_P_%": 1.471425,
+   "compute_us_per_cycle": 6.489757,
+   "n_scans": 14,
+   "scan_overhead_%": 0.153004,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "comprehensive",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.601777,
+   "mean_inst_efficiency_%": 99.617007,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.057218,
+   "compute_us_per_cycle": 15.199147,
+   "n_scans": 12,
+   "scan_overhead_%": 0.135328,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "comprehensive",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.418252,
+   "mean_inst_efficiency_%": 99.271516,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.469388,
+   "osc_amp_P_%": 1.576097,
+   "compute_us_per_cycle": 21.688576,
+   "n_scans": 13,
+   "scan_overhead_%": 0.149412,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "step_change",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.83006,
+   "mean_inst_efficiency_%": 99.83448,
+   "convergence_steps": 0.0,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.0,
+   "osc_amp_P_%": 0.444425,
+   "compute_us_per_cycle": 4.894713,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "step_change",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.83075,
+   "mean_inst_efficiency_%": 99.835057,
+   "convergence_steps": 0.0,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.0,
+   "osc_amp_P_%": 0.444425,
+   "compute_us_per_cycle": 5.511209,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "step_change",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.540011,
+   "mean_inst_efficiency_%": 99.452651,
+   "convergence_steps": 0.0,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 384.812865,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "step_change",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.542978,
+   "mean_inst_efficiency_%": 99.482681,
+   "convergence_steps": 0.0,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 3239.987682,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "step_change",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.686542,
+   "mean_inst_efficiency_%": 99.682184,
+   "convergence_steps": 4.0,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.004412,
+   "osc_amp_P_%": 0.488727,
+   "compute_us_per_cycle": 4.444735,
+   "n_scans": 12,
+   "scan_overhead_%": 0.139334,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "step_change",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.79048,
+   "mean_inst_efficiency_%": 99.799103,
+   "convergence_steps": 4.0,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 11.459767,
+   "n_scans": 12,
+   "scan_overhead_%": 0.139334,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "step_change",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.678595,
+   "mean_inst_efficiency_%": 99.677345,
+   "convergence_steps": 2.0,
+   "n_events": 2,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.001471,
+   "osc_amp_P_%": 0.494354,
+   "compute_us_per_cycle": 20.495944,
+   "n_scans": 12,
+   "scan_overhead_%": 0.139334,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "cloud_passing",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.789073,
+   "mean_inst_efficiency_%": 99.777396,
+   "convergence_steps": 2.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.14507,
+   "osc_amp_P_%": 0.613983,
+   "compute_us_per_cycle": 5.144903,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "cloud_passing",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.789933,
+   "mean_inst_efficiency_%": 99.776787,
+   "convergence_steps": 3.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.097183,
+   "osc_amp_P_%": 0.603105,
+   "compute_us_per_cycle": 5.823897,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "cloud_passing",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.296297,
+   "mean_inst_efficiency_%": 99.340197,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.089494,
+   "osc_amp_P_%": 0.050432,
+   "compute_us_per_cycle": 500.390623,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "cloud_passing",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.714698,
+   "mean_inst_efficiency_%": 99.645325,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.062136,
+   "osc_amp_P_%": 0.018582,
+   "compute_us_per_cycle": 3122.735414,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "cloud_passing",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.650923,
+   "mean_inst_efficiency_%": 99.641207,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.151163,
+   "osc_amp_P_%": 0.614131,
+   "compute_us_per_cycle": 5.37934,
+   "n_scans": 12,
+   "scan_overhead_%": 0.141877,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "cloud_passing",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.149558,
+   "mean_inst_efficiency_%": 99.247483,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.098417,
+   "compute_us_per_cycle": 12.800093,
+   "n_scans": 13,
+   "scan_overhead_%": 0.153,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "cloud_passing",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.650802,
+   "mean_inst_efficiency_%": 99.640347,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.167151,
+   "osc_amp_P_%": 0.623021,
+   "compute_us_per_cycle": 16.002408,
+   "n_scans": 12,
+   "scan_overhead_%": 0.141877,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "ramp_change",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.836027,
+   "mean_inst_efficiency_%": 99.83501,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.060563,
+   "osc_amp_P_%": 0.423593,
+   "compute_us_per_cycle": 4.622981,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "ramp_change",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.850612,
+   "mean_inst_efficiency_%": 99.848879,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.980282,
+   "osc_amp_P_%": 0.392817,
+   "compute_us_per_cycle": 4.747161,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "ramp_change",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.558289,
+   "mean_inst_efficiency_%": 99.500614,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.006899,
+   "osc_amp_P_%": 0.002116,
+   "compute_us_per_cycle": 445.29605,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "ramp_change",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.530369,
+   "mean_inst_efficiency_%": 99.493726,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.007192,
+   "osc_amp_P_%": 0.00132,
+   "compute_us_per_cycle": 3095.902636,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "ramp_change",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.69442,
+   "mean_inst_efficiency_%": 99.687665,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.068314,
+   "osc_amp_P_%": 0.430348,
+   "compute_us_per_cycle": 4.868414,
+   "n_scans": 12,
+   "scan_overhead_%": 0.136593,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "ramp_change",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.727892,
+   "mean_inst_efficiency_%": 99.730632,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.006251,
+   "compute_us_per_cycle": 13.457791,
+   "n_scans": 12,
+   "scan_overhead_%": 0.136593,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "ramp_change",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.688801,
+   "mean_inst_efficiency_%": 99.679449,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.136628,
+   "osc_amp_P_%": 0.465887,
+   "compute_us_per_cycle": 16.631062,
+   "n_scans": 12,
+   "scan_overhead_%": 0.136593,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "partial_shading",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 81.099022,
+   "mean_inst_efficiency_%": 79.080549,
+   "convergence_steps": 4.666667,
+   "n_events": 9,
+   "n_not_converged": 6,
+   "osc_amp_V": 1.055556,
+   "osc_amp_P_%": 0.588833,
+   "compute_us_per_cycle": 14.502719,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": 33.333333
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "partial_shading",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 81.152641,
+   "mean_inst_efficiency_%": 79.134988,
+   "convergence_steps": 3.0,
+   "n_events": 9,
+   "n_not_converged": 6,
+   "osc_amp_V": 0.944444,
+   "osc_amp_P_%": 0.497454,
+   "compute_us_per_cycle": 14.117751,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": 33.333333
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "partial_shading",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 77.201921,
+   "mean_inst_efficiency_%": 74.686794,
+   "convergence_steps": 0.5,
+   "n_events": 9,
+   "n_not_converged": 7,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 562.854464,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": 33.333333
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "partial_shading",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 76.976334,
+   "mean_inst_efficiency_%": 74.449101,
+   "convergence_steps": 0.5,
+   "n_events": 9,
+   "n_not_converged": 7,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 3357.478172,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": 33.333333
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "partial_shading",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.363157,
+   "mean_inst_efficiency_%": 99.336683,
+   "convergence_steps": 2.555556,
+   "n_events": 9,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.047386,
+   "osc_amp_P_%": 1.063875,
+   "compute_us_per_cycle": 15.29726,
+   "n_scans": 15,
+   "scan_overhead_%": 0.177695,
+   "shading_success_%": 100.0
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "partial_shading",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.327862,
+   "mean_inst_efficiency_%": 99.344895,
+   "convergence_steps": 36.0,
+   "n_events": 9,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.0,
+   "compute_us_per_cycle": 20.350534,
+   "n_scans": 15,
+   "scan_overhead_%": 0.177695,
+   "shading_success_%": 100.0
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "partial_shading",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.371522,
+   "mean_inst_efficiency_%": 99.353874,
+   "convergence_steps": 3.111111,
+   "n_events": 9,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.0,
+   "osc_amp_P_%": 0.997124,
+   "compute_us_per_cycle": 31.701636,
+   "n_scans": 15,
+   "scan_overhead_%": 0.172926,
+   "shading_success_%": 100.0
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_clear_day",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.843602,
+   "mean_inst_efficiency_%": 99.832753,
+   "convergence_steps": 2.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.026761,
+   "osc_amp_P_%": 0.415234,
+   "compute_us_per_cycle": 4.311947,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_clear_day",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.838216,
+   "mean_inst_efficiency_%": 99.833398,
+   "convergence_steps": 3.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.764789,
+   "osc_amp_P_%": 0.310185,
+   "compute_us_per_cycle": 4.705626,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_clear_day",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.477565,
+   "mean_inst_efficiency_%": 99.383871,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.013034,
+   "osc_amp_P_%": 0.00815,
+   "compute_us_per_cycle": 414.170776,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_clear_day",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.629483,
+   "mean_inst_efficiency_%": 99.529586,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.011656,
+   "osc_amp_P_%": 0.004699,
+   "compute_us_per_cycle": 3103.313766,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_clear_day",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.697465,
+   "mean_inst_efficiency_%": 99.690969,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.011628,
+   "osc_amp_P_%": 0.394696,
+   "compute_us_per_cycle": 5.108109,
+   "n_scans": 12,
+   "scan_overhead_%": 0.146619,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_clear_day",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.699047,
+   "mean_inst_efficiency_%": 99.7111,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.011199,
+   "compute_us_per_cycle": 12.712532,
+   "n_scans": 12,
+   "scan_overhead_%": 0.146619,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_clear_day",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.694567,
+   "mean_inst_efficiency_%": 99.683331,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.052326,
+   "osc_amp_P_%": 0.436852,
+   "compute_us_per_cycle": 19.541039,
+   "n_scans": 12,
+   "scan_overhead_%": 0.146619,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_variable_day",
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.801119,
+   "mean_inst_efficiency_%": 99.781804,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.112676,
+   "osc_amp_P_%": 0.57019,
+   "compute_us_per_cycle": 4.313,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_variable_day",
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.801354,
+   "mean_inst_efficiency_%": 99.786094,
+   "convergence_steps": 2.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.871831,
+   "osc_amp_P_%": 0.444735,
+   "compute_us_per_cycle": 4.862709,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_variable_day",
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.029506,
+   "mean_inst_efficiency_%": 98.940084,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.009618,
+   "osc_amp_P_%": 0.017332,
+   "compute_us_per_cycle": 486.64605,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_variable_day",
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.224275,
+   "mean_inst_efficiency_%": 99.172346,
+   "convergence_steps": 0.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.014332,
+   "osc_amp_P_%": 0.009009,
+   "compute_us_per_cycle": 2843.899732,
+   "n_scans": 0,
+   "scan_overhead_%": 0.0,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_variable_day",
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.66869,
+   "mean_inst_efficiency_%": 99.643773,
+   "convergence_steps": 19.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.034884,
+   "osc_amp_P_%": 0.52031,
+   "compute_us_per_cycle": 4.62819,
+   "n_scans": 12,
+   "scan_overhead_%": 0.141363,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_variable_day",
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.71988,
+   "mean_inst_efficiency_%": 99.727038,
+   "convergence_steps": 1.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 0.0,
+   "osc_amp_P_%": 0.014129,
+   "compute_us_per_cycle": 10.548264,
+   "n_scans": 12,
+   "scan_overhead_%": 0.141363,
+   "shading_success_%": NaN
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_variable_day",
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.661456,
+   "mean_inst_efficiency_%": 99.640566,
+   "convergence_steps": 11.0,
+   "n_events": 1,
+   "n_not_converged": 0,
+   "osc_amp_V": 1.084302,
+   "osc_amp_P_%": 0.550661,
+   "compute_us_per_cycle": 14.481406,
+   "n_scans": 12,
+   "scan_overhead_%": 0.141363,
+   "shading_success_%": NaN
+  }
+ ],
+ "cold_start": [
+  {
+   "protocol": "A",
+   "V0": 15.0,
+   "algorithm": "P&O",
+   "convergence_steps": 16.0
+  },
+  {
+   "protocol": "A",
+   "V0": 15.0,
+   "algorithm": "IncCond",
+   "convergence_steps": 15.0
+  },
+  {
+   "protocol": "A",
+   "V0": 15.0,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "convergence_steps": 15.0
+  },
+  {
+   "protocol": "A",
+   "V0": 15.0,
+   "algorithm": "ANN-MPPT",
+   "convergence_steps": 15.0
+  },
+  {
+   "protocol": "A",
+   "V0": 15.0,
+   "algorithm": "Scan+P&O (no ML)",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "A",
+   "V0": 15.0,
+   "algorithm": "DNN scan-only (no P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "A",
+   "V0": 15.0,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "A",
+   "V0": 20.0,
+   "algorithm": "P&O",
+   "convergence_steps": 6.0
+  },
+  {
+   "protocol": "A",
+   "V0": 20.0,
+   "algorithm": "IncCond",
+   "convergence_steps": 5.0
+  },
+  {
+   "protocol": "A",
+   "V0": 20.0,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "convergence_steps": 5.0
+  },
+  {
+   "protocol": "A",
+   "V0": 20.0,
+   "algorithm": "ANN-MPPT",
+   "convergence_steps": 5.0
+  },
+  {
+   "protocol": "A",
+   "V0": 20.0,
+   "algorithm": "Scan+P&O (no ML)",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "A",
+   "V0": 20.0,
+   "algorithm": "DNN scan-only (no P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "A",
+   "V0": 20.0,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "A",
+   "V0": 26.0,
+   "algorithm": "P&O",
+   "convergence_steps": 6.0
+  },
+  {
+   "protocol": "A",
+   "V0": 26.0,
+   "algorithm": "IncCond",
+   "convergence_steps": 5.0
+  },
+  {
+   "protocol": "A",
+   "V0": 26.0,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "convergence_steps": 3.0
+  },
+  {
+   "protocol": "A",
+   "V0": 26.0,
+   "algorithm": "ANN-MPPT",
+   "convergence_steps": 3.0
+  },
+  {
+   "protocol": "A",
+   "V0": 26.0,
+   "algorithm": "Scan+P&O (no ML)",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "A",
+   "V0": 26.0,
+   "algorithm": "DNN scan-only (no P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "A",
+   "V0": 26.0,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "A",
+   "V0": 30.0,
+   "algorithm": "P&O",
+   "convergence_steps": NaN
+  },
+  {
+   "protocol": "A",
+   "V0": 30.0,
+   "algorithm": "IncCond",
+   "convergence_steps": NaN
+  },
+  {
+   "protocol": "A",
+   "V0": 30.0,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "convergence_steps": 11.0
+  },
+  {
+   "protocol": "A",
+   "V0": 30.0,
+   "algorithm": "ANN-MPPT",
+   "convergence_steps": 11.0
+  },
+  {
+   "protocol": "A",
+   "V0": 30.0,
+   "algorithm": "Scan+P&O (no ML)",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "A",
+   "V0": 30.0,
+   "algorithm": "DNN scan-only (no P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "A",
+   "V0": 30.0,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "A",
+   "V0": 35.0,
+   "algorithm": "P&O",
+   "convergence_steps": NaN
+  },
+  {
+   "protocol": "A",
+   "V0": 35.0,
+   "algorithm": "IncCond",
+   "convergence_steps": NaN
+  },
+  {
+   "protocol": "A",
+   "V0": 35.0,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "convergence_steps": 21.0
+  },
+  {
+   "protocol": "A",
+   "V0": 35.0,
+   "algorithm": "ANN-MPPT",
+   "convergence_steps": 21.0
+  },
+  {
+   "protocol": "A",
+   "V0": 35.0,
+   "algorithm": "Scan+P&O (no ML)",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "A",
+   "V0": 35.0,
+   "algorithm": "DNN scan-only (no P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "A",
+   "V0": 35.0,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "B",
+   "V0": 13.398,
+   "algorithm": "P&O",
+   "convergence_steps": 19.0
+  },
+  {
+   "protocol": "B",
+   "V0": 13.398,
+   "algorithm": "IncCond",
+   "convergence_steps": 18.0
+  },
+  {
+   "protocol": "B",
+   "V0": 13.398,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "convergence_steps": 18.0
+  },
+  {
+   "protocol": "B",
+   "V0": 13.398,
+   "algorithm": "ANN-MPPT",
+   "convergence_steps": 18.0
+  },
+  {
+   "protocol": "B",
+   "V0": 13.398,
+   "algorithm": "Scan+P&O (no ML)",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "B",
+   "V0": 13.398,
+   "algorithm": "DNN scan-only (no P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "B",
+   "V0": 13.398,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "B",
+   "V0": 17.864,
+   "algorithm": "P&O",
+   "convergence_steps": 10.0
+  },
+  {
+   "protocol": "B",
+   "V0": 17.864,
+   "algorithm": "IncCond",
+   "convergence_steps": 9.0
+  },
+  {
+   "protocol": "B",
+   "V0": 17.864,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "convergence_steps": 9.0
+  },
+  {
+   "protocol": "B",
+   "V0": 17.864,
+   "algorithm": "ANN-MPPT",
+   "convergence_steps": 9.0
+  },
+  {
+   "protocol": "B",
+   "V0": 17.864,
+   "algorithm": "Scan+P&O (no ML)",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "B",
+   "V0": 17.864,
+   "algorithm": "DNN scan-only (no P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "B",
+   "V0": 17.864,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "B",
+   "V0": 22.33,
+   "algorithm": "P&O",
+   "convergence_steps": 0.0
+  },
+  {
+   "protocol": "B",
+   "V0": 22.33,
+   "algorithm": "IncCond",
+   "convergence_steps": 0.0
+  },
+  {
+   "protocol": "B",
+   "V0": 22.33,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "convergence_steps": 0.0
+  },
+  {
+   "protocol": "B",
+   "V0": 22.33,
+   "algorithm": "ANN-MPPT",
+   "convergence_steps": 0.0
+  },
+  {
+   "protocol": "B",
+   "V0": 22.33,
+   "algorithm": "Scan+P&O (no ML)",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "B",
+   "V0": 22.33,
+   "algorithm": "DNN scan-only (no P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "B",
+   "V0": 22.33,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "B",
+   "V0": 26.796,
+   "algorithm": "P&O",
+   "convergence_steps": 7.0
+  },
+  {
+   "protocol": "B",
+   "V0": 26.796,
+   "algorithm": "IncCond",
+   "convergence_steps": 6.0
+  },
+  {
+   "protocol": "B",
+   "V0": 26.796,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "B",
+   "V0": 26.796,
+   "algorithm": "ANN-MPPT",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "B",
+   "V0": 26.796,
+   "algorithm": "Scan+P&O (no ML)",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "B",
+   "V0": 26.796,
+   "algorithm": "DNN scan-only (no P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "B",
+   "V0": 26.796,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "B",
+   "V0": 28.88,
+   "algorithm": "P&O",
+   "convergence_steps": 11.0
+  },
+  {
+   "protocol": "B",
+   "V0": 28.88,
+   "algorithm": "IncCond",
+   "convergence_steps": 10.0
+  },
+  {
+   "protocol": "B",
+   "V0": 28.88,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "convergence_steps": 8.0
+  },
+  {
+   "protocol": "B",
+   "V0": 28.88,
+   "algorithm": "ANN-MPPT",
+   "convergence_steps": 8.0
+  },
+  {
+   "protocol": "B",
+   "V0": 28.88,
+   "algorithm": "Scan+P&O (no ML)",
+   "convergence_steps": 4.0
+  },
+  {
+   "protocol": "B",
+   "V0": 28.88,
+   "algorithm": "DNN scan-only (no P&O)",
+   "convergence_steps": 1.0
+  },
+  {
+   "protocol": "B",
+   "V0": 28.88,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "convergence_steps": 1.0
+  }
+ ],
+ "mismatch_sweep": [
+  {
+   "scenario": "comprehensive",
+   "severity": 0.0,
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.538947
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.0,
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.566015
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.0,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.513391
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.0,
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.99246
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.0,
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.352891
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.0,
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.563218
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.0,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.402195
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.5,
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.553415
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.5,
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.60118
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.5,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 99.315519
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.5,
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.942601
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.5,
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.404729
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.5,
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.64855
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 0.5,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.439335
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.0,
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.558808
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.0,
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.595699
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.0,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 98.958671
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.0,
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.760059
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.0,
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.427975
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.0,
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.601777
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.0,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.418252
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.5,
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.56993
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.5,
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.603448
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.5,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 98.456335
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.5,
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.439408
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.5,
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.46321
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.5,
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.603632
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 1.5,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.445427
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 2.0,
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 99.557794
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 2.0,
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 99.608614
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 2.0,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 97.850614
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 2.0,
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 99.002274
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 2.0,
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.518122
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 2.0,
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.51072
+  },
+  {
+   "scenario": "comprehensive",
+   "severity": 2.0,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.42504
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 0.0,
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 80.407835
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 0.0,
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 80.437517
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 0.0,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 78.165085
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 0.0,
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 77.982935
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 0.0,
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.362762
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 0.0,
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.304963
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 0.0,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.324915
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 1.0,
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 81.099022
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 1.0,
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 81.152641
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 1.0,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 77.201921
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 1.0,
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 76.976334
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 1.0,
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.363157
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 1.0,
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.327862
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 1.0,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.371522
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 2.0,
+   "algorithm": "P&O",
+   "tracking_efficiency_%": 81.577639
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 2.0,
+   "algorithm": "IncCond",
+   "tracking_efficiency_%": 81.609258
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 2.0,
+   "algorithm": "Poly2(G,T)-MPPT",
+   "tracking_efficiency_%": 76.264025
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 2.0,
+   "algorithm": "ANN-MPPT",
+   "tracking_efficiency_%": 76.022045
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 2.0,
+   "algorithm": "Scan+P&O (no ML)",
+   "tracking_efficiency_%": 99.453932
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 2.0,
+   "algorithm": "DNN scan-only (no P&O)",
+   "tracking_efficiency_%": 99.218303
+  },
+  {
+   "scenario": "partial_shading",
+   "severity": 2.0,
+   "algorithm": "Hybrid (DNN+P&O)",
+   "tracking_efficiency_%": 99.466096
+  }
+ ],
+ "ann_advantage": [
+  {
+   "plant": "nominal",
+   "scenario": "comprehensive",
+   "eff_P&O": 99.538947,
+   "eff_IncCond": 99.566015,
+   "eff_Poly2(G,T)-MPPT": 99.513391,
+   "eff_ANN-MPPT": 99.99246,
+   "eff_Scan+P&O (no ML)": 99.352891,
+   "eff_DNN scan-only (no P&O)": 99.563218,
+   "eff_Hybrid (DNN+P&O)": 99.402195,
+   "Hybrid_minus_ANN": -0.590265,
+   "Hybrid_minus_Poly2": -0.111196,
+   "Hybrid_minus_best_sensorless": -0.16382,
+   "Hybrid_minus_ScanPO_noML": 0.049305,
+   "Hybrid_minus_DNNonly": -0.161022,
+   "ANN_minus_best_sensorless": 0.426445
+  },
+  {
+   "plant": "nominal",
+   "scenario": "step_change",
+   "eff_P&O": 99.807572,
+   "eff_IncCond": 99.887764,
+   "eff_Poly2(G,T)-MPPT": 99.993272,
+   "eff_ANN-MPPT": 99.998542,
+   "eff_Scan+P&O (no ML)": 99.673896,
+   "eff_DNN scan-only (no P&O)": 99.799766,
+   "eff_Hybrid (DNN+P&O)": 99.609378,
+   "Hybrid_minus_ANN": -0.389164,
+   "Hybrid_minus_Poly2": -0.383894,
+   "Hybrid_minus_best_sensorless": -0.278387,
+   "Hybrid_minus_ScanPO_noML": -0.064518,
+   "Hybrid_minus_DNNonly": -0.190389,
+   "ANN_minus_best_sensorless": 0.110778
+  },
+  {
+   "plant": "nominal",
+   "scenario": "cloud_passing",
+   "eff_P&O": 99.770805,
+   "eff_IncCond": 99.7781,
+   "eff_Poly2(G,T)-MPPT": 99.737299,
+   "eff_ANN-MPPT": 99.99308,
+   "eff_Scan+P&O (no ML)": 99.622812,
+   "eff_DNN scan-only (no P&O)": 99.172297,
+   "eff_Hybrid (DNN+P&O)": 99.62616,
+   "Hybrid_minus_ANN": -0.36692,
+   "Hybrid_minus_Poly2": -0.11114,
+   "Hybrid_minus_best_sensorless": -0.15194,
+   "Hybrid_minus_ScanPO_noML": 0.003348,
+   "Hybrid_minus_DNNonly": 0.453863,
+   "ANN_minus_best_sensorless": 0.21498
+  },
+  {
+   "plant": "nominal",
+   "scenario": "ramp_change",
+   "eff_P&O": 99.813501,
+   "eff_IncCond": 99.82831,
+   "eff_Poly2(G,T)-MPPT": 99.989787,
+   "eff_ANN-MPPT": 99.999749,
+   "eff_Scan+P&O (no ML)": 99.664401,
+   "eff_DNN scan-only (no P&O)": 99.768746,
+   "eff_Hybrid (DNN+P&O)": 99.651006,
+   "Hybrid_minus_ANN": -0.348744,
+   "Hybrid_minus_Poly2": -0.338781,
+   "Hybrid_minus_best_sensorless": -0.177304,
+   "Hybrid_minus_ScanPO_noML": -0.013396,
+   "Hybrid_minus_DNNonly": -0.11774,
+   "ANN_minus_best_sensorless": 0.17144
+  },
+  {
+   "plant": "nominal",
+   "scenario": "partial_shading",
+   "eff_P&O": 80.407835,
+   "eff_IncCond": 80.437517,
+   "eff_Poly2(G,T)-MPPT": 78.165085,
+   "eff_ANN-MPPT": 77.982935,
+   "eff_Scan+P&O (no ML)": 99.362762,
+   "eff_DNN scan-only (no P&O)": 99.304963,
+   "eff_Hybrid (DNN+P&O)": 99.324915,
+   "Hybrid_minus_ANN": 21.34198,
+   "Hybrid_minus_Poly2": 21.15983,
+   "Hybrid_minus_best_sensorless": 18.887398,
+   "Hybrid_minus_ScanPO_noML": -0.037847,
+   "Hybrid_minus_DNNonly": 0.019952,
+   "ANN_minus_best_sensorless": -2.454582
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_clear_day",
+   "eff_P&O": 99.818629,
+   "eff_IncCond": 99.833921,
+   "eff_Poly2(G,T)-MPPT": 99.949318,
+   "eff_ANN-MPPT": 99.998838,
+   "eff_Scan+P&O (no ML)": 99.659962,
+   "eff_DNN scan-only (no P&O)": 99.693852,
+   "eff_Hybrid (DNN+P&O)": 99.660058,
+   "Hybrid_minus_ANN": -0.33878,
+   "Hybrid_minus_Poly2": -0.28926,
+   "Hybrid_minus_best_sensorless": -0.173863,
+   "Hybrid_minus_ScanPO_noML": 9.6e-05,
+   "Hybrid_minus_DNNonly": -0.033793,
+   "ANN_minus_best_sensorless": 0.164917
+  },
+  {
+   "plant": "nominal",
+   "scenario": "real_variable_day",
+   "eff_P&O": 99.772085,
+   "eff_IncCond": 99.783635,
+   "eff_Poly2(G,T)-MPPT": 99.969419,
+   "eff_ANN-MPPT": 99.999339,
+   "eff_Scan+P&O (no ML)": 99.62732,
+   "eff_DNN scan-only (no P&O)": 99.763681,
+   "eff_Hybrid (DNN+P&O)": 99.630729,
+   "Hybrid_minus_ANN": -0.368609,
+   "Hybrid_minus_Poly2": -0.338689,
+   "Hybrid_minus_best_sensorless": -0.152906,
+   "Hybrid_minus_ScanPO_noML": 0.003409,
+   "Hybrid_minus_DNNonly": -0.132951,
+   "ANN_minus_best_sensorless": 0.215704
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "comprehensive",
+   "eff_P&O": 99.558808,
+   "eff_IncCond": 99.595699,
+   "eff_Poly2(G,T)-MPPT": 98.958671,
+   "eff_ANN-MPPT": 99.760059,
+   "eff_Scan+P&O (no ML)": 99.427975,
+   "eff_DNN scan-only (no P&O)": 99.601777,
+   "eff_Hybrid (DNN+P&O)": 99.418252,
+   "Hybrid_minus_ANN": -0.341807,
+   "Hybrid_minus_Poly2": 0.459582,
+   "Hybrid_minus_best_sensorless": -0.177447,
+   "Hybrid_minus_ScanPO_noML": -0.009723,
+   "Hybrid_minus_DNNonly": -0.183525,
+   "ANN_minus_best_sensorless": 0.16436
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "step_change",
+   "eff_P&O": 99.83006,
+   "eff_IncCond": 99.83075,
+   "eff_Poly2(G,T)-MPPT": 99.540011,
+   "eff_ANN-MPPT": 99.542978,
+   "eff_Scan+P&O (no ML)": 99.686542,
+   "eff_DNN scan-only (no P&O)": 99.79048,
+   "eff_Hybrid (DNN+P&O)": 99.678595,
+   "Hybrid_minus_ANN": 0.135618,
+   "Hybrid_minus_Poly2": 0.138584,
+   "Hybrid_minus_best_sensorless": -0.152155,
+   "Hybrid_minus_ScanPO_noML": -0.007946,
+   "Hybrid_minus_DNNonly": -0.111885,
+   "ANN_minus_best_sensorless": -0.287773
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "cloud_passing",
+   "eff_P&O": 99.789073,
+   "eff_IncCond": 99.789933,
+   "eff_Poly2(G,T)-MPPT": 99.296297,
+   "eff_ANN-MPPT": 99.714698,
+   "eff_Scan+P&O (no ML)": 99.650923,
+   "eff_DNN scan-only (no P&O)": 99.149558,
+   "eff_Hybrid (DNN+P&O)": 99.650802,
+   "Hybrid_minus_ANN": -0.063896,
+   "Hybrid_minus_Poly2": 0.354505,
+   "Hybrid_minus_best_sensorless": -0.139131,
+   "Hybrid_minus_ScanPO_noML": -0.000121,
+   "Hybrid_minus_DNNonly": 0.501244,
+   "ANN_minus_best_sensorless": -0.075235
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "ramp_change",
+   "eff_P&O": 99.836027,
+   "eff_IncCond": 99.850612,
+   "eff_Poly2(G,T)-MPPT": 99.558289,
+   "eff_ANN-MPPT": 99.530369,
+   "eff_Scan+P&O (no ML)": 99.69442,
+   "eff_DNN scan-only (no P&O)": 99.727892,
+   "eff_Hybrid (DNN+P&O)": 99.688801,
+   "Hybrid_minus_ANN": 0.158432,
+   "Hybrid_minus_Poly2": 0.130512,
+   "Hybrid_minus_best_sensorless": -0.161811,
+   "Hybrid_minus_ScanPO_noML": -0.005619,
+   "Hybrid_minus_DNNonly": -0.039091,
+   "ANN_minus_best_sensorless": -0.320243
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "partial_shading",
+   "eff_P&O": 81.099022,
+   "eff_IncCond": 81.152641,
+   "eff_Poly2(G,T)-MPPT": 77.201921,
+   "eff_ANN-MPPT": 76.976334,
+   "eff_Scan+P&O (no ML)": 99.363157,
+   "eff_DNN scan-only (no P&O)": 99.327862,
+   "eff_Hybrid (DNN+P&O)": 99.371522,
+   "Hybrid_minus_ANN": 22.395188,
+   "Hybrid_minus_Poly2": 22.169601,
+   "Hybrid_minus_best_sensorless": 18.218881,
+   "Hybrid_minus_ScanPO_noML": 0.008365,
+   "Hybrid_minus_DNNonly": 0.04366,
+   "ANN_minus_best_sensorless": -4.176307
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_clear_day",
+   "eff_P&O": 99.843602,
+   "eff_IncCond": 99.838216,
+   "eff_Poly2(G,T)-MPPT": 99.477565,
+   "eff_ANN-MPPT": 99.629483,
+   "eff_Scan+P&O (no ML)": 99.697465,
+   "eff_DNN scan-only (no P&O)": 99.699047,
+   "eff_Hybrid (DNN+P&O)": 99.694567,
+   "Hybrid_minus_ANN": 0.065084,
+   "Hybrid_minus_Poly2": 0.217002,
+   "Hybrid_minus_best_sensorless": -0.149036,
+   "Hybrid_minus_ScanPO_noML": -0.002898,
+   "Hybrid_minus_DNNonly": -0.00448,
+   "ANN_minus_best_sensorless": -0.214119
+  },
+  {
+   "plant": "mismatched",
+   "scenario": "real_variable_day",
+   "eff_P&O": 99.801119,
+   "eff_IncCond": 99.801354,
+   "eff_Poly2(G,T)-MPPT": 99.029506,
+   "eff_ANN-MPPT": 99.224275,
+   "eff_Scan+P&O (no ML)": 99.66869,
+   "eff_DNN scan-only (no P&O)": 99.71988,
+   "eff_Hybrid (DNN+P&O)": 99.661456,
+   "Hybrid_minus_ANN": 0.437181,
+   "Hybrid_minus_Poly2": 0.63195,
+   "Hybrid_minus_best_sensorless": -0.139899,
+   "Hybrid_minus_ScanPO_noML": -0.007234,
+   "Hybrid_minus_DNNonly": -0.058424,
+   "ANN_minus_best_sensorless": -0.57708
+  }
+ ],
+ "hybrid_offline": [
+  {
+   "test set": "T1 in-distribution (DR plants, mixed shading)",
+   "estimator": "Hybrid DNN estimate",
+   "n": 16000,
+   "RMSE_V": 0.783868,
+   "MAE_V": 0.280004,
+   "P_ratio_%": 99.223649
+  },
+  {
+   "test set": "T1 in-distribution (DR plants, mixed shading)",
+   "estimator": "best-probe rule (no ML)",
+   "n": 16000,
+   "RMSE_V": 1.047443,
+   "MAE_V": 0.596625,
+   "P_ratio_%": 99.014508
+  },
+  {
+   "test set": "T1 in-distribution (DR plants, mixed shading)  shaded subset",
+   "estimator": "Hybrid DNN estimate",
+   "n": 9456,
+   "RMSE_V": 1.012151,
+   "MAE_V": 0.387876,
+   "P_ratio_%": 98.713402
+  },
+  {
+   "test set": "T1 in-distribution (DR plants, mixed shading)  unshaded subset",
+   "estimator": "Hybrid DNN estimate",
+   "n": 6544,
+   "RMSE_V": 0.148338,
+   "MAE_V": 0.124131,
+   "P_ratio_%": 99.960949
+  },
+  {
+   "test set": "T2 nominal plant, uniform irradiance",
+   "estimator": "Hybrid DNN estimate",
+   "n": 8000,
+   "RMSE_V": 0.12045,
+   "MAE_V": 0.097652,
+   "P_ratio_%": 99.969935
+  },
+  {
+   "test set": "T2 nominal plant, uniform irradiance",
+   "estimator": "best-probe rule (no ML)",
+   "n": 8000,
+   "RMSE_V": 0.629942,
+   "MAE_V": 0.551367,
+   "P_ratio_%": 99.502832
+  },
+  {
+   "test set": "T2 nominal plant, uniform irradiance  unshaded subset",
+   "estimator": "Hybrid DNN estimate",
+   "n": 8000,
+   "RMSE_V": 0.12045,
+   "MAE_V": 0.097652,
+   "P_ratio_%": 99.969935
+  },
+  {
+   "test set": "T3 nominal plant, partial shading",
+   "estimator": "Hybrid DNN estimate",
+   "n": 8000,
+   "RMSE_V": 0.942346,
+   "MAE_V": 0.361619,
+   "P_ratio_%": 98.770704
+  },
+  {
+   "test set": "T3 nominal plant, partial shading",
+   "estimator": "best-probe rule (no ML)",
+   "n": 8000,
+   "RMSE_V": 1.267386,
+   "MAE_V": 0.630743,
+   "P_ratio_%": 98.640756
+  },
+  {
+   "test set": "T3 nominal plant, partial shading  shaded subset",
+   "estimator": "Hybrid DNN estimate",
+   "n": 8000,
+   "RMSE_V": 0.942346,
+   "MAE_V": 0.361619,
+   "P_ratio_%": 98.770704
+  },
+  {
+   "test set": "T4 OUT-OF-RANGE plants, mixed shading",
+   "estimator": "Hybrid DNN estimate",
+   "n": 8000,
+   "RMSE_V": 1.666966,
+   "MAE_V": 0.774033,
+   "P_ratio_%": 98.443575
+  },
+  {
+   "test set": "T4 OUT-OF-RANGE plants, mixed shading",
+   "estimator": "best-probe rule (no ML)",
+   "n": 8000,
+   "RMSE_V": 1.06164,
+   "MAE_V": 0.586972,
+   "P_ratio_%": 99.373923
+  },
+  {
+   "test set": "T4 OUT-OF-RANGE plants, mixed shading  shaded subset",
+   "estimator": "Hybrid DNN estimate",
+   "n": 4772,
+   "RMSE_V": 2.105962,
+   "MAE_V": 0.946327,
+   "P_ratio_%": 97.616058
+  },
+  {
+   "test set": "T4 OUT-OF-RANGE plants, mixed shading  unshaded subset",
+   "estimator": "Hybrid DNN estimate",
+   "n": 3228,
+   "RMSE_V": 0.574666,
+   "MAE_V": 0.519329,
+   "P_ratio_%": 99.666906
+  }
+ ],
+ "hybrid_conformal": [
+  {
+   "test set": "T1 in-distribution (DR plants, mixed shading)",
+   "nominal": 0.9,
+   "empirical_coverage": 0.899188,
+   "interval_half_width_V": 0.409803,
+   "n": 16000
+  },
+  {
+   "test set": "T1 in-distribution (DR plants, mixed shading) | shaded",
+   "nominal": 0.9,
+   "empirical_coverage": 0.832805,
+   "interval_half_width_V": 0.409803,
+   "n": 9456
+  },
+  {
+   "test set": "T1 in-distribution (DR plants, mixed shading) | unshaded",
+   "nominal": 0.9,
+   "empirical_coverage": 0.99511,
+   "interval_half_width_V": 0.409803,
+   "n": 6544
+  },
+  {
+   "test set": "T2 nominal plant, uniform irradiance",
+   "nominal": 0.9,
+   "empirical_coverage": 0.99925,
+   "interval_half_width_V": 0.409803,
+   "n": 8000
+  },
+  {
+   "test set": "T3 nominal plant, partial shading",
+   "nominal": 0.9,
+   "empirical_coverage": 0.84525,
+   "interval_half_width_V": 0.409803,
+   "n": 8000
+  },
+  {
+   "test set": "T4 OUT-OF-RANGE plants, mixed shading",
+   "nominal": 0.9,
+   "empirical_coverage": 0.40725,
+   "interval_half_width_V": 0.409803,
+   "n": 8000
+  },
+  {
+   "test set": "T1 in-distribution (DR plants, mixed shading)",
+   "nominal": 0.95,
+   "empirical_coverage": 0.949188,
+   "interval_half_width_V": 0.728041,
+   "n": 16000
+  },
+  {
+   "test set": "T1 in-distribution (DR plants, mixed shading) | shaded",
+   "nominal": 0.95,
+   "empirical_coverage": 0.914869,
+   "interval_half_width_V": 0.728041,
+   "n": 9456
+  },
+  {
+   "test set": "T1 in-distribution (DR plants, mixed shading) | unshaded",
+   "nominal": 0.95,
+   "empirical_coverage": 0.998778,
+   "interval_half_width_V": 0.728041,
+   "n": 6544
+  },
+  {
+   "test set": "T2 nominal plant, uniform irradiance",
+   "nominal": 0.95,
+   "empirical_coverage": 1.0,
+   "interval_half_width_V": 0.728041,
+   "n": 8000
+  },
+  {
+   "test set": "T3 nominal plant, partial shading",
+   "nominal": 0.95,
+   "empirical_coverage": 0.92875,
+   "interval_half_width_V": 0.728041,
+   "n": 8000
+  },
+  {
+   "test set": "T4 OUT-OF-RANGE plants, mixed shading",
+   "nominal": 0.95,
+   "empirical_coverage": 0.75825,
+   "interval_half_width_V": 0.728041,
+   "n": 8000
+  }
+ ],
+ "hybrid_training_compute": {
+  "parallel_identical_to_serial": true,
+  "distinct_plants_in_training_set": 200000,
+  "cpu_cores_used": 4,
+  "benchmark_samples": 12000,
+  "serial_seconds": 4.294579288000023,
+  "parallel_seconds": 2.026570677000109,
+  "measured_speedup": 2.119136202225723,
+  "serial_ms_per_plant_sample": 0.35788160733333524,
+  "train_samples": 200000,
+  "train_generation_wallclock_s": 20.445246980999855,
+  "train_generation_serial_equivalent_s": 71.57632146666704,
+  "dnn_train_seconds": 43.940420969000115,
+  "dnn_epochs": 48,
+  "dnn_params": 27009,
+  "total_wallclock_s": 64.38566794999997
+ },
+ "mismatch_in_dr_box": {
+  "0.0": true,
+  "0.5": true,
+  "1.0": true,
+  "1.5": false,
+  "2.0": false
+ },
+ "hybrid_design": {
+  "scan_period": 300,
+  "scan_trigger": 0.1,
+  "scan_min_interval": 30,
+  "hybrid_hidden": [
+   128,
+   128,
+   64
+  ],
+  "hybrid_epochs": 60
+ },
+ "dr_box": {
+  "isc": [
+   0.9,
+   1.05
+  ],
+  "voc": [
+   0.95,
+   1.06
+  ],
+  "rs": [
+   0.8,
+   2.4
+  ],
+  "rsh": [
+   0.3,
+   1.5
+  ],
+  "n": [
+   1.05,
+   1.4
+  ]
+ },
+ "oor_box": {
+  "isc": [
+   0.78,
+   0.86
+  ],
+  "voc": [
+   1.08,
+   1.12
+  ],
+  "rs": [
+   2.8,
+   3.8
+  ],
+  "rsh": [
+   0.12,
+   0.25
+  ],
+  "n": [
+   1.45,
+   1.55
+  ]
+ },
+ "probe_voltages": [
+  8.0,
+  10.076923076923077,
+  12.153846153846153,
+  14.230769230769232,
+  16.307692307692307,
+  18.384615384615387,
+  20.461538461538463,
+  22.53846153846154,
+  24.615384615384617,
+  26.692307692307693,
+  28.76923076923077,
+  30.846153846153847,
+  32.92307692307693,
+  35.0
+ ],
+ "figures": [
+  "B1_01_hist_irradiance",
+  "B1_02_hist_temperature",
+  "B1_03_scatter_G_vs_T_by_month",
+  "B1_04_heatmap_hour_month_G",
+  "B1_05_representative_days",
+  "B1_06_sanity_P_vs_G",
+  "B2_01_PV_curve_families",
+  "B2_02_Vmpp_vs_G_and_T",
+  "B2_03_STC_validation",
+  "B3_01_loss_curves",
+  "B3_02_predicted_vs_actual",
+  "B3_03_residual_histograms",
+  "B3_04_conformal_calibration",
+  "B4_01_timedomain_step_change",
+  "B4_02_timedomain_cloud_passing",
+  "B4_03_timedomain_ramp_change",
+  "B4_04_timedomain_comprehensive",
+  "B4_05_timedomain_partial_shading",
+  "B4_06_timedomain_real_clear_day",
+  "B4_07_timedomain_real_variable_day",
+  "B4_08_timedomain_comprehensive_MISMATCHED_plant",
+  "B4_09_timedomain_partial_shading_MISMATCHED_plant",
+  "B4_10_timedomain_real_clear_day_MISMATCHED_plant",
+  "B4_11_coldstart",
+  "B4_12_partial_shading_PV_snapshots",
+  "B5_01_tracking_efficiency",
+  "B5_02_convergence_time",
+  "B5_03_oscillation_amplitude",
+  "B5_04_compute_cost",
+  "B5_05_radar_summary",
+  "B5_06_mismatch_sweep"
+ ],
+ "compute_benchmark_us": {
+  "ANN: model.predict(x)  [Keras high-level API]": {
+   "mean": 76526.42,
+   "median": 71212.99,
+   "max": 517376.4
+  },
+  "ANN: model(x, training=False)  [used in the loop]": {
+   "mean": 3359.02,
+   "median": 3119.67,
+   "max": 6588.73
+  },
+  "ANN: full decision (scaling + forward + slew)": {
+   "mean": 3558.59,
+   "median": 3215.98,
+   "max": 9508.92
+  },
+  "Poly2(G,T): full decision": {
+   "mean": 462.75,
+   "median": 424.09,
+   "max": 2488.77
+  },
+  "Hybrid stage-1: DNN call only (scan cycle)": {
+   "mean": 2958.36,
+   "median": 2780.41,
+   "max": 5353.08
+  },
+  "P&O: decision only": {
+   "mean": 4.02,
+   "median": 3.09,
+   "max": 113.22
+  },
+  "IncCond: decision only": {
+   "mean": 3.62,
+   "median": 3.23,
+   "max": 19.59
+  }
+ }
+}

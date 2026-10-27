@@ -1,0 +1,91 @@
+scenario,controller,severity,tracking_efficiency_%
+comprehensive,P&O,0.0,99.53894662766112
+comprehensive,P&O,0.5,99.5534149330334
+comprehensive,P&O,1.0,99.55880840654616
+comprehensive,P&O,1.5,99.56993041163932
+comprehensive,P&O,2.0,99.55779410171024
+comprehensive,IncCond,0.0,99.5660147600805
+comprehensive,IncCond,0.5,99.60118040676456
+comprehensive,IncCond,1.0,99.5956990184468
+comprehensive,IncCond,1.5,99.60344766303552
+comprehensive,IncCond,2.0,99.6086137764685
+comprehensive,"Poly2(G,T)-MPPT",0.0,99.5133914183738
+comprehensive,"Poly2(G,T)-MPPT",0.5,99.31551870471912
+comprehensive,"Poly2(G,T)-MPPT",1.0,98.9586705363337
+comprehensive,"Poly2(G,T)-MPPT",1.5,98.45633463335672
+comprehensive,"Poly2(G,T)-MPPT",2.0,97.85061378245264
+comprehensive,ANN-MPPT,0.0,99.99397920553706
+comprehensive,ANN-MPPT,0.5,99.94223282370162
+comprehensive,ANN-MPPT,1.0,99.75588959496422
+comprehensive,ANN-MPPT,1.5,99.4301946916798
+comprehensive,ANN-MPPT,2.0,98.99241169786076
+comprehensive,Scan+P&O (no ML),0.0,99.35289068867024
+comprehensive,Scan+P&O (no ML),0.5,99.40472896779316
+comprehensive,Scan+P&O (no ML),1.0,99.42797538852444
+comprehensive,Scan+P&O (no ML),1.5,99.46321026061597
+comprehensive,Scan+P&O (no ML),2.0,99.51812190438528
+comprehensive,DNN scan-only (no P&O),0.0,99.56321818827452
+comprehensive,DNN scan-only (no P&O),0.5,99.64855049012093
+comprehensive,DNN scan-only (no P&O),1.0,99.60177725686394
+comprehensive,DNN scan-only (no P&O),1.5,99.6036325825332
+comprehensive,DNN scan-only (no P&O),2.0,99.51071967311373
+comprehensive,Hybrid (DNN+P&O),0.0,99.40219522271474
+comprehensive,Hybrid (DNN+P&O),0.5,99.4393350426032
+comprehensive,Hybrid (DNN+P&O),1.0,99.41825232070032
+comprehensive,Hybrid (DNN+P&O),1.5,99.445427415276
+comprehensive,Hybrid (DNN+P&O),2.0,99.425040053772
+comprehensive,PSO,0.0,97.65929608415964
+comprehensive,PSO,0.5,97.60127235329232
+comprehensive,PSO,1.0,97.91602717636825
+comprehensive,PSO,1.5,98.279061334811
+comprehensive,PSO,2.0,98.13974883478768
+comprehensive,Tree scan+P&O,0.0,99.37927105800456
+comprehensive,Tree scan+P&O,0.5,99.41110009673648
+comprehensive,Tree scan+P&O,1.0,99.39488012956312
+comprehensive,Tree scan+P&O,1.5,99.46385876996015
+comprehensive,Tree scan+P&O,2.0,99.4468398142376
+partial_shading,P&O,0.0,80.40783492459138
+partial_shading,P&O,0.5,80.78662502964816
+partial_shading,P&O,1.0,81.0990218209054
+partial_shading,P&O,1.5,81.3935136278138
+partial_shading,P&O,2.0,81.57763885056285
+partial_shading,IncCond,0.0,80.43751700143446
+partial_shading,IncCond,0.5,80.78009868432109
+partial_shading,IncCond,1.0,81.15264122282134
+partial_shading,IncCond,1.5,81.37560197255833
+partial_shading,IncCond,2.0,81.60925837574608
+partial_shading,"Poly2(G,T)-MPPT",0.0,78.1650851767014
+partial_shading,"Poly2(G,T)-MPPT",0.5,77.73780851414445
+partial_shading,"Poly2(G,T)-MPPT",1.0,77.2019207949319
+partial_shading,"Poly2(G,T)-MPPT",1.5,76.62214371998837
+partial_shading,"Poly2(G,T)-MPPT",2.0,76.26402461191141
+partial_shading,ANN-MPPT,0.0,77.98891107315431
+partial_shading,ANN-MPPT,0.5,77.53601840394093
+partial_shading,ANN-MPPT,1.0,76.98202226435822
+partial_shading,ANN-MPPT,1.5,76.3883490889346
+partial_shading,ANN-MPPT,2.0,76.02745654459302
+partial_shading,Scan+P&O (no ML),0.0,99.36276198250752
+partial_shading,Scan+P&O (no ML),0.5,99.37397741277744
+partial_shading,Scan+P&O (no ML),1.0,99.36315723858486
+partial_shading,Scan+P&O (no ML),1.5,99.45834543573147
+partial_shading,Scan+P&O (no ML),2.0,99.4539324761857
+partial_shading,DNN scan-only (no P&O),0.0,99.30496253776356
+partial_shading,DNN scan-only (no P&O),0.5,99.23988786442106
+partial_shading,DNN scan-only (no P&O),1.0,99.32786266702996
+partial_shading,DNN scan-only (no P&O),1.5,99.33500880890972
+partial_shading,DNN scan-only (no P&O),2.0,99.21830343317448
+partial_shading,Hybrid (DNN+P&O),0.0,99.3249150840044
+partial_shading,Hybrid (DNN+P&O),0.5,99.32061944630304
+partial_shading,Hybrid (DNN+P&O),1.0,99.37152199576032
+partial_shading,Hybrid (DNN+P&O),1.5,99.42281624244738
+partial_shading,Hybrid (DNN+P&O),2.0,99.46609585975852
+partial_shading,PSO,0.0,95.67779143790632
+partial_shading,PSO,0.5,95.77069433264435
+partial_shading,PSO,1.0,95.8813232120782
+partial_shading,PSO,1.5,96.02876792746322
+partial_shading,PSO,2.0,96.1179010729088
+partial_shading,Tree scan+P&O,0.0,99.36583579796904
+partial_shading,Tree scan+P&O,0.5,99.40830818234645
+partial_shading,Tree scan+P&O,1.0,99.39086075225386
+partial_shading,Tree scan+P&O,1.5,99.3979520074639
+partial_shading,Tree scan+P&O,2.0,99.43592163246868

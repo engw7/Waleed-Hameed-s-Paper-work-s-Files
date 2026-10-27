@@ -1,0 +1,5 @@
+plant,controller,cycles,scan_cycles,scan_cycle_fraction_pct,scan_energy_overhead_pct,probes_per_scan,scan_assumed_instantaneous_one_cycle
+nominal,Scan+P&O (no ML),3600,15,0.4166666666666667,0.19218617826755147,14,True
+nominal,Hybrid (DNN+P&O),3600,15,0.4166666666666667,0.18720763067385215,14,True
+mismatched,Scan+P&O (no ML),3600,15,0.4166666666666667,0.17769518417936,14,True
+mismatched,Hybrid (DNN+P&O),3600,15,0.4166666666666667,0.17292610832832195,14,True

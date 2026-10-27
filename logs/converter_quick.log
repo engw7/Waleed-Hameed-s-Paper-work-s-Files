@@ -1,0 +1,30 @@
+converter experiment done in 316 s
+                                    case  calls  max_dV_V  max_dP_W  max_dP_rel_pct  mean_dP_rel_pct  max_ripple_i_A  max_ripple_v_V
+0                  irradiance step (P&O)     30    0.0495    0.2498          0.2772           0.0328          2.9968           1.822
+1  shading pattern 1 incl. scan (Hybrid)     43    1.4466   11.5405        100.0000           7.9610         17.5386          26.000
+           scenario        controller  tracking_efficiency_%_static  tracking_efficiency_%_converter  gmpp_success_%_static  gmpp_success_%_converter  osc_amp_V_static  osc_amp_V_converter  delta_eff_points
+0     comprehensive               P&O                        99.156                           98.888                    NaN                       NaN             1.681                1.674            -0.267
+1     comprehensive           IncCond                        99.177                           98.870                    NaN                       NaN             1.611                1.629            -0.307
+2     comprehensive  Scan+P&O (no ML)                        98.876                           98.833                    NaN                       NaN             1.677                1.665            -0.044
+3     comprehensive          ANN-MPPT                        99.995                           99.987                    NaN                       NaN             0.024                0.027            -0.008
+4     comprehensive  Hybrid (DNN+P&O)                        98.720                           98.712                    NaN                       NaN             1.649                1.636            -0.008
+5       step_change               P&O                        99.822                           99.806                    NaN                       NaN             1.000                0.978            -0.016
+6       step_change           IncCond                        99.829                           99.813                    NaN                       NaN             0.986                0.964            -0.016
+7       step_change  Scan+P&O (no ML)                        99.645                           99.630                    NaN                       NaN             1.000                0.984            -0.015
+8       step_change          ANN-MPPT                        99.990                           99.990                    NaN                       NaN             0.000                0.000            -0.000
+9       step_change  Hybrid (DNN+P&O)                        99.549                           99.561                    NaN                       NaN             1.003                0.990             0.011
+10    cloud_passing               P&O                        99.759                           99.756                    NaN                       NaN             1.132                1.135            -0.003
+11    cloud_passing           IncCond                        99.764                           99.762                    NaN                       NaN             1.073                1.065            -0.002
+12    cloud_passing  Scan+P&O (no ML)                        99.602                           99.598                    NaN                       NaN             1.145                1.140            -0.003
+13    cloud_passing          ANN-MPPT                        99.692                           99.692                    NaN                       NaN             0.041                0.041            -0.000
+14    cloud_passing  Hybrid (DNN+P&O)                        99.602                           99.597                    NaN                       NaN             1.170                1.157            -0.006
+15      ramp_change               P&O                        99.812                           99.790                    NaN                       NaN             1.054                1.077            -0.022
+16      ramp_change           IncCond                        99.823                           99.802                    NaN                       NaN             0.992                1.007            -0.021
+17      ramp_change  Scan+P&O (no ML)                        99.648                           99.627                    NaN                       NaN             1.059                1.052            -0.021
+18      ramp_change          ANN-MPPT                        99.994                           99.993                    NaN                       NaN             0.006                0.006            -0.000
+19      ramp_change  Hybrid (DNN+P&O)                        99.590                           99.578                    NaN                       NaN             1.061                1.050            -0.012
+20  partial_shading               P&O                        85.793                           85.684                   40.0                      40.0             1.000                0.954            -0.109
+21  partial_shading           IncCond                        85.868                           85.758                   40.0                      40.0             0.894                0.848            -0.110
+22  partial_shading  Scan+P&O (no ML)                        99.451                           99.445                  100.0                     100.0             1.000                1.000            -0.005
+23  partial_shading          ANN-MPPT                        83.549                           82.827                   40.0                      40.0             0.000                0.316            -0.722
+24  partial_shading  Hybrid (DNN+P&O)                        95.635                           95.572                   60.0                      60.0             1.022                0.997            -0.063

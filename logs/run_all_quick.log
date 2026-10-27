@@ -1,0 +1,4 @@
+stats          ok                  533 s
+converter      ok                  324 s
+figures        FAILED (rc=1)        18 s
+stopping: see logs/ figures

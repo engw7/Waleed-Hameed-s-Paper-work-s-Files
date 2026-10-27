@@ -1,0 +1,10 @@
+episode,substring G,P&O,IncCond,"Poly2(G,T)-MPPT",ANN-MPPT,Scan+P&O (no ML),DNN scan-only (no P&O),Hybrid (DNN+P&O),global MPP (W)
+1,"[800, 800, 800]",success,success,success,success,success,success,success,175.11229649709117
+2,"[800, 800, 400]",fail,fail,fail,fail,success,success,success,111.58618159425045
+3,"[800, 800, 200]",fail,fail,fail,fail,success,success,success,111.58618159425045
+4,"[800, 500, 500]",success,success,success,success,success,success,success,117.74385119051618
+5,"[800, 600, 300]",fail,fail,fail,fail,success,success,success,90.65152825753036
+6,"[1000, 1000, 300]",fail,fail,fail,fail,success,success,success,135.64849744681334
+7,"[900, 700, 300]",fail,fail,fail,fail,success,success,success,104.15171769434109
+8,"[700, 700, 700]",success,success,success,success,success,success,success,155.01875665220635
+9,"[1000, 600, 200]",fail,fail,fail,fail,success,success,success,91.48688995107767

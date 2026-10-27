@@ -1,0 +1,4 @@
+tables         ok                   53 s
+main           ok                  237 s
+hpc            FAILED (rc=1)       287 s
+stopping: see logs/ hpc

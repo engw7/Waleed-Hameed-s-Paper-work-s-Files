@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/home/user/ANN-MPPT/experiments/exp_figures.py", line 156, in <module>
+    run()
+  File "/home/user/ANN-MPPT/experiments/exp_figures.py", line 151, in run
+    schematics.build_all(); data_figures(pv, pvm); dnn_figures(data, hyb)
+                            ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/ANN-MPPT/experiments/exp_figures.py", line 40, in data_figures
+    fig.tight_layout(); sty.save_figure(fig, 'Fig13_representative_days', pd.concat(fd))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/ANN-MPPT/experiments/../mppt_style.py", line 67, in save_figure
+    _check(fig)
+  File "/home/user/ANN-MPPT/experiments/../mppt_style.py", line 62, in _check
+    assert any(getattr(t, '_is_panel_letter', False) for t in a.texts), f'missing panel letter on axes {a.get_ylabel() or a.get_xlabel()!r}'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: missing panel letter on axes 'Ambient temperature (°C)'

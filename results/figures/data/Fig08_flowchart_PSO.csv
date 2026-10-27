@@ -1,0 +1,30 @@
+kind,id,text,x,y,shape
+node,s,Start of control cycle,2.8,11.0,round
+node,h,Holding best voltage ?,2.8,9.8,diamond
+node,chk,"|P - P_hold| / P_hold > 10%
+or hold > 600 cycles ?",7.2,9.8,diamond
+node,re,"Re-initialise swarm
+(particles spread over the window)",7.2,8.2,box
+node,ev,"Apply particle i; measure P;
+update pbest_i and gbest",2.8,8.2,box
+node,all,All 4 particles evaluated ?,2.8,7.0,diamond
+node,up,"v = w*v + c1*r1*(pbest - x) + c2*r2*(gbest - x)
+x = clip(x + v);  w=0.4, c1=1.5, c2=1.5",2.8,5.4,box
+node,cv,all particles within 0.3 V of gbest ?,2.8,3.8,diamond
+node,hd,Hold gbest voltage,7.2,3.8,box
+node,nx,Next particle: command x_i,2.8,2.2,box
+node,e,End of cycle,5.0,0.8,round
+edge,s->h,,,,
+edge,h->chk,Yes,,,
+edge,h->ev,No,,,
+edge,chk->re,Yes,,,
+edge,re->ev,,,,
+edge,chk->e,No: keep holding,,,
+edge,ev->all,,,,
+edge,all->up,Yes,,,
+edge,all->nx,No,,,
+edge,up->cv,,,,
+edge,cv->hd,Yes,,,
+edge,cv->nx,No,,,
+edge,hd->e,,,,
+edge,nx->e,,,,

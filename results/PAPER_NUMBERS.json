@@ -1,0 +1,2080 @@
+[
+ {
+  "key": "headline.PO.eff_std4_nominal_%",
+  "value": 99.73270602891104,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_nominal_%",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": 99.73270602891104,
+  "changed": false
+ },
+ {
+  "key": "headline.PO.eff_std4_mismatched_%",
+  "value": 99.75349224831488,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_mismatched_%",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": 99.75349224831488,
+  "changed": false
+ },
+ {
+  "key": "headline.PO.eff_real_days_nominal_%",
+  "value": 99.79535726029326,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_real_days_nominal_%",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": 99.79535726029324,
+  "changed": false
+ },
+ {
+  "key": "headline.PO.shading_eff_nominal_%",
+  "value": 80.40783492459138,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_nominal_%",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": 80.40783492459136,
+  "changed": false
+ },
+ {
+  "key": "headline.PO.shading_eff_mismatched_%",
+  "value": 81.0990218209054,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_mismatched_%",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": 81.09902182090536,
+  "changed": false
+ },
+ {
+  "key": "headline.PO.gmpp_success_nominal_%",
+  "value": 33.33333333333333,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_nominal_%",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": 33.33333333333333,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.PO.gmpp_success_mismatched_%",
+  "value": 33.33333333333333,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_mismatched_%",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": 33.33333333333333,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.PO.event_convergence_cycles",
+  "value": 1.75,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "event_convergence_cycles",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": 1.75,
+  "changed": false
+ },
+ {
+  "key": "headline.PO.osc_amp_V",
+  "value": 1.1619718309859155,
+  "unit": "V",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "osc_amp_V",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": 1.1619718309859155,
+  "changed": false
+ },
+ {
+  "key": "headline.PO.compute_us_per_cycle",
+  "value": 8.24720503968254,
+  "unit": "us",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "compute_us_per_cycle",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": 4.677053888888889,
+  "changed": true
+ },
+ {
+  "key": "headline.PO.cold_start_B_conv_cycles",
+  "value": 9.4,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "cold_start_B_conv_cycles",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": 9.4,
+  "changed": false
+ },
+ {
+  "key": "headline.PO.scan_overhead_std4_%",
+  "value": 0.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "scan_overhead_std4_%",
+  "filter": {
+   "controller": "P&O"
+  },
+  "old_value": null,
+  "changed": true
+ },
+ {
+  "key": "headline.IncCond.eff_std4_nominal_%",
+  "value": 99.76504702263182,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_nominal_%",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": 99.76504702263183,
+  "changed": false
+ },
+ {
+  "key": "headline.IncCond.eff_std4_mismatched_%",
+  "value": 99.76674861187703,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_mismatched_%",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": 99.76674861187703,
+  "changed": false
+ },
+ {
+  "key": "headline.IncCond.eff_real_days_nominal_%",
+  "value": 99.8087782503771,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_real_days_nominal_%",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": 99.8087782503771,
+  "changed": false
+ },
+ {
+  "key": "headline.IncCond.shading_eff_nominal_%",
+  "value": 80.43751700143446,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_nominal_%",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": 80.43751700143446,
+  "changed": false
+ },
+ {
+  "key": "headline.IncCond.shading_eff_mismatched_%",
+  "value": 81.15264122282134,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_mismatched_%",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": 81.15264122282134,
+  "changed": false
+ },
+ {
+  "key": "headline.IncCond.gmpp_success_nominal_%",
+  "value": 33.33333333333333,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_nominal_%",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": 33.33333333333333,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.IncCond.gmpp_success_mismatched_%",
+  "value": 33.33333333333333,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_mismatched_%",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": 33.33333333333333,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.IncCond.event_convergence_cycles",
+  "value": 2.5,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "event_convergence_cycles",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": 2.5,
+  "changed": false
+ },
+ {
+  "key": "headline.IncCond.osc_amp_V",
+  "value": 1.0350352112676058,
+  "unit": "V",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "osc_amp_V",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": 1.0350352112676056,
+  "changed": false
+ },
+ {
+  "key": "headline.IncCond.compute_us_per_cycle",
+  "value": 9.082120793650793,
+  "unit": "us",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "compute_us_per_cycle",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": 4.344279236111111,
+  "changed": true
+ },
+ {
+  "key": "headline.IncCond.cold_start_B_conv_cycles",
+  "value": 8.6,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "cold_start_B_conv_cycles",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": 8.6,
+  "changed": false
+ },
+ {
+  "key": "headline.IncCond.scan_overhead_std4_%",
+  "value": 0.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "scan_overhead_std4_%",
+  "filter": {
+   "controller": "IncCond"
+  },
+  "old_value": null,
+  "changed": true
+ },
+ {
+  "key": "headline.ANN.eff_std4_nominal_%",
+  "value": 99.99647830877288,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_nominal_%",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": 99.99595770364849,
+  "changed": false
+ },
+ {
+  "key": "headline.ANN.eff_std4_mismatched_%",
+  "value": 99.63768192778616,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_mismatched_%",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": 99.63702584719935,
+  "changed": false
+ },
+ {
+  "key": "headline.ANN.eff_real_days_nominal_%",
+  "value": 99.9991221570593,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_real_days_nominal_%",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": 99.9990884322148,
+  "changed": false
+ },
+ {
+  "key": "headline.ANN.shading_eff_nominal_%",
+  "value": 77.98891107315431,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_nominal_%",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": 77.98293531321089,
+  "changed": false
+ },
+ {
+  "key": "headline.ANN.shading_eff_mismatched_%",
+  "value": 76.98202226435822,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_mismatched_%",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": 76.97633419335538,
+  "changed": false
+ },
+ {
+  "key": "headline.ANN.gmpp_success_nominal_%",
+  "value": 33.33333333333333,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_nominal_%",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": 33.33333333333333,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.ANN.gmpp_success_mismatched_%",
+  "value": 22.22222222222222,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_mismatched_%",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": 33.33333333333333,
+  "changed": true,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.ANN.event_convergence_cycles",
+  "value": 0.875,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "event_convergence_cycles",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": 0.875,
+  "changed": false
+ },
+ {
+  "key": "headline.ANN.osc_amp_V",
+  "value": 0.0280106372511792,
+  "unit": "V",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "osc_amp_V",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": 0.0276838833177593,
+  "changed": false
+ },
+ {
+  "key": "headline.ANN.compute_us_per_cycle",
+  "value": 55.833257738095234,
+  "unit": "us",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "compute_us_per_cycle",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": 3200.026237847222,
+  "changed": true
+ },
+ {
+  "key": "headline.ANN.cold_start_B_conv_cycles",
+  "value": 7.8,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "cold_start_B_conv_cycles",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": 7.8,
+  "changed": false
+ },
+ {
+  "key": "headline.ANN.scan_overhead_std4_%",
+  "value": 0.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "scan_overhead_std4_%",
+  "filter": {
+   "controller": "ANN-MPPT"
+  },
+  "old_value": null,
+  "changed": true
+ },
+ {
+  "key": "headline.Poly2.eff_std4_nominal_%",
+  "value": 99.80843726619167,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_nominal_%",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": 99.80843726619166,
+  "changed": false
+ },
+ {
+  "key": "headline.Poly2.eff_std4_mismatched_%",
+  "value": 99.33831684916174,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_mismatched_%",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": 99.33831684916174,
+  "changed": false
+ },
+ {
+  "key": "headline.Poly2.eff_real_days_nominal_%",
+  "value": 99.95936855826984,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_real_days_nominal_%",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": 99.95936855826984,
+  "changed": false
+ },
+ {
+  "key": "headline.Poly2.shading_eff_nominal_%",
+  "value": 78.1650851767014,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_nominal_%",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": 78.16508517670138,
+  "changed": false
+ },
+ {
+  "key": "headline.Poly2.shading_eff_mismatched_%",
+  "value": 77.2019207949319,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_mismatched_%",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": 77.2019207949319,
+  "changed": false
+ },
+ {
+  "key": "headline.Poly2.gmpp_success_nominal_%",
+  "value": 33.33333333333333,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_nominal_%",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": 33.33333333333333,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.Poly2.gmpp_success_mismatched_%",
+  "value": 22.22222222222222,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_mismatched_%",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": 33.33333333333333,
+  "changed": true,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.Poly2.event_convergence_cycles",
+  "value": 0.875,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "event_convergence_cycles",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": 0.875,
+  "changed": false
+ },
+ {
+  "key": "headline.Poly2.osc_amp_V",
+  "value": 0.0390411541224646,
+  "unit": "V",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "osc_amp_V",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": 0.0390411541224646,
+  "changed": false
+ },
+ {
+  "key": "headline.Poly2.compute_us_per_cycle",
+  "value": 42.23685011904762,
+  "unit": "us",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "compute_us_per_cycle",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": 441.876299375,
+  "changed": true
+ },
+ {
+  "key": "headline.Poly2.cold_start_B_conv_cycles",
+  "value": 7.8,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "cold_start_B_conv_cycles",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": 7.8,
+  "changed": false
+ },
+ {
+  "key": "headline.Poly2.scan_overhead_std4_%",
+  "value": 0.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "scan_overhead_std4_%",
+  "filter": {
+   "controller": "Poly2(G,T)-MPPT"
+  },
+  "old_value": null,
+  "changed": true
+ },
+ {
+  "key": "headline.ScanPO.eff_std4_nominal_%",
+  "value": 99.57849988868335,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_nominal_%",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": 99.57849988868334,
+  "changed": false
+ },
+ {
+  "key": "headline.ScanPO.eff_std4_mismatched_%",
+  "value": 99.61496497070716,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_mismatched_%",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": 99.61496497070716,
+  "changed": false
+ },
+ {
+  "key": "headline.ScanPO.eff_real_days_nominal_%",
+  "value": 99.64364128189186,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_real_days_nominal_%",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": 99.64364128189185,
+  "changed": false
+ },
+ {
+  "key": "headline.ScanPO.shading_eff_nominal_%",
+  "value": 99.36276198250752,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_nominal_%",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": 99.36276198250752,
+  "changed": false
+ },
+ {
+  "key": "headline.ScanPO.shading_eff_mismatched_%",
+  "value": 99.36315723858486,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_mismatched_%",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": 99.36315723858486,
+  "changed": false
+ },
+ {
+  "key": "headline.ScanPO.gmpp_success_nominal_%",
+  "value": 100.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_nominal_%",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": 100.0,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.ScanPO.gmpp_success_mismatched_%",
+  "value": 100.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_mismatched_%",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": 100.0,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.ScanPO.event_convergence_cycles",
+  "value": 2.875,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "event_convergence_cycles",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": 2.875,
+  "changed": false
+ },
+ {
+  "key": "headline.ScanPO.osc_amp_V",
+  "value": 1.1708020583648742,
+  "unit": "V",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "osc_amp_V",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": 1.1708020583648742,
+  "changed": false
+ },
+ {
+  "key": "headline.ScanPO.compute_us_per_cycle",
+  "value": 9.706396507936509,
+  "unit": "us",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "compute_us_per_cycle",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": 4.356847986111111,
+  "changed": true
+ },
+ {
+  "key": "headline.ScanPO.cold_start_B_conv_cycles",
+  "value": 4.0,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "cold_start_B_conv_cycles",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": 4.0,
+  "changed": false
+ },
+ {
+  "key": "headline.ScanPO.scan_overhead_std4_%",
+  "value": 0.1513677785577628,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "scan_overhead_std4_%",
+  "filter": {
+   "controller": "Scan+P&O (no ML)"
+  },
+  "old_value": null,
+  "changed": true
+ },
+ {
+  "key": "headline.DNNonly.eff_std4_nominal_%",
+  "value": 99.57600665322217,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_nominal_%",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": 99.57600660842571,
+  "changed": false
+ },
+ {
+  "key": "headline.DNNonly.eff_std4_mismatched_%",
+  "value": 99.5674271250302,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_mismatched_%",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": 99.56742688063748,
+  "changed": false
+ },
+ {
+  "key": "headline.DNNonly.eff_real_days_nominal_%",
+  "value": 99.72876595541416,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_real_days_nominal_%",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": 99.7287662169358,
+  "changed": false
+ },
+ {
+  "key": "headline.DNNonly.shading_eff_nominal_%",
+  "value": 99.30496253776356,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_nominal_%",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": 99.30496283054768,
+  "changed": false
+ },
+ {
+  "key": "headline.DNNonly.shading_eff_mismatched_%",
+  "value": 99.32786266702996,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_mismatched_%",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": 99.32786235954455,
+  "changed": false
+ },
+ {
+  "key": "headline.DNNonly.gmpp_success_nominal_%",
+  "value": 100.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_nominal_%",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": 100.0,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.DNNonly.gmpp_success_mismatched_%",
+  "value": 100.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_mismatched_%",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": 100.0,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.DNNonly.event_convergence_cycles",
+  "value": 1.75,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "event_convergence_cycles",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": 1.75,
+  "changed": false
+ },
+ {
+  "key": "headline.DNNonly.osc_amp_V",
+  "value": 0.0,
+  "unit": "V",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "osc_amp_V",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": 0.0,
+  "changed": false
+ },
+ {
+  "key": "headline.DNNonly.compute_us_per_cycle",
+  "value": 0.5246209126984127,
+  "unit": "us",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "compute_us_per_cycle",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": 14.846291458333337,
+  "changed": true
+ },
+ {
+  "key": "headline.DNNonly.cold_start_B_conv_cycles",
+  "value": 1.0,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "cold_start_B_conv_cycles",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": 1.0,
+  "changed": false
+ },
+ {
+  "key": "headline.DNNonly.scan_overhead_std4_%",
+  "value": 0.1521182861012249,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "scan_overhead_std4_%",
+  "filter": {
+   "controller": "DNN scan-only (no P&O)"
+  },
+  "old_value": null,
+  "changed": true
+ },
+ {
+  "key": "headline.Hybrid.eff_std4_nominal_%",
+  "value": 99.57218456806456,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_nominal_%",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": 99.57218457765144,
+  "changed": false
+ },
+ {
+  "key": "headline.Hybrid.eff_std4_mismatched_%",
+  "value": 99.60911267707388,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_mismatched_%",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": 99.60911266402157,
+  "changed": false
+ },
+ {
+  "key": "headline.Hybrid.eff_real_days_nominal_%",
+  "value": 99.64539390325092,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_real_days_nominal_%",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": 99.64539394033204,
+  "changed": false
+ },
+ {
+  "key": "headline.Hybrid.shading_eff_nominal_%",
+  "value": 99.3249150840044,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_nominal_%",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": 99.32491516255564,
+  "changed": false
+ },
+ {
+  "key": "headline.Hybrid.shading_eff_mismatched_%",
+  "value": 99.37152199576032,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_mismatched_%",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": 99.37152202380555,
+  "changed": false
+ },
+ {
+  "key": "headline.Hybrid.gmpp_success_nominal_%",
+  "value": 100.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_nominal_%",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": 100.0,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.Hybrid.gmpp_success_mismatched_%",
+  "value": 100.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_mismatched_%",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": 100.0,
+  "changed": false,
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.Hybrid.event_convergence_cycles",
+  "value": 1.75,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "event_convergence_cycles",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": 1.75,
+  "changed": false
+ },
+ {
+  "key": "headline.Hybrid.osc_amp_V",
+  "value": 1.2321682825954303,
+  "unit": "V",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "osc_amp_V",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": 1.2321682825954303,
+  "changed": false
+ },
+ {
+  "key": "headline.Hybrid.compute_us_per_cycle",
+  "value": 8.897832222222222,
+  "unit": "us",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "compute_us_per_cycle",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": 17.645839375,
+  "changed": true
+ },
+ {
+  "key": "headline.Hybrid.cold_start_B_conv_cycles",
+  "value": 1.0,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "cold_start_B_conv_cycles",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": 1.0,
+  "changed": false
+ },
+ {
+  "key": "headline.Hybrid.scan_overhead_std4_%",
+  "value": 0.1514235970604092,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "scan_overhead_std4_%",
+  "filter": {
+   "controller": "Hybrid (DNN+P&O)"
+  },
+  "old_value": null,
+  "changed": true
+ },
+ {
+  "key": "headline.PSO.eff_std4_nominal_%",
+  "value": 97.95797602629132,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_nominal_%",
+  "filter": {
+   "controller": "PSO"
+  }
+ },
+ {
+  "key": "headline.PSO.eff_std4_mismatched_%",
+  "value": 98.089680594836,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_mismatched_%",
+  "filter": {
+   "controller": "PSO"
+  }
+ },
+ {
+  "key": "headline.PSO.eff_real_days_nominal_%",
+  "value": 97.15104588603973,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_real_days_nominal_%",
+  "filter": {
+   "controller": "PSO"
+  }
+ },
+ {
+  "key": "headline.PSO.shading_eff_nominal_%",
+  "value": 95.67779143790632,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_nominal_%",
+  "filter": {
+   "controller": "PSO"
+  }
+ },
+ {
+  "key": "headline.PSO.shading_eff_mismatched_%",
+  "value": 95.8813232120782,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_mismatched_%",
+  "filter": {
+   "controller": "PSO"
+  }
+ },
+ {
+  "key": "headline.PSO.gmpp_success_nominal_%",
+  "value": 100.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_nominal_%",
+  "filter": {
+   "controller": "PSO"
+  },
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.PSO.gmpp_success_mismatched_%",
+  "value": 100.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_mismatched_%",
+  "filter": {
+   "controller": "PSO"
+  },
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.PSO.event_convergence_cycles",
+  "value": 29.625,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "event_convergence_cycles",
+  "filter": {
+   "controller": "PSO"
+  }
+ },
+ {
+  "key": "headline.PSO.osc_amp_V",
+  "value": 2.11437564820084,
+  "unit": "V",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "osc_amp_V",
+  "filter": {
+   "controller": "PSO"
+  }
+ },
+ {
+  "key": "headline.PSO.compute_us_per_cycle",
+  "value": 5.380369880952381,
+  "unit": "us",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "compute_us_per_cycle",
+  "filter": {
+   "controller": "PSO"
+  }
+ },
+ {
+  "key": "headline.PSO.cold_start_B_conv_cycles",
+  "value": 22.8,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "cold_start_B_conv_cycles",
+  "filter": {
+   "controller": "PSO"
+  }
+ },
+ {
+  "key": "headline.PSO.scan_overhead_std4_%",
+  "value": 0.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "scan_overhead_std4_%",
+  "filter": {
+   "controller": "PSO"
+  }
+ },
+ {
+  "key": "headline.ScanTrees.eff_std4_nominal_%",
+  "value": 99.58219327507987,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_nominal_%",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  }
+ },
+ {
+  "key": "headline.ScanTrees.eff_std4_mismatched_%",
+  "value": 99.61049180707109,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_std4_mismatched_%",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  }
+ },
+ {
+  "key": "headline.ScanTrees.eff_real_days_nominal_%",
+  "value": 99.6538481902493,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "eff_real_days_nominal_%",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  }
+ },
+ {
+  "key": "headline.ScanTrees.shading_eff_nominal_%",
+  "value": 99.36583579796904,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_nominal_%",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  }
+ },
+ {
+  "key": "headline.ScanTrees.shading_eff_mismatched_%",
+  "value": 99.39086075225386,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "shading_eff_mismatched_%",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  }
+ },
+ {
+  "key": "headline.ScanTrees.gmpp_success_nominal_%",
+  "value": 100.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_nominal_%",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  },
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.ScanTrees.gmpp_success_mismatched_%",
+  "value": 100.0,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "gmpp_success_mismatched_%",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  },
+  "note": "GMPP-success criterion changed from v3 (>=95 % over the last 25 % of an episode) to >=98 % over the last 10 non-scan cycles"
+ },
+ {
+  "key": "headline.ScanTrees.event_convergence_cycles",
+  "value": 1.75,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "event_convergence_cycles",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  }
+ },
+ {
+  "key": "headline.ScanTrees.osc_amp_V",
+  "value": 1.1554049734024414,
+  "unit": "V",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "osc_amp_V",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  }
+ },
+ {
+  "key": "headline.ScanTrees.compute_us_per_cycle",
+  "value": 33.2583501984127,
+  "unit": "us",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "compute_us_per_cycle",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  }
+ },
+ {
+  "key": "headline.ScanTrees.cold_start_B_conv_cycles",
+  "value": 1.0,
+  "unit": "cycles",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "cold_start_B_conv_cycles",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  }
+ },
+ {
+  "key": "headline.ScanTrees.scan_overhead_std4_%",
+  "value": 0.1547225555162806,
+  "unit": "%",
+  "source_csv": "results/metrics_headline.csv",
+  "column": "scan_overhead_std4_%",
+  "filter": {
+   "controller": "Tree scan+P&O"
+  }
+ },
+ {
+  "key": "dnn.rmse_V.T1",
+  "value": 0.7838683349628989,
+  "unit": "V",
+  "source_csv": "results/hybrid_offline_metrics.csv",
+  "column": "RMSE_V",
+  "filter": {
+   "test_set": "T1 in-distribution (DR plants, mixed shading)"
+  },
+  "old_value": 0.7838683408323887,
+  "changed": false
+ },
+ {
+  "key": "dnn.rmse_V.T4",
+  "value": 1.6669656279963485,
+  "unit": "V",
+  "source_csv": "results/hybrid_offline_metrics.csv",
+  "column": "RMSE_V",
+  "filter": {
+   "test_set": "T4 OUT-OF-RANGE plants, mixed shading"
+  },
+  "old_value": 1.6669656998334348,
+  "changed": false
+ },
+ {
+  "key": "dnn.mae_V.T1",
+  "value": 0.2800043893432976,
+  "unit": "V",
+  "source_csv": "results/hybrid_offline_metrics.csv",
+  "column": "MAE_V",
+  "filter": {
+   "test_set": "T1 in-distribution (DR plants, mixed shading)"
+  },
+  "old_value": 0.28000443958788,
+  "changed": false
+ },
+ {
+  "key": "dnn.mae_V.T4",
+  "value": 0.7740330626208722,
+  "unit": "V",
+  "source_csv": "results/hybrid_offline_metrics.csv",
+  "column": "MAE_V",
+  "filter": {
+   "test_set": "T4 OUT-OF-RANGE plants, mixed shading"
+  },
+  "old_value": 0.7740331595726575,
+  "changed": false
+ },
+ {
+  "key": "dnn.static_power_ratio_pct.T1",
+  "value": 99.22364867800928,
+  "unit": "%",
+  "source_csv": "results/hybrid_offline_metrics.csv",
+  "column": "P_ratio_%",
+  "filter": {
+   "test_set": "T1 in-distribution (DR plants, mixed shading)"
+  },
+  "old_value": 99.22364863173205,
+  "changed": false
+ },
+ {
+  "key": "dnn.static_power_ratio_pct.T4",
+  "value": 98.44357512956309,
+  "unit": "%",
+  "source_csv": "results/hybrid_offline_metrics.csv",
+  "column": "P_ratio_%",
+  "filter": {
+   "test_set": "T4 OUT-OF-RANGE plants, mixed shading"
+  },
+  "old_value": 98.44357487590683,
+  "changed": false
+ },
+ {
+  "key": "dnn.wrong_peak_pct.T1",
+  "value": 2.1125000000000003,
+  "unit": "%",
+  "source_csv": "results/hybrid_offline_metrics.csv",
+  "column": "wrong_peak_%",
+  "filter": {
+   "test_set": "T1 in-distribution (DR plants, mixed shading)"
+  }
+ },
+ {
+  "key": "dnn.wrong_peak_pct.T4",
+  "value": 5.425,
+  "unit": "%",
+  "source_csv": "results/hybrid_offline_metrics.csv",
+  "column": "wrong_peak_%",
+  "filter": {
+   "test_set": "T4 OUT-OF-RANGE plants, mixed shading"
+  }
+ },
+ {
+  "key": "conformal.90.T1.coverage",
+  "value": 0.8991875,
+  "unit": "-",
+  "source_csv": "results/hybrid_conformal_coverage.csv",
+  "column": "empirical_coverage",
+  "filter": {
+   "test_set": "T1 in-distribution (DR plants, mixed shading)",
+   "nominal": 0.9
+  },
+  "old_value": 0.8991875,
+  "changed": false
+ },
+ {
+  "key": "conformal.90.T1.half_width",
+  "value": 0.4098029335744009,
+  "unit": "V",
+  "source_csv": "results/hybrid_conformal_coverage.csv",
+  "column": "interval_half_width_V",
+  "filter": {
+   "test_set": "T1 in-distribution (DR plants, mixed shading)",
+   "nominal": 0.9
+  },
+  "old_value": 0.409803069141585,
+  "changed": false
+ },
+ {
+  "key": "conformal.90.T4.coverage",
+  "value": 0.40725,
+  "unit": "-",
+  "source_csv": "results/hybrid_conformal_coverage.csv",
+  "column": "empirical_coverage",
+  "filter": {
+   "test_set": "T4 OUT-OF-RANGE plants, mixed shading",
+   "nominal": 0.9
+  },
+  "old_value": 0.40725,
+  "changed": false
+ },
+ {
+  "key": "conformal.90.T4.half_width",
+  "value": 0.4098029335744009,
+  "unit": "V",
+  "source_csv": "results/hybrid_conformal_coverage.csv",
+  "column": "interval_half_width_V",
+  "filter": {
+   "test_set": "T4 OUT-OF-RANGE plants, mixed shading",
+   "nominal": 0.9
+  },
+  "old_value": 0.409803069141585,
+  "changed": false
+ },
+ {
+  "key": "conformal.95.T1.coverage",
+  "value": 0.9491875,
+  "unit": "-",
+  "source_csv": "results/hybrid_conformal_coverage.csv",
+  "column": "empirical_coverage",
+  "filter": {
+   "test_set": "T1 in-distribution (DR plants, mixed shading)",
+   "nominal": 0.95
+  },
+  "old_value": 0.9491875,
+  "changed": false
+ },
+ {
+  "key": "conformal.95.T1.half_width",
+  "value": 0.7280409554998073,
+  "unit": "V",
+  "source_csv": "results/hybrid_conformal_coverage.csv",
+  "column": "interval_half_width_V",
+  "filter": {
+   "test_set": "T1 in-distribution (DR plants, mixed shading)",
+   "nominal": 0.95
+  },
+  "old_value": 0.7280410008640779,
+  "changed": false
+ },
+ {
+  "key": "conformal.95.T4.coverage",
+  "value": 0.75825,
+  "unit": "-",
+  "source_csv": "results/hybrid_conformal_coverage.csv",
+  "column": "empirical_coverage",
+  "filter": {
+   "test_set": "T4 OUT-OF-RANGE plants, mixed shading",
+   "nominal": 0.95
+  },
+  "old_value": 0.75825,
+  "changed": false
+ },
+ {
+  "key": "conformal.95.T4.half_width",
+  "value": 0.7280409554998073,
+  "unit": "V",
+  "source_csv": "results/hybrid_conformal_coverage.csv",
+  "column": "interval_half_width_V",
+  "filter": {
+   "test_set": "T4 OUT-OF-RANGE plants, mixed shading",
+   "nominal": 0.95
+  },
+  "old_value": 0.7280410008640779,
+  "changed": false
+ },
+ {
+  "key": "dnn.parameters",
+  "value": 27009,
+  "unit": "-",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "params",
+  "filter": {}
+ },
+ {
+  "key": "dnn.macs",
+  "value": 26688,
+  "unit": "-",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "macs",
+  "filter": {}
+ },
+ {
+  "key": "hpc.latency_median_us.float32 (numpy, as used in the closed loop)",
+  "value": 19.3125,
+  "unit": "us",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "median_us",
+  "filter": {
+   "variant": "float32 (numpy, as used in the closed loop)"
+  }
+ },
+ {
+  "key": "hpc.latency_fraction_of_cycle.float32 (numpy, as used in the closed loop)",
+  "value": 1.93125e-05,
+  "unit": "-",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "fraction_of_cycle_budget_median",
+  "filter": {
+   "variant": "float32 (numpy, as used in the closed loop)"
+  }
+ },
+ {
+  "key": "hpc.latency_median_us.float16 weights (numpy emulation)",
+  "value": 18.587,
+  "unit": "us",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "median_us",
+  "filter": {
+   "variant": "float16 weights (numpy emulation)"
+  }
+ },
+ {
+  "key": "hpc.latency_fraction_of_cycle.float16 weights (numpy emulation)",
+  "value": 1.8587e-05,
+  "unit": "-",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "fraction_of_cycle_budget_median",
+  "filter": {
+   "variant": "float16 weights (numpy emulation)"
+  }
+ },
+ {
+  "key": "hpc.latency_median_us.int8 weights/activations (numpy emulation)",
+  "value": 68.892,
+  "unit": "us",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "median_us",
+  "filter": {
+   "variant": "int8 weights/activations (numpy emulation)"
+  }
+ },
+ {
+  "key": "hpc.latency_fraction_of_cycle.int8 weights/activations (numpy emulation)",
+  "value": 6.889199999999999e-05,
+  "unit": "-",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "fraction_of_cycle_budget_median",
+  "filter": {
+   "variant": "int8 weights/activations (numpy emulation)"
+  }
+ },
+ {
+  "key": "hpc.latency_median_us.Keras model(x) call (float32, framework overhead, separate process)",
+  "value": 2928.644,
+  "unit": "us",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "median_us",
+  "filter": {
+   "variant": "Keras model(x) call (float32, framework overhead, separate process)"
+  }
+ },
+ {
+  "key": "hpc.latency_fraction_of_cycle.Keras model(x) call (float32, framework overhead, separate process)",
+  "value": 0.002928644,
+  "unit": "-",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "fraction_of_cycle_budget_median",
+  "filter": {
+   "variant": "Keras model(x) call (float32, framework overhead, separate process)"
+  }
+ },
+ {
+  "key": "hpc.latency_median_us.Keras model.predict (float32, framework overhead, separate process)",
+  "value": 64795.859500000006,
+  "unit": "us",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "median_us",
+  "filter": {
+   "variant": "Keras model.predict (float32, framework overhead, separate process)"
+  }
+ },
+ {
+  "key": "hpc.latency_fraction_of_cycle.Keras model.predict (float32, framework overhead, separate process)",
+  "value": 0.0647958595,
+  "unit": "-",
+  "source_csv": "results/hpc/latency.csv",
+  "column": "fraction_of_cycle_budget_median",
+  "filter": {
+   "variant": "Keras model.predict (float32, framework overhead, separate process)"
+  }
+ },
+ {
+  "key": "hpc.generation_speedup.2workers",
+  "value": 1.6167745551294284,
+  "unit": "x",
+  "source_csv": "results/hpc/generation_scaling.csv",
+  "column": "speedup",
+  "filter": {
+   "workers": 2
+  }
+ },
+ {
+  "key": "hpc.generation_efficiency.2workers",
+  "value": 0.8083872775647142,
+  "unit": "-",
+  "source_csv": "results/hpc/generation_scaling.csv",
+  "column": "efficiency",
+  "filter": {
+   "workers": 2
+  }
+ },
+ {
+  "key": "hpc.sweep_speedup.2workers",
+  "value": 1.9432761339468931,
+  "unit": "x",
+  "source_csv": "results/hpc/sweep_scaling.csv",
+  "column": "speedup",
+  "filter": {
+   "workers": 2
+  }
+ },
+ {
+  "key": "hpc.generation_speedup.4workers",
+  "value": 2.6152014726429544,
+  "unit": "x",
+  "source_csv": "results/hpc/generation_scaling.csv",
+  "column": "speedup",
+  "filter": {
+   "workers": 4
+  }
+ },
+ {
+  "key": "hpc.generation_efficiency.4workers",
+  "value": 0.6538003681607386,
+  "unit": "-",
+  "source_csv": "results/hpc/generation_scaling.csv",
+  "column": "efficiency",
+  "filter": {
+   "workers": 4
+  }
+ },
+ {
+  "key": "hpc.sweep_speedup.4workers",
+  "value": 3.817866237324376,
+  "unit": "x",
+  "source_csv": "results/hpc/sweep_scaling.csv",
+  "column": "speedup",
+  "filter": {
+   "workers": 4
+  }
+ },
+ {
+  "key": "hpc.generation_speedup.8workers",
+  "value": 1.9047957096110115,
+  "unit": "x",
+  "source_csv": "results/hpc/generation_scaling.csv",
+  "column": "speedup",
+  "filter": {
+   "workers": 8
+  }
+ },
+ {
+  "key": "hpc.generation_efficiency.8workers",
+  "value": 0.2380994637013764,
+  "unit": "-",
+  "source_csv": "results/hpc/generation_scaling.csv",
+  "column": "efficiency",
+  "filter": {
+   "workers": 8
+  }
+ },
+ {
+  "key": "hpc.sweep_speedup.8workers",
+  "value": 3.760578225020068,
+  "unit": "x",
+  "source_csv": "results/hpc/sweep_scaling.csv",
+  "column": "speedup",
+  "filter": {
+   "workers": 8
+  }
+ },
+ {
+  "key": "hpc.generation_serial_seconds",
+  "value": 10.679442120999738,
+  "unit": "s",
+  "source_csv": "results/hpc/generation_scaling.csv",
+  "column": "wallclock_s",
+  "filter": {
+   "workers": 1
+  }
+ },
+ {
+  "key": "hpc.scan_cycle_fraction_nominal_pct",
+  "value": 0.4166666666666667,
+  "unit": "%",
+  "source_csv": "results/hpc/scan_overhead.csv",
+  "column": "scan_cycle_fraction_pct",
+  "filter": {
+   "plant": "nominal",
+   "controller": "Hybrid (DNN+P&O)"
+  }
+ },
+ {
+  "key": "hpc.scan_energy_overhead_nominal_pct",
+  "value": 0.1872076306738521,
+  "unit": "%",
+  "source_csv": "results/hpc/scan_overhead.csv",
+  "column": "scan_energy_overhead_pct",
+  "filter": {
+   "plant": "nominal",
+   "controller": "Hybrid (DNN+P&O)"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Hybrid (DNN+P&O).vs.Scan+P&O (no ML).eff_std4.p",
+  "value": 0.130859375,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "Scan+P&O (no ML)",
+   "metric": "eff_std4"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Hybrid (DNN+P&O).vs.Scan+P&O (no ML).eff_real.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "Scan+P&O (no ML)",
+   "metric": "eff_real"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Hybrid (DNN+P&O).vs.Scan+P&O (no ML).eff_shading.p",
+  "value": 0.232421875,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "Scan+P&O (no ML)",
+   "metric": "eff_shading"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Hybrid (DNN+P&O).vs.P&O.eff_std4.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "P&O",
+   "metric": "eff_std4"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Hybrid (DNN+P&O).vs.P&O.eff_real.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "P&O",
+   "metric": "eff_real"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Hybrid (DNN+P&O).vs.P&O.eff_shading.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "P&O",
+   "metric": "eff_shading"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Scan+P&O (no ML).vs.P&O.eff_std4.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Scan+P&O (no ML)",
+   "b": "P&O",
+   "metric": "eff_std4"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Scan+P&O (no ML).vs.P&O.eff_real.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Scan+P&O (no ML)",
+   "b": "P&O",
+   "metric": "eff_real"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Scan+P&O (no ML).vs.P&O.eff_shading.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Scan+P&O (no ML)",
+   "b": "P&O",
+   "metric": "eff_shading"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Hybrid (DNN+P&O).vs.DNN scan-only (no P&O).eff_std4.p",
+  "value": 0.00390625,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "DNN scan-only (no P&O)",
+   "metric": "eff_std4"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Hybrid (DNN+P&O).vs.DNN scan-only (no P&O).eff_real.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "DNN scan-only (no P&O)",
+   "metric": "eff_real"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.nominal.Hybrid (DNN+P&O).vs.DNN scan-only (no P&O).eff_shading.p",
+  "value": 0.02734375,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "nominal",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "DNN scan-only (no P&O)",
+   "metric": "eff_shading"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Hybrid (DNN+P&O).vs.Scan+P&O (no ML).eff_std4.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "Scan+P&O (no ML)",
+   "metric": "eff_std4"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Hybrid (DNN+P&O).vs.Scan+P&O (no ML).eff_real.p",
+  "value": 0.01953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "Scan+P&O (no ML)",
+   "metric": "eff_real"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Hybrid (DNN+P&O).vs.Scan+P&O (no ML).eff_shading.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "Scan+P&O (no ML)",
+   "metric": "eff_shading"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Hybrid (DNN+P&O).vs.P&O.eff_std4.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "P&O",
+   "metric": "eff_std4"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Hybrid (DNN+P&O).vs.P&O.eff_real.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "P&O",
+   "metric": "eff_real"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Hybrid (DNN+P&O).vs.P&O.eff_shading.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "P&O",
+   "metric": "eff_shading"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Scan+P&O (no ML).vs.P&O.eff_std4.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Scan+P&O (no ML)",
+   "b": "P&O",
+   "metric": "eff_std4"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Scan+P&O (no ML).vs.P&O.eff_real.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Scan+P&O (no ML)",
+   "b": "P&O",
+   "metric": "eff_real"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Scan+P&O (no ML).vs.P&O.eff_shading.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Scan+P&O (no ML)",
+   "b": "P&O",
+   "metric": "eff_shading"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Hybrid (DNN+P&O).vs.DNN scan-only (no P&O).eff_std4.p",
+  "value": 0.037109375,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "DNN scan-only (no P&O)",
+   "metric": "eff_std4"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Hybrid (DNN+P&O).vs.DNN scan-only (no P&O).eff_real.p",
+  "value": 0.001953125,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "DNN scan-only (no P&O)",
+   "metric": "eff_real"
+  }
+ },
+ {
+  "key": "stats.wilcoxon.mismatched.Hybrid (DNN+P&O).vs.DNN scan-only (no P&O).eff_shading.p",
+  "value": 0.009765625,
+  "unit": "-",
+  "source_csv": "results/stats/wilcoxon.csv",
+  "column": "p_value",
+  "filter": {
+   "plant": "mismatched",
+   "a": "Hybrid (DNN+P&O)",
+   "b": "DNN scan-only (no P&O)",
+   "metric": "eff_shading"
+  }
+ },
+ {
+  "key": "converter.max_dP_rel_pct.irradiance step (P&O).large_jump_False",
+  "value": 0.102118606266364,
+  "unit": "% of rated power",
+  "source_csv": "results/converter/verification_summary.csv",
+  "column": "max_dP_rel_pct",
+  "filter": {
+   "case": "irradiance step (P&O)",
+   "large_jump": false
+  }
+ },
+ {
+  "key": "converter.max_dP_rel_pct.shading pattern 1 incl. scan (Hybrid).large_jump_False",
+  "value": 0.025101123986278,
+  "unit": "% of rated power",
+  "source_csv": "results/converter/verification_summary.csv",
+  "column": "max_dP_rel_pct",
+  "filter": {
+   "case": "shading pattern 1 incl. scan (Hybrid)",
+   "large_jump": false
+  }
+ },
+ {
+  "key": "converter.max_dP_rel_pct.shading pattern 1 incl. scan (Hybrid).large_jump_True",
+  "value": 4.718122031023253,
+  "unit": "% of rated power",
+  "source_csv": "results/converter/verification_summary.csv",
+  "column": "max_dP_rel_pct",
+  "filter": {
+   "case": "shading pattern 1 incl. scan (Hybrid)",
+   "large_jump": true
+  }
+ },
+ {
+  "key": "converter.max_dV_V.irradiance step (P&O).large_jump_False",
+  "value": 0.0494853448099021,
+  "unit": "V",
+  "source_csv": "results/converter/verification_summary.csv",
+  "column": "max_dV_V",
+  "filter": {
+   "case": "irradiance step (P&O)",
+   "large_jump": false
+  }
+ },
+ {
+  "key": "converter.max_dV_V.shading pattern 1 incl. scan (Hybrid).large_jump_False",
+  "value": 0.0241724155102396,
+  "unit": "V",
+  "source_csv": "results/converter/verification_summary.csv",
+  "column": "max_dV_V",
+  "filter": {
+   "case": "shading pattern 1 incl. scan (Hybrid)",
+   "large_jump": false
+  }
+ },
+ {
+  "key": "converter.max_dV_V.shading pattern 1 incl. scan (Hybrid).large_jump_True",
+  "value": 1.4466142213187467,
+  "unit": "V",
+  "source_csv": "results/converter/verification_summary.csv",
+  "column": "max_dV_V",
+  "filter": {
+   "case": "shading pattern 1 incl. scan (Hybrid)",
+   "large_jump": true
+  }
+ }
+]

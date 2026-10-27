@@ -1,0 +1,11 @@
+**Table_conceptual_comparison.** Conceptual comparison of the controllers. Design columns are properties of the implementations; numeric columns are measured in this study (nominal = model-matched plant, mismatched = perturbed plant). Hybrid P&O from the literature was not implemented.
+
+| Controller | Sensors / inputs | Training need | Global search (partial shading) | Shading eff. nominal (%) | Shading eff. mismatched (%) | GMPP success nominal (%) | Std. scenarios eff. nominal (%) | Std. scenarios eff. mismatched (%) | Compute per cycle (us, measured) |
+|---|---|---|---|---|---|---|---|---|---|
+| P&O | V, I | none | no (local) | 80.41 | 81.1 | 33.33 | 99.73 | 99.75 | 8.92 |
+| IncCond | V, I | none | no (local) | 80.44 | 81.15 | 33.33 | 99.77 | 99.77 | 10.34 |
+| Hybrid P&O (literature) | not implemented here | not implemented here | not implemented here | - | - | - | - | - | - |
+| ANN-MPPT | G, T, V, I | offline, simulated/measured (G,T,V,I) data | no (maps the inputs to one V_ref) | 77.99 | 76.98 | 33.33 | 100 | 99.64 | 57.03 |
+| Scan+P&O (no ML) | V, I, I-V scan (14 probe voltages), G/T not needed | none | yes (scan + argmax, then local P&O) | 99.36 | 99.36 | 100 | 99.58 | 99.61 | 10.9 |
+| DNN scan-only (no P&O) | V, I scan, G (mean irradiance), T | offline, domain-randomised plant simulations | yes (DNN picks V_gmpp from the scan) | 99.3 | 99.33 | 100 | 99.58 | 99.57 | 0.56 |
+| Hybrid (DNN+P&O) | V, I scan, G (mean irradiance), T | offline, domain-randomised plant simulations | yes (scan, DNN hand-off, local P&O) | 99.32 | 99.37 | 100 | 99.57 | 99.61 | 9.59 |

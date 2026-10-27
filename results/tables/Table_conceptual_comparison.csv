@@ -1,0 +1,8 @@
+Controller,Sensors / inputs,Training need,Global search (partial shading),Shading eff. nominal (%),Shading eff. mismatched (%),GMPP success nominal (%),Std. scenarios eff. nominal (%),Std. scenarios eff. mismatched (%),"Compute per cycle (us, measured)"
+P&O,"V, I",none,no (local),80.40783492459138,81.0990218209054,33.33333333333333,99.73270602891105,99.75349224831487,8.92013538888889
+IncCond,"V, I",none,no (local),80.43751700143446,81.15264122282134,33.33333333333333,99.76504702263182,99.76674861187703,10.337292666666666
+Hybrid P&O (literature),not implemented here,not implemented here,not implemented here,,,,,,
+ANN-MPPT,"G, T, V, I","offline, simulated/measured (G,T,V,I) data",no (maps the inputs to one V_ref),77.98891107315431,76.98202226435822,33.33333333333333,99.99647830877288,99.63768192778616,57.03177666666666
+Scan+P&O (no ML),"V, I, I-V scan (14 probe voltages), G/T not needed",none,"yes (scan + argmax, then local P&O)",99.36276198250752,99.36315723858486,100.0,99.57849988868335,99.61496497070715,10.901386777777777
+DNN scan-only (no P&O),"V, I scan, G (mean irradiance), T","offline, domain-randomised plant simulations",yes (DNN picks V_gmpp from the scan),99.30496253776356,99.32786266702996,100.0,99.57600665322215,99.56742712503019,0.5551442777777778
+Hybrid (DNN+P&O),"V, I scan, G (mean irradiance), T","offline, domain-randomised plant simulations","yes (scan, DNN hand-off, local P&O)",99.32491508400439,99.37152199576032,100.0,99.57218456806456,99.60911267707388,9.591483166666666

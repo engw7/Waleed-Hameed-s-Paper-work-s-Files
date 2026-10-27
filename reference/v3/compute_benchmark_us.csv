@@ -1,0 +1,8 @@
+,mean,median,max
+ANN: model.predict(x)  [Keras high-level API],76526.42046,71212.987,517376.398
+"ANN: model(x, training=False)  [used in the loop]",3359.0159000000003,3119.673,6588.732
+ANN: full decision (scaling + forward + slew),3558.5912599999997,3215.9755,9508.925
+"Poly2(G,T): full decision",462.7510949999999,424.094,2488.772
+Hybrid stage-1: DNN call only (scan cycle),2958.35675,2780.4120000000003,5353.075
+P&O: decision only,4.02224,3.089,113.217
+IncCond: decision only,3.623925,3.232,19.59

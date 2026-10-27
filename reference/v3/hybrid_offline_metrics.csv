@@ -1,0 +1,15 @@
+test set,estimator,n,RMSE_V,MAE_V,P_ratio_%
+"T1 in-distribution (DR plants, mixed shading)",Hybrid DNN estimate,16000,0.7838683408323887,0.28000443958788,99.22364863173205
+"T1 in-distribution (DR plants, mixed shading)",best-probe rule (no ML),16000,1.0474428887827143,0.5966247394707104,99.01450771284424
+"T1 in-distribution (DR plants, mixed shading)  shaded subset",Hybrid DNN estimate,9456,1.0121510978605706,0.3878761365913785,98.71340164626348
+"T1 in-distribution (DR plants, mixed shading)  unshaded subset",Hybrid DNN estimate,6544,0.1483381241581312,0.12413115614272698,99.96094928799592
+"T2 nominal plant, uniform irradiance",Hybrid DNN estimate,8000,0.12045039631146412,0.09765158973451107,99.96993538842669
+"T2 nominal plant, uniform irradiance",best-probe rule (no ML),8000,0.629942147544431,0.5513666499041878,99.50283198187621
+"T2 nominal plant, uniform irradiance  unshaded subset",Hybrid DNN estimate,8000,0.12045039631146412,0.09765158973451107,99.96993538842669
+"T3 nominal plant, partial shading",Hybrid DNN estimate,8000,0.9423455847602366,0.3616193152961755,98.77070390017269
+"T3 nominal plant, partial shading",best-probe rule (no ML),8000,1.2673857046048251,0.6307430361520886,98.64075584218669
+"T3 nominal plant, partial shading  shaded subset",Hybrid DNN estimate,8000,0.9423455847602366,0.3616193152961755,98.77070390017269
+"T4 OUT-OF-RANGE plants, mixed shading",Hybrid DNN estimate,8000,1.6669656998334348,0.7740331595726575,98.44357487590685
+"T4 OUT-OF-RANGE plants, mixed shading",best-probe rule (no ML),8000,1.0616397058981997,0.5869717456140537,99.37392333901153
+"T4 OUT-OF-RANGE plants, mixed shading  shaded subset",Hybrid DNN estimate,4772,2.1059617527361407,0.9463269045279827,97.61605757413611
+"T4 OUT-OF-RANGE plants, mixed shading  unshaded subset",Hybrid DNN estimate,3228,0.5746664658267692,0.519328775766334,99.6669059056621

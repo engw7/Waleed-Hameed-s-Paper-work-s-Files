@@ -6,7 +6,7 @@ import os, subprocess, sys, time
 ROOT = os.path.dirname(os.path.abspath(__file__))
 STEPS = [('tables', 'experiments/exp_tables.py', []), ('main', 'experiments/exp_main.py', []), ('hpc', 'experiments/exp_hpc.py', []), ('ablation', 'experiments/exp_ablation.py', []),
          ('stats', 'experiments/exp_stats.py', ['stats', 'noise', 'quant']), ('converter', 'experiments/exp_converter.py', []), ('figures', 'experiments/exp_figures.py', []), ('docs', 'tools/build_docs.py', []),
-         ('traceability', 'tools/build_traceability.py', []), ('report', 'tools/build_report.py', []), ('tests', '-m', ['pytest', '-q', '-rA', 'tests']), ('report_final', 'tools/build_report.py', [])]
+         ('report', 'tools/build_report.py', []), ('tests', '-m', ['pytest', '-q', '-rA', 'tests']), ('report_final', 'tools/build_report.py', [])]
 
 
 def main():

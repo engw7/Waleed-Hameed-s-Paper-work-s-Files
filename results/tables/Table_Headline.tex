@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\caption{Headline metrics of all controllers (quasi-static plant; nominal = model-matched, mismatched = perturbed plant, severity 1).}
+\label{tab:Table_Headline}
+\small
+\begin{tabular}{llllllllll}
+\hline
+controller & Std. scen. eff. nominal (\%) & Std. scen. eff. mismatched (\%) & Shading eff. nominal (\%) & Shading eff. mismatched (\%) & GMPP success nominal (\%) & Event conv. (cycles) & Osc. p-p (V) & Compute (us/cycle) & Cold-start B (cycles) \\
+\hline
+P\&O & 99.73 & 99.75 & 80.41 & 81.1 & 33.33 & 1.75 & 1.16 & 8.25 & 9.4 \\
+IncCond & 99.77 & 99.77 & 80.44 & 81.15 & 33.33 & 2.5 & 1.04 & 9.08 & 8.6 \\
+Poly2(G,T)-MPPT & 99.81 & 99.34 & 78.17 & 77.2 & 33.33 & 0.88 & 0.04 & 42.24 & 7.8 \\
+ANN-MPPT & 100 & 99.64 & 77.99 & 76.98 & 33.33 & 0.88 & 0.03 & 55.83 & 7.8 \\
+Scan+P\&O (no ML) & 99.58 & 99.61 & 99.36 & 99.36 & 100 & 2.88 & 1.17 & 9.71 & 4 \\
+DNN scan-only (no P\&O) & 99.58 & 99.57 & 99.3 & 99.33 & 100 & 1.75 & 0 & 0.52 & 1 \\
+Hybrid (DNN+P\&O) & 99.57 & 99.61 & 99.32 & 99.37 & 100 & 1.75 & 1.23 & 8.9 & 1 \\
+PSO & 97.96 & 98.09 & 95.68 & 95.88 & 100 & 29.62 & 2.11 & 5.38 & 22.8 \\
+Tree scan+P\&O & 99.58 & 99.61 & 99.37 & 99.39 & 100 & 1.75 & 1.16 & 33.26 & 1 \\
+\hline
+\end{tabular}
+\end{table}
