@@ -17,7 +17,6 @@ Archived release: [10.5281/zenodo.23706406](https://doi.org/10.5281/zenodo.23706
 | `PVGIS_Ramadi_2005-2020.csv` | Hourly irradiance and temperature, PVGIS-SARAH3, 33.42° N, 43.30° E, 2005–2020 (European Commission JRC) |
 | `results/` | All result tables (CSV), `PAPER_NUMBERS.json`, `RESULTS.md`, figures (PDF and PNG) with the plotted data in `results/figures/data/` |
 | `docs/` | `FIGURE_MAP.md` (figure to script to data), `METRICS.md`, `PARAMETERS.md`, `FIGURE_CAPTIONS.md` |
-| `manuscript/` | The manuscript (`Paper_main.docx`) and its supplementary material (`Supplementary_material.docx`) in the Springer Nature Word template, with the text sources in Markdown (figures appear there as placeholders; the figure files are in `results/figures/`) |
 | `logs/` | Logs of the runs that produced `results/` |
 | `REBUILD_REPORT_v4.md`, `CHANGELOG_ROUND4.md` | Rebuild report and changelog of the numbers of the final run |
 | `archive/` | Earlier rebuild reports, notebook audit and the original notebook (kept for history; one consistency test reads the notebook) |
