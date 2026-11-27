@@ -17,3 +17,16 @@ keywords:
   - partial shading
   - deep neural network
   - photovoltaic
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Hameed
+      given-names: Waleed
+    - family-names: Dimililer
+      given-names: Kamil
+  title: "Isolating the contribution of deep neural networks in hybrid scan-based MPPT controllers under partial shading"
+  journal: "The Journal of Supercomputing"
+  volume: 82
+  issue: 857
+  year: 2026
+  doi: 10.1007/s11227-026-09037-9
