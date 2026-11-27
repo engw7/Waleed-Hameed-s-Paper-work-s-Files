@@ -1,6 +1,6 @@
 # Isolating the contribution of deep neural networks in hybrid scan-based MPPT controllers under partial shading
 
-Code, data and results accompanying the manuscript *Isolating the Contribution of Deep Neural Networks in Hybrid Scan-Based MPPT Controllers Under Partial Shading* (W. Hameed, K. Dimililer), submitted to *The Journal of Supercomputing*.
+Code, data and results accompanying the manuscript *Isolating the Contribution of Deep Neural Networks in Hybrid Scan-Based MPPT Controllers Under Partial Shading* (W. Hameed, K. Dimililer), published in *The Journal of Supercomputing* (2026) 82:857, https://doi.org/10.1007/s11227-026-09037-9.
 
 All numbers, tables and figures of the manuscript are generated from this repository. The study is simulation-only (no hardware-in-the-loop).
 
